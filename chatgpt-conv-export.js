@@ -5,7 +5,7 @@
 // Version: 0.3.1 Adjusted the position of the download icon button due to the Canvas release.
 
 // Const variable
-const DOMAIN_CHATGPT="chatgpt.com";
+const DOMAIN_CHATGPT = "chatgpt.com";
 
 const DEBUG = false;
 const gptSession = { data: null };
@@ -19,14 +19,18 @@ function clog(msg) {
 // Detect Browser
 const BRW_FIREFOX = "Firefox";
 const BRW_GCHROME = "Chrome";
+const BRW_SAFARI = "Safari";
 const BRW_UNKNOWN = "unknown";
-function detectBrowser() {
-  const userAgent = navigator.userAgent;
 
-  if (userAgent.indexOf(BRW_FIREFOX) !== -1) {
+function detectBrowser() {
+  const userAgent = navigator.userAgent.toLowerCase();
+
+  if (userAgent.indexOf("firefox") !== -1) {
     return BRW_FIREFOX;
-  } else if (userAgent.indexOf(BRW_GCHROME) !== -1) {
+  } else if (userAgent.indexOf("chrome") !== -1 || userAgent.indexOf("chromium") !== -1) {
     return BRW_GCHROME;
+  } else if (userAgent.indexOf("safari") !== -1 && userAgent.indexOf("chrome") === -1) {
+    return BRW_SAFARI;
   } else {
     return BRW_UNKNOWN;
   }
@@ -79,8 +83,6 @@ function decryptToken(token, key) {
 }
 
 // Get ThreadId (ChatId)
-// Get and return the conversation ID at the end of the current page URL, otherwise return null
-// URL example: https://${DOMAIN_CHATGPT}/c/<threadId>
 function getThreadId() {
   const url = window.location.href;
   const match = url.match(/c\/([\w-]+)/);
@@ -91,6 +93,48 @@ function getThreadId() {
 async function getAccessToken() {
   if (DETECT_BROWSER === BRW_FIREFOX) return await getAccessTokenFireFox();
   if (DETECT_BROWSER === BRW_GCHROME) return await getAccessTokenGChrome();
+  if (DETECT_BROWSER === BRW_SAFARI) return await getAccessTokenSafari();
+}
+
+async function getAccessTokenSafari() {
+  clog(`[debug] gptSession.data: ${gptSession.data == null}`);
+  if (gptSession.data == null) {
+    const threadId = getThreadId();
+    const response = await fetch(`https://${DOMAIN_CHATGPT}/api/auth/session`, {
+      credentials: "include",
+      headers: {
+        "User-Agent": window.navigator.userAgent,
+        Accept: "*/*",
+        "Accept-Language": navigator.language,
+        "Alt-Used": `${DOMAIN_CHATGPT}`,
+        Pragma: "no-cache",
+        "Cache-Control": "no-cache",
+      },
+      referrer: `https://${DOMAIN_CHATGPT}/c/${threadId}`,
+      method: "GET",
+      mode: "cors",
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+    clog(`[debug] getAccessToken() response: ${data != null}`);
+    // Encrypt the accessToken
+    data.accessToken = encryptToken(data.accessToken, KEY_TOKEN);
+    // cache
+    gptSession.data = data;
+    clog(`[debug] accessToken: ${gptSession.data != null}`);
+    if (gptSession.data != null) {
+      // cache OK
+      if (DEBUG) document.body.style.border = "5px solid green";
+    }
+  } else {
+    // Do not refetch if cached
+  }
+  // decrypt and return
+  return decryptToken(gptSession.data.accessToken, KEY_TOKEN);
 }
 
 // Get AccessToken: FireFox
@@ -190,6 +234,9 @@ function getIconURL() {
   } else if (typeof chrome !== "undefined") {
     // Chrome
     url = chrome.runtime.getURL(iconSVG);
+  } else if (typeof safari !== "undefined") {
+    // Safari
+    url = safari.extension.baseURI + iconSVG;
   } else {
     // Other browsers that don't support
     url = "";
@@ -205,7 +252,6 @@ const saveButton = document.createElement("button");
 const iconURL = getIconURL();
 clog(`[debug] iconURL: ${iconURL}`);
 
-// ↓ saveButton.innerHTML = `<img src="${iconURL}" alt="Download">`;
 const iconImage = document.createElement("img");
 iconImage.src = iconURL;
 iconImage.alt = "Download";
@@ -234,9 +280,10 @@ setInterval(() => {
 async function getConversation(threadId) {
   if (DETECT_BROWSER === BRW_FIREFOX) return await getConversationFireFox(threadId);
   if (DETECT_BROWSER === BRW_GCHROME) return await getConversationGChrome(threadId);
+  if (DETECT_BROWSER === BRW_SAFARI) return await getConversationSafari(threadId);
 }
 
-async function getConversationFireFox(threadId) {
+async function getConversationSafari(threadId) {
   const token = await getAccessToken();
   clog(`[debug] threadId: ${threadId}`);
   clog(`[debug] token: ${token != null}`);
@@ -257,32 +304,6 @@ async function getConversationFireFox(threadId) {
       referrer: `https://${DOMAIN_CHATGPT}/chat/${threadId}`,
       method: "GET",
       mode: "cors",
-    }
-  );
-  const data = await response.json();
-  return data;
-}
-
-async function getConversationGChrome(threadId) {
-  const token = await getAccessToken();
-  clog(`[debug] threadId: ${threadId}`);
-  clog(`[debug] token: ${token != null}`);
-  const response = await fetch(
-    `https://${DOMAIN_CHATGPT}/backend-api/conversation/${threadId}`,
-    {
-      headers: {
-        accept: "*/*",
-        authorization: `Bearer ${token}`,
-        "cache-control": "no-cache",
-        "content-type": "application/json",
-        pragma: "no-cache",
-      },
-      referrer: `https://${DOMAIN_CHATGPT}/chat/${threadId}`,
-      referrerPolicy: "same-origin",
-      body: null,
-      method: "GET",
-      mode: "cors",
-      credentials: "include",
     }
   );
   const data = await response.json();

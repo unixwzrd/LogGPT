@@ -18,7 +18,7 @@
 		A53015462CCE34520007CC72 /* ChatGPT___Chat_Log_Export__JSON_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53015452CCE34520007CC72 /* ChatGPT___Chat_Log_Export__JSON_Tests.swift */; };
 		A53015502CCE34520007CC72 /* ChatGPT___Chat_Log_Export__JSON_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A530154F2CCE34520007CC72 /* ChatGPT___Chat_Log_Export__JSON_UITests.swift */; };
 		A53015522CCE34520007CC72 /* ChatGPT___Chat_Log_Export__JSON_UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53015512CCE34520007CC72 /* ChatGPT___Chat_Log_Export__JSON_UITestsLaunchTests.swift */; };
-		A53015582CCE34520007CC72 /* ChatGPT - Chat Log Export JSON Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A53015572CCE34520007CC72 /* ChatGPT - Chat Log Export JSON Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A53015582CCE34520007CC72 /* ChatGPT - Export Chatlog JSON Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A53015572CCE34520007CC72 /* ChatGPT - Export Chatlog JSON Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A530155D2CCE34520007CC72 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A530155C2CCE34520007CC72 /* SafariWebExtensionHandler.swift */; };
 		A530157C2CCE34530007CC72 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A53015702CCE34530007CC72 /* LICENSE */; };
 		A530157D2CCE34530007CC72 /* changelog.md in Resources */ = {isa = PBXBuildFile; fileRef = A53015712CCE34530007CC72 /* changelog.md */; };
@@ -31,7 +31,7 @@
 		A53015842CCE34530007CC72 /* ChatGPT - Chat Log Export (JSON) in Resources */ = {isa = PBXBuildFile; fileRef = A53015782CCE34530007CC72 /* ChatGPT - Chat Log Export (JSON) */; };
 		A53015852CCE34530007CC72 /* manifest-v3.json in Resources */ = {isa = PBXBuildFile; fileRef = A53015792CCE34530007CC72 /* manifest-v3.json */; };
 		A53015862CCE34530007CC72 /* manifest-v2.json in Resources */ = {isa = PBXBuildFile; fileRef = A530157A2CCE34530007CC72 /* manifest-v2.json */; };
-		A53015872CCE34530007CC72 /* Makefile.Firefoc in Resources */ = {isa = PBXBuildFile; fileRef = A530157B2CCE34530007CC72 /* Makefile.Firefoc */; };
+		A53015872CCE34530007CC72 /* Makefile.Firefox.mk in Resources */ = {isa = PBXBuildFile; fileRef = A530157B2CCE34530007CC72 /* Makefile.Firefox.mk */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +65,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				A53015582CCE34520007CC72 /* ChatGPT - Chat Log Export JSON Extension.appex in Embed Foundation Extensions */,
+				A53015582CCE34520007CC72 /* ChatGPT - Export Chatlog JSON Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,7 +73,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A53015242CCE34510007CC72 /* ChatGPT - Chat Log Export JSON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChatGPT - Chat Log Export JSON.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A53015242CCE34510007CC72 /* ChatGPT - Export Chatlog JSON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChatGPT - Export Chatlog JSON.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53015272CCE34510007CC72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A530152B2CCE34510007CC72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
 		A530152D2CCE34510007CC72 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -85,12 +85,12 @@
 		A530153A2CCE34520007CC72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A530153B2CCE34520007CC72 /* ChatGPT___Chat_Log_Export__JSON_.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ChatGPT___Chat_Log_Export__JSON_.entitlements"; sourceTree = "<group>"; };
 		A530153C2CCE34520007CC72 /* ChatGPT - Chat Log Export (JSON).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ChatGPT - Chat Log Export (JSON).entitlements"; sourceTree = "<group>"; };
-		A53015412CCE34520007CC72 /* ChatGPT - Chat Log Export JSONTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ChatGPT - Chat Log Export JSONTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A53015412CCE34520007CC72 /* ChatGPT - Export Chatlog JSONTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ChatGPT - Export Chatlog JSONTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53015452CCE34520007CC72 /* ChatGPT___Chat_Log_Export__JSON_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatGPT___Chat_Log_Export__JSON_Tests.swift"; sourceTree = "<group>"; };
-		A530154B2CCE34520007CC72 /* ChatGPT - Chat Log Export JSONUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ChatGPT - Chat Log Export JSONUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A530154B2CCE34520007CC72 /* ChatGPT - Export Chatlog JSONUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ChatGPT - Export Chatlog JSONUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A530154F2CCE34520007CC72 /* ChatGPT___Chat_Log_Export__JSON_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatGPT___Chat_Log_Export__JSON_UITests.swift"; sourceTree = "<group>"; };
 		A53015512CCE34520007CC72 /* ChatGPT___Chat_Log_Export__JSON_UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatGPT___Chat_Log_Export__JSON_UITestsLaunchTests.swift"; sourceTree = "<group>"; };
-		A53015572CCE34520007CC72 /* ChatGPT - Chat Log Export JSON Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ChatGPT - Chat Log Export JSON Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A53015572CCE34520007CC72 /* ChatGPT - Export Chatlog JSON Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ChatGPT - Export Chatlog JSON Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A530155C2CCE34520007CC72 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
 		A530155E2CCE34520007CC72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A530155F2CCE34520007CC72 /* ChatGPT___Chat_Log_Export__JSON__Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ChatGPT___Chat_Log_Export__JSON__Extension.entitlements"; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		A53015782CCE34530007CC72 /* ChatGPT - Chat Log Export (JSON) */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "ChatGPT - Chat Log Export (JSON)"; sourceTree = SOURCE_ROOT; };
 		A53015792CCE34530007CC72 /* manifest-v3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "manifest-v3.json"; path = "../../manifest-v3.json"; sourceTree = "<group>"; };
 		A530157A2CCE34530007CC72 /* manifest-v2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "manifest-v2.json"; path = "../../manifest-v2.json"; sourceTree = "<group>"; };
-		A530157B2CCE34530007CC72 /* Makefile.Firefoc */ = {isa = PBXFileReference; lastKnownFileType = text; name = Makefile.Firefoc; path = ../../Makefile.Firefoc; sourceTree = "<group>"; };
+		A530157B2CCE34530007CC72 /* Makefile.Firefox.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = Makefile.Firefox.mk; path = ../../Makefile.Firefox.mk; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,10 +154,10 @@
 		A53015252CCE34510007CC72 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A53015242CCE34510007CC72 /* ChatGPT - Chat Log Export JSON.app */,
-				A53015412CCE34520007CC72 /* ChatGPT - Chat Log Export JSONTests.xctest */,
-				A530154B2CCE34520007CC72 /* ChatGPT - Chat Log Export JSONUITests.xctest */,
-				A53015572CCE34520007CC72 /* ChatGPT - Chat Log Export JSON Extension.appex */,
+				A53015242CCE34510007CC72 /* ChatGPT - Export Chatlog JSON.app */,
+				A53015412CCE34520007CC72 /* ChatGPT - Export Chatlog JSONTests.xctest */,
+				A530154B2CCE34520007CC72 /* ChatGPT - Export Chatlog JSONUITests.xctest */,
+				A53015572CCE34520007CC72 /* ChatGPT - Export Chatlog JSON Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -230,7 +230,7 @@
 				A53015782CCE34530007CC72 /* ChatGPT - Chat Log Export (JSON) */,
 				A53015792CCE34530007CC72 /* manifest-v3.json */,
 				A530157A2CCE34530007CC72 /* manifest-v2.json */,
-				A530157B2CCE34530007CC72 /* Makefile.Firefoc */,
+				A530157B2CCE34530007CC72 /* Makefile.Firefox.mk */,
 			);
 			name = Resources;
 			path = "ChatGPT - Chat Log Export (JSON) Extension";
@@ -239,9 +239,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A53015232CCE34510007CC72 /* ChatGPT - Chat Log Export JSON */ = {
+		A53015232CCE34510007CC72 /* ChatGPT - Export Chatlog JSON */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A53015662CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Chat Log Export JSON" */;
+			buildConfigurationList = A53015662CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Export Chatlog JSON" */;
 			buildPhases = (
 				A53015202CCE34510007CC72 /* Sources */,
 				A53015212CCE34510007CC72 /* Frameworks */,
@@ -253,16 +253,16 @@
 			dependencies = (
 				A530155A2CCE34520007CC72 /* PBXTargetDependency */,
 			);
-			name = "ChatGPT - Chat Log Export JSON";
+			name = "ChatGPT - Export Chatlog JSON";
 			packageProductDependencies = (
 			);
 			productName = "ChatGPT - Chat Log Export (JSON)";
-			productReference = A53015242CCE34510007CC72 /* ChatGPT - Chat Log Export JSON.app */;
+			productReference = A53015242CCE34510007CC72 /* ChatGPT - Export Chatlog JSON.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A53015402CCE34520007CC72 /* ChatGPT - Chat Log Export JSONTests */ = {
+		A53015402CCE34520007CC72 /* ChatGPT - Export Chatlog JSONTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A53015692CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Chat Log Export JSONTests" */;
+			buildConfigurationList = A53015692CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Export Chatlog JSONTests" */;
 			buildPhases = (
 				A530153D2CCE34520007CC72 /* Sources */,
 				A530153E2CCE34520007CC72 /* Frameworks */,
@@ -273,16 +273,16 @@
 			dependencies = (
 				A53015432CCE34520007CC72 /* PBXTargetDependency */,
 			);
-			name = "ChatGPT - Chat Log Export JSONTests";
+			name = "ChatGPT - Export Chatlog JSONTests";
 			packageProductDependencies = (
 			);
 			productName = "ChatGPT - Chat Log Export (JSON)Tests";
-			productReference = A53015412CCE34520007CC72 /* ChatGPT - Chat Log Export JSONTests.xctest */;
+			productReference = A53015412CCE34520007CC72 /* ChatGPT - Export Chatlog JSONTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A530154A2CCE34520007CC72 /* ChatGPT - Chat Log Export JSONUITests */ = {
+		A530154A2CCE34520007CC72 /* ChatGPT - Export Chatlog JSONUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A530156C2CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Chat Log Export JSONUITests" */;
+			buildConfigurationList = A530156C2CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Export Chatlog JSONUITests" */;
 			buildPhases = (
 				A53015472CCE34520007CC72 /* Sources */,
 				A53015482CCE34520007CC72 /* Frameworks */,
@@ -293,16 +293,16 @@
 			dependencies = (
 				A530154D2CCE34520007CC72 /* PBXTargetDependency */,
 			);
-			name = "ChatGPT - Chat Log Export JSONUITests";
+			name = "ChatGPT - Export Chatlog JSONUITests";
 			packageProductDependencies = (
 			);
 			productName = "ChatGPT - Chat Log Export (JSON)UITests";
-			productReference = A530154B2CCE34520007CC72 /* ChatGPT - Chat Log Export JSONUITests.xctest */;
+			productReference = A530154B2CCE34520007CC72 /* ChatGPT - Export Chatlog JSONUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		A53015562CCE34520007CC72 /* ChatGPT - Chat Log Export JSON Extension */ = {
+		A53015562CCE34520007CC72 /* ChatGPT - Export Chatlog JSON Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A53015622CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Chat Log Export JSON Extension" */;
+			buildConfigurationList = A53015622CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Export Chatlog JSON Extension" */;
 			buildPhases = (
 				A53015532CCE34520007CC72 /* Sources */,
 				A53015542CCE34520007CC72 /* Frameworks */,
@@ -312,11 +312,11 @@
 			);
 			dependencies = (
 			);
-			name = "ChatGPT - Chat Log Export JSON Extension";
+			name = "ChatGPT - Export Chatlog JSON Extension";
 			packageProductDependencies = (
 			);
 			productName = "ChatGPT - Chat Log Export (JSON) Extension";
-			productReference = A53015572CCE34520007CC72 /* ChatGPT - Chat Log Export JSON Extension.appex */;
+			productReference = A53015572CCE34520007CC72 /* ChatGPT - Export Chatlog JSON Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -327,7 +327,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 1610;
+				ORGANIZATIONNAME = "Distributed Thinking Systems LLC";
 				TargetAttributes = {
 					A53015232CCE34510007CC72 = {
 						CreatedOnToolsVersion = 16.0;
@@ -345,7 +346,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A530151F2CCE34510007CC72 /* Build configuration list for PBXProject "ChatGPT - Chat Log Export JSON" */;
+			buildConfigurationList = A530151F2CCE34510007CC72 /* Build configuration list for PBXProject "ChatGPT - Export Chatlog JSON" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -359,10 +360,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A53015232CCE34510007CC72 /* ChatGPT - Chat Log Export JSON */,
-				A53015402CCE34520007CC72 /* ChatGPT - Chat Log Export JSONTests */,
-				A530154A2CCE34520007CC72 /* ChatGPT - Chat Log Export JSONUITests */,
-				A53015562CCE34520007CC72 /* ChatGPT - Chat Log Export JSON Extension */,
+				A53015232CCE34510007CC72 /* ChatGPT - Export Chatlog JSON */,
+				A53015402CCE34520007CC72 /* ChatGPT - Export Chatlog JSONTests */,
+				A530154A2CCE34520007CC72 /* ChatGPT - Export Chatlog JSONUITests */,
+				A53015562CCE34520007CC72 /* ChatGPT - Export Chatlog JSON Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -401,7 +402,7 @@
 			files = (
 				A530157C2CCE34530007CC72 /* LICENSE in Resources */,
 				A53015852CCE34530007CC72 /* manifest-v3.json in Resources */,
-				A53015872CCE34530007CC72 /* Makefile.Firefoc in Resources */,
+				A53015872CCE34530007CC72 /* Makefile.Firefox.mk in Resources */,
 				A53015862CCE34530007CC72 /* manifest-v2.json in Resources */,
 				A53015822CCE34530007CC72 /* manifest.json in Resources */,
 				A530157D2CCE34530007CC72 /* changelog.md in Resources */,
@@ -456,17 +457,17 @@
 /* Begin PBXTargetDependency section */
 		A53015432CCE34520007CC72 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A53015232CCE34510007CC72 /* ChatGPT - Chat Log Export JSON */;
+			target = A53015232CCE34510007CC72 /* ChatGPT - Export Chatlog JSON */;
 			targetProxy = A53015422CCE34520007CC72 /* PBXContainerItemProxy */;
 		};
 		A530154D2CCE34520007CC72 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A53015232CCE34510007CC72 /* ChatGPT - Chat Log Export JSON */;
+			target = A53015232CCE34510007CC72 /* ChatGPT - Export Chatlog JSON */;
 			targetProxy = A530154C2CCE34520007CC72 /* PBXContainerItemProxy */;
 		};
 		A530155A2CCE34520007CC72 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A53015562CCE34520007CC72 /* ChatGPT - Chat Log Export JSON Extension */;
+			target = A53015562CCE34520007CC72 /* ChatGPT - Export Chatlog JSON Extension */;
 			targetProxy = A53015592CCE34520007CC72 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -525,6 +526,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -591,6 +593,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -619,28 +622,31 @@
 		A53015632CCE34520007CC72 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALTERNATIVE_DISTRIBUTION_WEB = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_ENTITLEMENTS = "ChatGPT - Chat Log Export (JSON) Extension/ChatGPT___Chat_Log_Export__JSON__Extension.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ChatGPT - Chat Log Export (JSON) Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "ChatGPT - Chat Log Export (JSON) Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = "ChatGPT - Export CHatlog JSON Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT---Chat-Log-Export--JSON-.Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT-Export-Chatlog-JSON-Debug-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -651,28 +657,31 @@
 		A53015642CCE34520007CC72 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALTERNATIVE_DISTRIBUTION_WEB = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_ENTITLEMENTS = "ChatGPT - Chat Log Export (JSON) Extension/ChatGPT___Chat_Log_Export__JSON__Extension.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ChatGPT - Chat Log Export (JSON) Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "ChatGPT - Chat Log Export (JSON) Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = "ChatGPT - Export CHatlog JSON Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT---Chat-Log-Export--JSON-.Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT-Export-Chatlog-JSON-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -683,19 +692,22 @@
 		A53015672CCE34520007CC72 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALTERNATIVE_DISTRIBUTION_WEB = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_ENTITLEMENTS = "ChatGPT - Chat Log Export (JSON)/ChatGPT - Chat Log Export (JSON).entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ChatGPT - Chat Log Export (JSON)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "ChatGPT - Export Chat Log (JSON)";
+				INFOPLIST_KEY_CFBundleDisplayName = "ChatGPT - Export Chatlog JSON";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -704,7 +716,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -712,7 +724,7 @@
 					"-framework",
 					WebKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT---Chat-Log-Export--JSON-";
+				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT-Export-Chatlog-JSON-Debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -722,19 +734,22 @@
 		A53015682CCE34520007CC72 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALTERNATIVE_DISTRIBUTION_WEB = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_ENTITLEMENTS = "ChatGPT - Chat Log Export (JSON)/ChatGPT - Chat Log Export (JSON).entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ChatGPT - Chat Log Export (JSON)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "ChatGPT - Export Chat Log (JSON)";
+				INFOPLIST_KEY_CFBundleDisplayName = "ChatGPT - Export Chatlog JSON";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -743,7 +758,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -751,7 +766,7 @@
 					"-framework",
 					WebKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT---Chat-Log-Export--JSON-";
+				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT-Export-Chatlog-JSON";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -761,49 +776,61 @@
 		A530156A2CCE34520007CC72 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALTERNATIVE_DISTRIBUTION_WEB = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				INFOPLIST_KEY_CFBundleDisplayName = "ChatGPT - Export Chatlog JSON";
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT---Chat-Log-Export--JSON-Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT-Export-Chatlog-JSON.Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatGPT - Chat Log Export JSON.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChatGPT - Chat Log Export JSON";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatGPT - Export Chatlog JSON.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChatGPT - Export Chatlog JSON";
 			};
 			name = Debug;
 		};
 		A530156B2CCE34520007CC72 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALTERNATIVE_DISTRIBUTION_WEB = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				INFOPLIST_KEY_CFBundleDisplayName = "ChatGPT - Export Chatlog JSON";
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT---Chat-Log-Export--JSON-Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT-Export-Chatlog-JSON.Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatGPT - Chat Log Export JSON.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChatGPT - Chat Log Export JSON";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatGPT - Export Chatlog JSON.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChatGPT - Export Chatlog JSON";
 			};
 			name = Release;
 		};
 		A530156D2CCE34520007CC72 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALTERNATIVE_DISTRIBUTION_WEB = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "ChatGPT - Export Chatlog JSON";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT---Chat-Log-Export--JSON-UITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT-Export-Chatlog-JSON.UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -814,13 +841,17 @@
 		A530156E2CCE34520007CC72 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALTERNATIVE_DISTRIBUTION_WEB = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "ChatGPT - Export Chatlog JSON";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT---Chat-Log-Export--JSON-UITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "ai.unixwzrd.ChatGPT-Export-Chatlog-JSON.UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -831,7 +862,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A530151F2CCE34510007CC72 /* Build configuration list for PBXProject "ChatGPT - Chat Log Export JSON" */ = {
+		A530151F2CCE34510007CC72 /* Build configuration list for PBXProject "ChatGPT - Export Chatlog JSON" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A53015602CCE34520007CC72 /* Debug */,
@@ -840,7 +871,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A53015622CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Chat Log Export JSON Extension" */ = {
+		A53015622CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Export Chatlog JSON Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A53015632CCE34520007CC72 /* Debug */,
@@ -849,7 +880,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A53015662CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Chat Log Export JSON" */ = {
+		A53015662CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Export Chatlog JSON" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A53015672CCE34520007CC72 /* Debug */,
@@ -858,7 +889,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A53015692CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Chat Log Export JSONTests" */ = {
+		A53015692CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Export Chatlog JSONTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A530156A2CCE34520007CC72 /* Debug */,
@@ -867,7 +898,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A530156C2CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Chat Log Export JSONUITests" */ = {
+		A530156C2CCE34520007CC72 /* Build configuration list for PBXNativeTarget "ChatGPT - Export Chatlog JSONUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A530156D2CCE34520007CC72 /* Debug */,

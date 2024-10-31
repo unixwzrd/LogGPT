@@ -1,6 +1,6 @@
 //
 //  SafariWebExtensionHandler.swift
-//  Shared (Extension)
+//  ChatGPT - Chat Log Export (JSON) Extension
 //
 //  Created by Michael Sullivan on 10/27/24.
 //

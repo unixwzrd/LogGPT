@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  macOS (App)
+//  ChatGPT - Chat Log Export (JSON)
 //
 //  Created by Michael Sullivan on 10/27/24.
 //

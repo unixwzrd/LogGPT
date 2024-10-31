@@ -1,24 +1,17 @@
 //
 //  ViewController.swift
-//  Shared (App)
+//  ChatGPT - Chat Log Export (JSON)
 //
 //  Created by Michael Sullivan on 10/27/24.
 //
 
-import WebKit
-
-#if os(iOS)
-import UIKit
-typealias PlatformViewController = UIViewController
-#elseif os(macOS)
 import Cocoa
 import SafariServices
-typealias PlatformViewController = NSViewController
-#endif
+import WebKit
 
-let extensionBundleIdentifier = "com.yourCompany.ChatGPT--Chat-Log-Export--JSON-.Extension"
+let extensionBundleIdentifier = "com.yourCompany.ChatGPT---Chat-Log-Export--JSON-.Extension"
 
-class ViewController: PlatformViewController, WKNavigationDelegate, WKScriptMessageHandler {
+class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHandler {
 
     @IBOutlet var webView: WKWebView!
 
@@ -27,21 +20,12 @@ class ViewController: PlatformViewController, WKNavigationDelegate, WKScriptMess
 
         self.webView.navigationDelegate = self
 
-#if os(iOS)
-        self.webView.scrollView.isScrollEnabled = false
-#endif
-
         self.webView.configuration.userContentController.add(self, name: "controller")
 
         self.webView.loadFileURL(Bundle.main.url(forResource: "Main", withExtension: "html")!, allowingReadAccessTo: Bundle.main.resourceURL!)
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-#if os(iOS)
-        webView.evaluateJavaScript("show('ios')")
-#elseif os(macOS)
-        webView.evaluateJavaScript("show('mac')")
-
         SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: extensionBundleIdentifier) { (state, error) in
             guard let state = state, error == nil else {
                 // Insert code to inform the user that something went wrong.
@@ -50,32 +34,24 @@ class ViewController: PlatformViewController, WKNavigationDelegate, WKScriptMess
 
             DispatchQueue.main.async {
                 if #available(macOS 13, *) {
-                    webView.evaluateJavaScript("show('mac', \(state.isEnabled), true)")
+                    webView.evaluateJavaScript("show(\(state.isEnabled), true)")
                 } else {
-                    webView.evaluateJavaScript("show('mac', \(state.isEnabled), false)")
+                    webView.evaluateJavaScript("show(\(state.isEnabled), false)")
                 }
             }
         }
-#endif
     }
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-#if os(macOS)
         if (message.body as! String != "open-preferences") {
-            return
+            return;
         }
 
         SFSafariApplication.showPreferencesForExtension(withIdentifier: extensionBundleIdentifier) { error in
-            guard error == nil else {
-                // Insert code to inform the user that something went wrong.
-                return
-            }
-
             DispatchQueue.main.async {
-                NSApp.terminate(self)
+                NSApplication.shared.terminate(nil)
             }
         }
-#endif
     }
 
 }

@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "ChatGPT: Chat Log Export (JSON)",
+  "name": "ChatGPT - Export Chatlog JSON",
   "version": "0.3.1",
 
   "description": "Export ChatGPT conversation JSON logs.",
