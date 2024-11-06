@@ -23,7 +23,7 @@ Thanks for your patience, and let’s work together to keep this project moving 
   ```bash
   git clone https://github.com/unixwzrd/chatgpt-chatlog-export.git chatgpt-jason
   cd chatgpt-jason
-  xcodebuild build -project ChatGPT-Export-Chatlog-JSON.xcodeproj
+  xcodebuild build -project 'ChatGPT-Export-Chatlog-JSON.xcodeproj'
   ```
 
   The checkbox in Safari to run.  I have uploaded a signed version, but would appreciate it if someone could test it out.
