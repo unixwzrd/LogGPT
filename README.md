@@ -14,15 +14,21 @@ Since the App Store is currently the only distribution path Apple allows for Saf
 
 ## Next Steps and How You Can Help
 
-- **Build It Yourself:** If you’re a developer, you can try building the extension locally from the provided project files. [The Xcode project file is here.](https://github.com/unixwzrd/chatgpt-chatlog-export/tree/main/ChatGPT%20Export%20JSON%20Chatlogs) Clone the repository and try
+- **Build It Yourself:** If you’re a developer, you can try building the extension locally from the provided project files. 
+- **Share Ideas:** If you know of a way to distribute this utility effectively within Apple’s latest guidelines, please leave a comment in the Discussions.
+  
+Thanks for your patience, and let’s work together to keep this project moving forward!
+
+[The Xcode project file is here.](https://github.com/unixwzrd/chatgpt-chatlog-export/tree/main/ChatGPT%20Export%20JSON%20Chatlogs) Clone the repository and try
   ```bash
   git clone https://github.com/unixwzrd/chatgpt-chatlog-export.git chatgpt-jason
   cd chatgpt-jason
   xcodebuild build -project ChatGPT-Export-Chatlog-JSON.xcodeproj
   ```
-- **Share Ideas:** If you know of a way to distribute this utility effectively within Apple’s latest guidelines, please leave a comment in the Discussions.
-  
-Thanks for your patience, and let’s work together to keep this project moving forward!
+
+  The checkbox in Safari to run.  I have uploaded a signed version, but would appreciate it if someone could test it out.
+
+  ![Screenshot of Safari Extension menu item and downloaded JSON file](graphics/Screenshot%202024-11-06%20at%2012.46.30.png)
 
 # ChatGPT: Chat Log Export Downloader
 
