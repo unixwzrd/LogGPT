@@ -14,7 +14,12 @@ Since the App Store is currently the only distribution path Apple allows for Saf
 
 ## Next Steps and How You Can Help
 
-- **Build It Yourself:** If you’re a developer, you can try building the extension locally from the provided project files. [The Xcode project file is here](https://github.com/unixwzrd/chatgpt-chatlog-export/tree/main/ChatGPT%20Export%20JSON%20Chatlogs)
+- **Build It Yourself:** If you’re a developer, you can try building the extension locally from the provided project files. [The Xcode project file is here.](https://github.com/unixwzrd/chatgpt-chatlog-export/tree/main/ChatGPT%20Export%20JSON%20Chatlogs) Clone the repository and try
+  ```bash
+  git clone https://github.com/unixwzrd/chatgpt-chatlog-export.git chatgpt-jason
+  cd chatgpt-jason
+  xcodebuild build -project ChatGPT-Export-Chatlog-JSON.xcodeproj
+  ```
 - **Share Ideas:** If you know of a way to distribute this utility effectively within Apple’s latest guidelines, please leave a comment in the Discussions.
   
 Thanks for your patience, and let’s work together to keep this project moving forward!
