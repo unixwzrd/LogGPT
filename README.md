@@ -6,6 +6,8 @@ After nearly two weeks of work trying to make this utility accessible to everyon
 
 This project is a utility designed to make exporting ChatGPT conversation history in JSON format simple and efficient. It’s a straightforward tool that I hoped to share freely for anyone to use and improve upon, while also showcasing my work to potential employers or clients.
 
+I do have another machine which is Intel and running macOS 13, if I get a chance I may try building there, but I doubt the Xcode project will work with the older version of macOS.
+
 ### The Catch
 
 Since the App Store is currently the only distribution path Apple allows for Safari Web Extensions, I can't directly provide a pre-built, signed binary here. However, I’ve included the full Xcode project files, so anyone interested can build and run it on their own system. If a workaround becomes available for distribution or if Apple makes changes, I’ll update this repository.
