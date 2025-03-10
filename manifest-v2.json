@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "ChatGPT Export JSON Chatlogs",
-  "version": "0.3.1-macOS",
+  "version": "1.0.1-macOS",
 
   "description": "Export ChatGPT Conversation History in JSON Format.",
 

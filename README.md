@@ -1,52 +1,16 @@
-# Update: macOS 15.1 Changes to Safari Web Extension Distribution
-
-After nearly two weeks of work trying to make this utility accessible to everyone, I’ve encountered an unfortunate limitation in macOS 15.1. Due to recent security policies, Safari Web Extensions can now only be distributed via the App Store. This change prevents developers like myself from self-distributing Web Extensions outside of the App Store, even with an Apple Developer Program certificate.
-
-## The Project So Far
-
-This project is a utility designed to make exporting ChatGPT conversation history in JSON format simple and efficient. It’s a straightforward tool that I hoped to share freely for anyone to use and improve upon, while also showcasing my work to potential employers or clients.
-
-I do have another machine which is Intel and running macOS 13, if I get a chance I may try building there, but I doubt the Xcode project will work with the older version of macOS.
-
-### The Catch
-
-Since the App Store is currently the only distribution path Apple allows for Safari Web Extensions, I can't directly provide a pre-built, signed binary here. However, I’ve included the full Xcode project files, so anyone interested can build and run it on their own system. If a workaround becomes available for distribution or if Apple makes changes, I’ll update this repository.
-
-## Next Steps and How You Can Help
-
-- **Build It Yourself:** If you’re a developer, you can try building the extension locally from the provided project files. 
-- **Share Ideas:** If you know of a way to distribute this utility effectively within Apple’s latest guidelines, please leave a comment in the Discussions.
-  
-Thanks for your patience, and let’s work together to keep this project moving forward!
-
-[The Xcode project file is here.](https://github.com/unixwzrd/chatgpt-chatlog-export/tree/main/ChatGPT%20Export%20JSON%20Chatlogs) Clone the repository and try
-  ```bash
-  git clone https://github.com/unixwzrd/chatgpt-chatlog-export.git chatgpt-jason
-  cd chatgpt-jason
-  xcodebuild build -project 'ChatGPT-Export-Chatlog-JSON.xcodeproj'
-  ```
-
-  The checkbox in Safari to run.  I have uploaded a signed version, but would appreciate it if someone could test it out.
-
-  ![Screenshot of Safari Extension menu item and downloaded JSON file](graphics/Screenshot%202024-11-06%20at%2012.46.30.png)
-
 # ChatGPT: Chat Log Export Downloader
 
-### Export and preserve your ChatGPT conversation logs easily
+It appears the security policy changes with Apple and I have managed to get teh app submitted to the App Store. There are also no time restrictions on having to reset the Allow Unsigned extensions anymore, though I could be wrong, in fact it seems to install and stay installed and function now without having to allow for unsigned extensions. I have not been able to try this out, but am adding a signed binary compile using my valid Apple Developer Certificate to the repo.
 
-This extension allows users to download complete conversation logs from OpenAI’s ChatGPT in JSON format, capturing session details for use in documentation, analysis, and content creation.
+## Table of Contents
 
----
-
-### Table of Contents
-
-- [Update: macOS 15.1 Changes to Safari Web Extension Distribution](#update-macos-151-changes-to-safari-web-extension-distribution)
-  - [The Project So Far](#the-project-so-far)
-    - [The Catch](#the-catch)
-  - [Next Steps and How You Can Help](#next-steps-and-how-you-can-help)
 - [ChatGPT: Chat Log Export Downloader](#chatgpt-chat-log-export-downloader)
+  - [Table of Contents](#table-of-contents)
+  - [Project Update](#project-update)
+  - [Build It Yourself](#build-it-yourself)
+    - [If You Build It Yourself](#if-you-build-it-yourself)
+- [ChatGPT: Chat Log Export Downloader](#chatgpt-chat-log-export-downloader-1)
     - [Export and preserve your ChatGPT conversation logs easily](#export-and-preserve-your-chatgpt-conversation-logs-easily)
-    - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Browser Versions and Installation](#browser-versions-and-installation)
     - [Safari Extensions](#safari-extensions)
@@ -55,6 +19,36 @@ This extension allows users to download complete conversation logs from OpenAI�
   - [Using the Extension](#using-the-extension)
   - [Support](#support)
   - [Credits](#credits)
+  
+## Project Update
+
+This project is a utility designed to make exporting ChatGPT conversation history in JSON format simple and efficient. It’s a straightforward tool that I hoped to share freely for anyone to use and improve upon, while also showcasing my work to potential employers or clients.
+
+The downloadable package is here: [ChatGPT Export JSON Chatlogs.pkg](https://github.com/unixwzrd/chatgpt-chatlog-export/releases/tag/local-build-1.0.1)
+
+II have just built it and uploaded it to the Apple App store and would prefer you purchase a copy there as it will help me offset the Apple Developer Tax.
+
+## Build It Yourself
+
+[The Xcode project file is here.](https://github.com/unixwzrd/chatgpt-chatlog-export/tree/main/ChatGPT%20Export%20JSON%20Chatlogs) Clone the repository and try
+  ```bash
+  git clone https://github.com/unixwzrd/chatgpt-chatlog-export.git chatgpt-jason
+  cd chatgpt-jason
+  xcodebuild build -project 'ChatGPT-Export-Chatlog-JSON.xcodeproj'
+  ```
+### If You Build It Yourself
+
+  You will likely need to check the "Allow Unsigned Extensions" checkbox in Safari to run, unless you can sign it yourself.  I have uploaded a signed version, it is a package and would appreciate it if someone could test it out. SO this step should no longer ne necessary and you will have to do is download teh .pkg file and install it.
+
+  Again, I would appreciate it if you could buy one on the App Store or if you are feeling generous, buy me a coffee.
+
+  ![Screenshot of Safari Extension menu item and downloaded JSON file](graphics/Screenshot%202024-11-06%20at%2012.46.30.png)
+
+# ChatGPT: Chat Log Export Downloader
+
+### Export and preserve your ChatGPT conversation logs easily
+
+This extension allows users to download complete conversation logs from OpenAI’s ChatGPT in JSON format, capturing session details for use in documentation, analysis, and content creation.
 
 ---
 
@@ -92,7 +86,7 @@ A version may be added to the Apple App Store, with a small fee to cover Apple D
 
 **Usage for Safari:**
 
-1. Open a ChatGPT session and click the extension icon ![download icon](./icons/download-icon.svg) in the toolbar.
+1. Open a ChatGPT session and click the extension icon ![download icon](./icons/download-icon.svg) browser window of your ChatGPT session. It will only be visible in ChatGPT. The Tool bar ICon wil show up when teh extension is loaded, but is not active at this time.
 2. The session will download in JSON format to your `Downloads` folder.
 
 **Uninstallation for Safari:**
