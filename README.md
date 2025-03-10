@@ -87,7 +87,9 @@ A version may be added to the Apple App Store, with a small fee to cover Apple D
 **Usage for Safari:**
 
 1. Open a ChatGPT session and click the extension icon ![download icon](./icons/download-icon.svg) browser window of your ChatGPT session. It will only be visible in ChatGPT. The Tool bar ICon wil show up when teh extension is loaded, but is not active at this time.
-2. The session will download in JSON format to your `Downloads` folder.
+2. Simply press the icon in the upper right of your CharGPT session in Safari.
+    ![Screenshot of Safari Extension](./graphics/Screenshot%202025-03-10%20at%2014.30.26.png)
+3. The session will download in JSON format to your `Downloads` folder.
 
 **Uninstallation for Safari:**
 
