@@ -1,6 +1,6 @@
-# ChatGPT: Chat Log Export Downloader
+# LogGPT: Chat Log Export Downloader
 
-ChatGPT: Conversation Log Export Extension
+LogGPT: Conversation Log Export Extension
 
 <https://chatgpt.com/>
 

@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  ChatGPT Export JSON Chatlogs
+//  LogGPT
 //
 //  Created by Michael Sullivan on 11/4/24.
 //
@@ -9,7 +9,7 @@ import Cocoa
 import SafariServices
 import WebKit
 
-let extensionBundleIdentifier = "ai.unixwzrd.ChatGPT-Export-JSON-Chatlogs.Extension"
+let extensionBundleIdentifier = "LogGPT-conv-export.Extension"
 
 class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHandler {
 

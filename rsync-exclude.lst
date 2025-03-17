@@ -1,0 +1,12 @@
+._*
+\._*
+*/._*
+*/\._*
+.DS_Store
+.gitignore
+rsync-exclude.lst
+rsync-exclude.txt
+rsync-include.lst
+LogGPT/
+LogGPT*
+tmp

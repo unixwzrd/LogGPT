@@ -1,8 +1,9 @@
 // Language: JavaScript
-// LogGPT: Conversation Export Extension
+// LogGPT: Chat Log Export
 //
-// Author: <https://github.com/Deskuma>
-// Version: 1.0.4 Adjusted the position of the download icon button due to the Canvas release.
+// Author: <https://github.com/unixwzrd>
+// Version: 1.0.2 Renamed the application and changed the oicons.
+// License: MIT
 
 // Const variable
 const DOMAIN_LOGGPT = "chatgpt.com";

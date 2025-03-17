@@ -1,14 +1,14 @@
 //
-//  ChatGPT_Export_JSON_ChatlogsTests.swift
-//  ChatGPT Export JSON ChatlogsTests
+//  LogGPTTests.swift
+//  LogGPTTests
 //
 //  Created by Michael Sullivan on 11/4/24.
 //
 
 import Testing
-@testable import ChatGPT_Export_JSON_Chatlogs
+@testable import LogGPT
 
-struct ChatGPT_Export_JSON_ChatlogsTests {
+struct LogGPTTests {
 
     @Test func example() async throws {
         // Write your test here and use APIs like `#expect(...)` to check expected conditions.

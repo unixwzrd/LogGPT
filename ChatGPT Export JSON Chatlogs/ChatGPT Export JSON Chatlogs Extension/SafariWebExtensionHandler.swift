@@ -1,6 +1,6 @@
 //
 //  SafariWebExtensionHandler.swift
-//  ChatGPT Export JSON Chatlogs Extension
+//  LogGPT Extension
 //
 //  Created by Michael Sullivan on 11/4/24.
 //

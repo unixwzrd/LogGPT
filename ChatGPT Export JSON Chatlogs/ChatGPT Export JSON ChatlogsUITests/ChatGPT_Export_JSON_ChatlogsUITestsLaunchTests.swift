@@ -1,13 +1,13 @@
 //
-//  ChatGPT_Export_JSON_ChatlogsUITestsLaunchTests.swift
-//  ChatGPT Export JSON ChatlogsUITests
+//  LogGPTUITestsLaunchTests.swift
+//  LogGPTUITests
 //
 //  Created by Michael Sullivan on 11/4/24.
 //
 
 import XCTest
 
-final class ChatGPT_Export_JSON_ChatlogsUITestsLaunchTests: XCTestCase {
+final class LogGPTUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

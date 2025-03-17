@@ -1,8 +1,8 @@
 function show(enabled, useSettingsInsteadOfPreferences) {
     if (useSettingsInsteadOfPreferences) {
-        document.getElementsByClassName('state-on')[0].innerText = "ChatGPT Export JSON Chatlogs’s extension is currently on. You can turn it off in the Extensions section of Safari Settings.";
-        document.getElementsByClassName('state-off')[0].innerText = "ChatGPT Export JSON Chatlogs’s extension is currently off. You can turn it on in the Extensions section of Safari Settings.";
-        document.getElementsByClassName('state-unknown')[0].innerText = "You can turn on ChatGPT Export JSON Chatlogs’s extension in the Extensions section of Safari Settings.";
+        document.getElementsByClassName('state-on')[0].innerText = "LogGPT’s extension is currently on. You can turn it off in the Extensions section of Safari Settings.";
+        document.getElementsByClassName('state-off')[0].innerText = "LogGPT’s extension is currently off. You can turn it on in the Extensions section of Safari Settings.";
+        document.getElementsByClassName('state-unknown')[0].innerText = "You can turn on LogGPT’s extension in the Extensions section of Safari Settings.";
         document.getElementsByClassName('open-preferences')[0].innerText = "Quit and Open Safari Settings…";
     }
 

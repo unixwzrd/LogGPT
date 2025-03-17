@@ -1,13 +1,13 @@
 //
-//  ChatGPT_Export_JSON_ChatlogsUITests.swift
-//  ChatGPT Export JSON ChatlogsUITests
+//  LogGPTUITests.swift
+//  LogGPTUITests
 //
 //  Created by Michael Sullivan on 11/4/24.
 //
 
 import XCTest
 
-final class ChatGPT_Export_JSON_ChatlogsUITests: XCTestCase {
+final class LogGPTUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

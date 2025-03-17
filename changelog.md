@@ -1,4 +1,11 @@
 # Changelog
+
+2025/03/01  v1.0.3
+
+- Updated icons
+- Changed the name of tge extension because Apple didn't like it.
+- Changed references in the cource Code to the new name.
+
 2024/20/28  v0.3.2
 
 - Created Xcode

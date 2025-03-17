@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  ChatGPT Export JSON Chatlogs
+//  LogGPT
 //
 //  Created by Michael Sullivan on 11/4/24.
 //

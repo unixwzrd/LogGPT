@@ -1,13 +1,13 @@
 include VERSION.mk
 
-PACKAGE = chatgpt-conv-export-ext
+PACKAGE = loggpt-conv-export-ext
 
 PACKAGE_FF = $(PACKAGE)-$(VERSION)-$(MANIFEST_VER_FIREFOX)
 PACKAGE_GC = $(PACKAGE)-$(VERSION)-$(MANIFEST_VER_CHROME)
 
 SOURCES = \
 	icons \
-	chatgpt-conv-export.js \
+	loggpt-conv-export.js \
 	README.md \
 	README-ja.md
 
