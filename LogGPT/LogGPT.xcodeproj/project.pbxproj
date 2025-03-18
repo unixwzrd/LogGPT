@@ -1,0 +1,851 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A56625642CD9248300FC29A8 /* LogGPT Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56625632CD9248300FC29A8 /* LogGPT Tests.swift */; };
+		A566256E2CD9248300FC29A8 /* LogGPT UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566256D2CD9248300FC29A8 /* LogGPT UITests.swift */; };
+		A56625702CD9248300FC29A8 /* LogGPT UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566256F2CD9248300FC29A8 /* LogGPT UITestsLaunchTests.swift */; };
+		A56625762CD9248300FC29A8 /* LogGPT Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A56625752CD9248300FC29A8 /* LogGPT Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A566257B2CD9248300FC29A8 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566257A2CD9248300FC29A8 /* SafariWebExtensionHandler.swift */; };
+		A5950DF82D88A63800C5FBB1 /* changelog.md in Resources */ = {isa = PBXBuildFile; fileRef = A5950DD32D88A63800C5FBB1 /* changelog.md */; };
+		A5950DF92D88A63800C5FBB1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A5950DD42D88A63800C5FBB1 /* LICENSE */; };
+		A5950E072D88A68D00C5FBB1 /* README-ja.md in Resources */ = {isa = PBXBuildFile; fileRef = A5950E042D88A68D00C5FBB1 /* README-ja.md */; };
+		A5950E8E2D88D45500C5FBB1 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = A5950E8A2D88D45500C5FBB1 /* manifest.json */; };
+		A5950E8F2D88D45500C5FBB1 /* manifest-v2.json in Resources */ = {isa = PBXBuildFile; fileRef = A5950E8B2D88D45500C5FBB1 /* manifest-v2.json */; };
+		A5950E902D88D45500C5FBB1 /* LogGPT-conv-export.js in Resources */ = {isa = PBXBuildFile; fileRef = A5950E892D88D45500C5FBB1 /* LogGPT-conv-export.js */; };
+		A5950E912D88D45500C5FBB1 /* manifest-v3.json in Resources */ = {isa = PBXBuildFile; fileRef = A5950E8C2D88D45500C5FBB1 /* manifest-v3.json */; };
+		A5950E932D892AFD00C5FBB1 /* VERSION.mk in Resources */ = {isa = PBXBuildFile; fileRef = A5950E922D892AFD00C5FBB1 /* VERSION.mk */; };
+		A5950E962D8938F800C5FBB1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5950E952D8938F800C5FBB1 /* AppKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A56625602CD9248300FC29A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A566253A2CD9248200FC29A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A56625412CD9248200FC29A8;
+			remoteInfo = LogGPT;
+		};
+		A566256A2CD9248300FC29A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A566253A2CD9248200FC29A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A56625412CD9248200FC29A8;
+			remoteInfo = LogGPT;
+		};
+		A56625772CD9248300FC29A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A566253A2CD9248200FC29A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A56625742CD9248300FC29A8;
+			remoteInfo = "LogGPT Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A56625832CD9248300FC29A8 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A56625762CD9248300FC29A8 /* LogGPT Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A56625422CD9248200FC29A8 /* LogGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A566255F2CD9248300FC29A8 /* LogGPTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogGPTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A56625632CD9248300FC29A8 /* LogGPT Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogGPT Tests.swift"; sourceTree = "<group>"; };
+		A56625692CD9248300FC29A8 /* LogGPTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogGPTUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A566256D2CD9248300FC29A8 /* LogGPT UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogGPT UITests.swift"; sourceTree = "<group>"; };
+		A566256F2CD9248300FC29A8 /* LogGPT UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogGPT UITestsLaunchTests.swift"; sourceTree = "<group>"; };
+		A56625752CD9248300FC29A8 /* LogGPT Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "LogGPT Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A566257A2CD9248300FC29A8 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		A566257C2CD9248300FC29A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A566257D2CD9248300FC29A8 /* LogGPT_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LogGPT_Extension.entitlements; sourceTree = "<group>"; };
+		A5950DD32D88A63800C5FBB1 /* changelog.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = changelog.md; sourceTree = "<group>"; };
+		A5950DD42D88A63800C5FBB1 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A5950E042D88A68D00C5FBB1 /* README-ja.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "README-ja.md"; sourceTree = "<group>"; };
+		A5950E892D88D45500C5FBB1 /* LogGPT-conv-export.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "LogGPT-conv-export.js"; sourceTree = "<group>"; };
+		A5950E8A2D88D45500C5FBB1 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
+		A5950E8B2D88D45500C5FBB1 /* manifest-v2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "manifest-v2.json"; sourceTree = "<group>"; };
+		A5950E8C2D88D45500C5FBB1 /* manifest-v3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "manifest-v3.json"; sourceTree = "<group>"; };
+		A5950E922D892AFD00C5FBB1 /* VERSION.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = VERSION.mk; sourceTree = "<group>"; };
+		A5950E952D8938F800C5FBB1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A5950E282D88A8CB00C5FBB1 /* LogGPT */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A5950E982D89391600C5FBB1 /* Exceptions for "LogGPT" folder in "LogGPT" target */,
+				A5950F412D894EEE00C5FBB1 /* Exceptions for "LogGPT" folder in "LogGPT Extension" target */,
+			);
+			path = LogGPT;
+			sourceTree = "<group>";
+		};
+		A5950EF62D89420100C5FBB1 /* Resources */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A5950F3B2D89461600C5FBB1 /* Exceptions for "Resources" folder in "LogGPT Extension" target */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A566253F2CD9248200FC29A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5950E962D8938F800C5FBB1 /* AppKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A566255C2CD9248300FC29A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A56625662CD9248300FC29A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A56625722CD9248300FC29A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A56625392CD9248200FC29A8 = {
+			isa = PBXGroup;
+			children = (
+				A5950E282D88A8CB00C5FBB1 /* LogGPT */,
+				A56625622CD9248300FC29A8 /* LogGPT Tests */,
+				A566256C2CD9248300FC29A8 /* LogGPT UITests */,
+				A56625792CD9248300FC29A8 /* LogGPT Extension */,
+				A5950E942D8938F800C5FBB1 /* Frameworks */,
+				A56625432CD9248200FC29A8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A56625432CD9248200FC29A8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A56625422CD9248200FC29A8 /* LogGPT.app */,
+				A566255F2CD9248300FC29A8 /* LogGPTTests.xctest */,
+				A56625692CD9248300FC29A8 /* LogGPTUITests.xctest */,
+				A56625752CD9248300FC29A8 /* LogGPT Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A56625622CD9248300FC29A8 /* LogGPT Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A56625632CD9248300FC29A8 /* LogGPT Tests.swift */,
+			);
+			path = "LogGPT Tests";
+			sourceTree = "<group>";
+		};
+		A566256C2CD9248300FC29A8 /* LogGPT UITests */ = {
+			isa = PBXGroup;
+			children = (
+				A566256D2CD9248300FC29A8 /* LogGPT UITests.swift */,
+				A566256F2CD9248300FC29A8 /* LogGPT UITestsLaunchTests.swift */,
+			);
+			path = "LogGPT UITests";
+			sourceTree = "<group>";
+		};
+		A56625792CD9248300FC29A8 /* LogGPT Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A5950EF62D89420100C5FBB1 /* Resources */,
+				A5950DD32D88A63800C5FBB1 /* changelog.md */,
+				A566257C2CD9248300FC29A8 /* Info.plist */,
+				A5950DD42D88A63800C5FBB1 /* LICENSE */,
+				A566257D2CD9248300FC29A8 /* LogGPT_Extension.entitlements */,
+				A5950E892D88D45500C5FBB1 /* LogGPT-conv-export.js */,
+				A5950E8A2D88D45500C5FBB1 /* manifest.json */,
+				A5950E8B2D88D45500C5FBB1 /* manifest-v2.json */,
+				A5950E8C2D88D45500C5FBB1 /* manifest-v3.json */,
+				A5950E042D88A68D00C5FBB1 /* README-ja.md */,
+				A566257A2CD9248300FC29A8 /* SafariWebExtensionHandler.swift */,
+				A5950E922D892AFD00C5FBB1 /* VERSION.mk */,
+			);
+			path = "LogGPT Extension";
+			sourceTree = "<group>";
+		};
+		A5950E942D8938F800C5FBB1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5950E952D8938F800C5FBB1 /* AppKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A56625412CD9248200FC29A8 /* LogGPT */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A56625842CD9248300FC29A8 /* Build configuration list for PBXNativeTarget "LogGPT" */;
+			buildPhases = (
+				A566253E2CD9248200FC29A8 /* Sources */,
+				A566253F2CD9248200FC29A8 /* Frameworks */,
+				A56625402CD9248200FC29A8 /* Resources */,
+				A56625832CD9248300FC29A8 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A56625782CD9248300FC29A8 /* PBXTargetDependency */,
+			);
+			name = LogGPT;
+			packageProductDependencies = (
+			);
+			productName = LogGPT;
+			productReference = A56625422CD9248200FC29A8 /* LogGPT.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A566255E2CD9248300FC29A8 /* LogGPTTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A56625872CD9248300FC29A8 /* Build configuration list for PBXNativeTarget "LogGPTTests" */;
+			buildPhases = (
+				A566255B2CD9248300FC29A8 /* Sources */,
+				A566255C2CD9248300FC29A8 /* Frameworks */,
+				A566255D2CD9248300FC29A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A56625612CD9248300FC29A8 /* PBXTargetDependency */,
+			);
+			name = LogGPTTests;
+			packageProductDependencies = (
+			);
+			productName = LogGPTTests;
+			productReference = A566255F2CD9248300FC29A8 /* LogGPTTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A56625682CD9248300FC29A8 /* LogGPTUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A566258A2CD9248300FC29A8 /* Build configuration list for PBXNativeTarget "LogGPTUITests" */;
+			buildPhases = (
+				A56625652CD9248300FC29A8 /* Sources */,
+				A56625662CD9248300FC29A8 /* Frameworks */,
+				A56625672CD9248300FC29A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A566256B2CD9248300FC29A8 /* PBXTargetDependency */,
+			);
+			name = LogGPTUITests;
+			packageProductDependencies = (
+			);
+			productName = LogGPTUITests;
+			productReference = A56625692CD9248300FC29A8 /* LogGPTUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		A56625742CD9248300FC29A8 /* LogGPT Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A56625802CD9248300FC29A8 /* Build configuration list for PBXNativeTarget "LogGPT Extension" */;
+			buildPhases = (
+				A56625712CD9248300FC29A8 /* Sources */,
+				A56625722CD9248300FC29A8 /* Frameworks */,
+				A56625732CD9248300FC29A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A5950E282D88A8CB00C5FBB1 /* LogGPT */,
+				A5950EF62D89420100C5FBB1 /* Resources */,
+			);
+			name = "LogGPT Extension";
+			packageProductDependencies = (
+			);
+			productName = "LogGPT Extension";
+			productReference = A56625752CD9248300FC29A8 /* LogGPT Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A566253A2CD9248200FC29A8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					A56625412CD9248200FC29A8 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					A566255E2CD9248300FC29A8 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = A56625412CD9248200FC29A8;
+					};
+					A56625682CD9248300FC29A8 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = A56625412CD9248200FC29A8;
+					};
+					A56625742CD9248300FC29A8 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+				};
+			};
+			buildConfigurationList = A566253D2CD9248200FC29A8 /* Build configuration list for PBXProject "LogGPT" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"Base 2",
+				"base 2",
+			);
+			mainGroup = A56625392CD9248200FC29A8;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A56625432CD9248200FC29A8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A56625412CD9248200FC29A8 /* LogGPT */,
+				A566255E2CD9248300FC29A8 /* LogGPTTests */,
+				A56625682CD9248300FC29A8 /* LogGPTUITests */,
+				A56625742CD9248300FC29A8 /* LogGPT Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A56625402CD9248200FC29A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A566255D2CD9248300FC29A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A56625672CD9248300FC29A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A56625732CD9248300FC29A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5950E932D892AFD00C5FBB1 /* VERSION.mk in Resources */,
+				A5950E8E2D88D45500C5FBB1 /* manifest.json in Resources */,
+				A5950E8F2D88D45500C5FBB1 /* manifest-v2.json in Resources */,
+				A5950E902D88D45500C5FBB1 /* LogGPT-conv-export.js in Resources */,
+				A5950E912D88D45500C5FBB1 /* manifest-v3.json in Resources */,
+				A5950E072D88A68D00C5FBB1 /* README-ja.md in Resources */,
+				A5950DF82D88A63800C5FBB1 /* changelog.md in Resources */,
+				A5950DF92D88A63800C5FBB1 /* LICENSE in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A566253E2CD9248200FC29A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A566255B2CD9248300FC29A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A56625642CD9248300FC29A8 /* LogGPT Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A56625652CD9248300FC29A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A566256E2CD9248300FC29A8 /* LogGPT UITests.swift in Sources */,
+				A56625702CD9248300FC29A8 /* LogGPT UITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A56625712CD9248300FC29A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A566257B2CD9248300FC29A8 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A56625612CD9248300FC29A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A56625412CD9248200FC29A8 /* LogGPT */;
+			targetProxy = A56625602CD9248300FC29A8 /* PBXContainerItemProxy */;
+		};
+		A566256B2CD9248300FC29A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A56625412CD9248200FC29A8 /* LogGPT */;
+			targetProxy = A566256A2CD9248300FC29A8 /* PBXContainerItemProxy */;
+		};
+		A56625782CD9248300FC29A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A56625742CD9248300FC29A8 /* LogGPT Extension */;
+			targetProxy = A56625772CD9248300FC29A8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A566257E2CD9248300FC29A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				"MACH_O_TYPE[arch=*]" = "";
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPT;
+				PRODUCT_NAME = LogGPT;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A566257F2CD9248300FC29A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				"MACH_O_TYPE[arch=*]" = "";
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPT;
+				PRODUCT_NAME = LogGPT;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A56625812CD9248300FC29A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "LogGPT Extension/LogGPT_Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 69H57JTW3S;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LogGPT Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "LogGPT Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0.3;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPT;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A56625822CD9248300FC29A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "LogGPT Extension/LogGPT_Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 69H57JTW3S;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LogGPT Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "LogGPT Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0.3;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPT;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A56625852CD9248300FC29A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = LogGPT/LogGPT.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 69H57JTW3S;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LogGPT/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LogGPT;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0.3;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPT;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A56625862CD9248300FC29A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = LogGPT/LogGPT.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 69H57JTW3S;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LogGPT/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LogGPT;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0.3;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPT;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A56625882CD9248300FC29A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "LogGPT-conv-exportTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LogGPT.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LogGPT";
+			};
+			name = Debug;
+		};
+		A56625892CD9248300FC29A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "LogGPT-conv-exportTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LogGPT.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LogGPT";
+			};
+			name = Release;
+		};
+		A566258B2CD9248300FC29A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "LogGPT-conv-exportUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = LogGPT;
+			};
+			name = Debug;
+		};
+		A566258C2CD9248300FC29A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "LogGPT-conv-exportUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = LogGPT;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A566253D2CD9248200FC29A8 /* Build configuration list for PBXProject "LogGPT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A566257E2CD9248300FC29A8 /* Debug */,
+				A566257F2CD9248300FC29A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A56625802CD9248300FC29A8 /* Build configuration list for PBXNativeTarget "LogGPT Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A56625812CD9248300FC29A8 /* Debug */,
+				A56625822CD9248300FC29A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A56625842CD9248300FC29A8 /* Build configuration list for PBXNativeTarget "LogGPT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A56625852CD9248300FC29A8 /* Debug */,
+				A56625862CD9248300FC29A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A56625872CD9248300FC29A8 /* Build configuration list for PBXNativeTarget "LogGPTTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A56625882CD9248300FC29A8 /* Debug */,
+				A56625892CD9248300FC29A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A566258A2CD9248300FC29A8 /* Build configuration list for PBXNativeTarget "LogGPTUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A566258B2CD9248300FC29A8 /* Debug */,
+				A566258C2CD9248300FC29A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A566253A2CD9248200FC29A8 /* Project object */;
+}

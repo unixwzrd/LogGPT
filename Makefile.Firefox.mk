@@ -7,7 +7,7 @@ PACKAGE_GC = $(PACKAGE)-$(VERSION)-$(MANIFEST_VER_CHROME)
 
 SOURCES = \
 	icons \
-	loggpt-conv-export.js \
+	LogGPT-conv-export.js \
 	README.md \
 	README-ja.md
 

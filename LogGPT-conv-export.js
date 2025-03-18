@@ -2,7 +2,7 @@
 // LogGPT: Chat Log Export
 //
 // Author: <https://github.com/unixwzrd>
-// Version: 1.0.2 Renamed the application and changed the oicons.
+// Version: 1.0.3 Renamed the application and changed the oicons.
 // License: MIT
 
 // Const variable
@@ -18,23 +18,10 @@ function clog(msg) {
 }
 
 // Detect Browser
-const BRW_FIREFOX = "Firefox";
-const BRW_GCHROME = "Chrome";
 const BRW_SAFARI = "Safari";
-const BRW_UNKNOWN = "unknown";
 
 function detectBrowser() {
-  const userAgent = navigator.userAgent.toLowerCase();
-
-  if (userAgent.indexOf("firefox") !== -1) {
-    return BRW_FIREFOX;
-  } else if (userAgent.indexOf("chrome") !== -1 || userAgent.indexOf("chromium") !== -1) {
-    return BRW_GCHROME;
-  } else if (userAgent.indexOf("safari") !== -1 && userAgent.indexOf("chrome") === -1) {
-    return BRW_SAFARI;
-  } else {
-    return BRW_UNKNOWN;
-  }
+  return BRW_SAFARI;
 }
 const DETECT_BROWSER = detectBrowser();
 
@@ -92,9 +79,7 @@ function getThreadId() {
 
 // Get AccessToken
 async function getAccessToken() {
-  if (DETECT_BROWSER === BRW_FIREFOX) return await getAccessTokenFireFox();
-  if (DETECT_BROWSER === BRW_GCHROME) return await getAccessTokenGChrome();
-  if (DETECT_BROWSER === BRW_SAFARI) return await getAccessTokenSafari();
+  return await getAccessTokenSafari();
 }
 
 async function getAccessTokenSafari() {
@@ -138,82 +123,6 @@ async function getAccessTokenSafari() {
   return decryptToken(gptSession.data.accessToken, KEY_TOKEN);
 }
 
-// Get AccessToken: FireFox
-async function getAccessTokenFireFox() {
-  clog(`[debug] gptSession.data: ${gptSession.data == null}`);
-  if (gptSession.data == null) {
-    const threadId = getThreadId();
-    const response = await fetch(`https://${DOMAIN_LOGGPT}/api/auth/session`, {
-      credentials: "include",
-      headers: {
-        "User-Agent": window.navigator.userAgent,
-        Accept: "*/*",
-        "Accept-Language": navigator.language,
-        "Alt-Used": `${DOMAIN_LOGGPT}`,
-        Pragma: "no-cache",
-        "Cache-Control": "no-cache",
-      },
-      referrer: `https://${DOMAIN_LOGGPT}/c/${threadId}`,
-      method: "GET",
-      mode: "cors",
-    });
-
-    const data = await response.json();
-    clog(`[debug] getAccessToken() response: ${data != null}`);
-    // Encrypt the accessToken
-    data.accessToken = encryptToken(data.accessToken, KEY_TOKEN);
-    // cache
-    gptSession.data = data;
-    clog(`[debug] accessToken: ${gptSession.data != null}`);
-    if (gptSession.data != null) {
-      // cache OK
-      if (DEBUG) document.body.style.border = "5px solid green";
-    }
-  } else {
-    // Do not refetch if cached
-  }
-  // decrypt and return
-  return decryptToken(gptSession.data.accessToken, KEY_TOKEN);
-}
-
-// Get AccessToken: Google Chrome
-async function getAccessTokenGChrome() {
-  clog(`[debug] gptSession.data: ${gptSession.data == null}`);
-  if (gptSession.data == null) {
-    const threadId = getThreadId();
-    const response = await fetch(`https://${DOMAIN_LOGGPT}/api/auth/session`, {
-      headers: {
-        accept: "*/*",
-        "accept-language": "ja,en-US;q=0.9,en;q=0.8",
-        "cache-control": "no-cache",
-        pragma: "no-cache",
-      },
-      referrer: `https://${DOMAIN_LOGGPT}/c/${threadId}`,
-      referrerPolicy: "same-origin",
-      body: null,
-      method: "GET",
-      mode: "cors",
-      credentials: "include",
-    });
-
-    const data = await response.json();
-    clog(`[debug] getAccessToken() response: ${data != null}`);
-    // Encrypt the accessToken
-    data.accessToken = encryptToken(data.accessToken, KEY_TOKEN);
-    // cache
-    gptSession.data = data;
-    clog(`[debug] accessToken: ${gptSession.data != null}`);
-    if (gptSession.data != null) {
-      // cache OK
-      if (DEBUG) document.body.style.border = "5px solid green";
-    }
-  } else {
-    // Do not refetch if cached
-  }
-  // decrypt and return
-  return decryptToken(gptSession.data.accessToken, KEY_TOKEN);
-}
-
 // Export conversation (download)
 function downloadThreadId(threadId, jsonText) {
   const prefix = "LogGPT-clog";
@@ -228,21 +137,8 @@ function downloadThreadId(threadId, jsonText) {
 // Download Icon Resource
 function getIconURL() {
   const iconSVG = "icons/download-icon.min.svg";
-  let url = null;
-  if (typeof browser !== "undefined") {
-    // Firefox
-    url = browser.runtime.getURL(iconSVG);
-  } else if (typeof chrome !== "undefined") {
-    // Chrome
-    url = chrome.runtime.getURL(iconSVG);
-  } else if (typeof safari !== "undefined") {
-    // Safari
-    url = safari.extension.baseURI + iconSVG;
-  } else {
-    // Other browsers that don't support
-    url = "";
-  }
-  return url;
+  // Safari
+  return safari.extension.baseURI + iconSVG;
 }
 
 // Display to confirm that the extended function is working
@@ -279,9 +175,7 @@ setInterval(() => {
 }, 1000);
 
 async function getConversation(threadId) {
-  if (DETECT_BROWSER === BRW_FIREFOX) return await getConversationFireFox(threadId);
-  if (DETECT_BROWSER === BRW_GCHROME) return await getConversationGChrome(threadId);
-  if (DETECT_BROWSER === BRW_SAFARI) return await getConversationSafari(threadId);
+  return await getConversationSafari(threadId);
 }
 
 async function getConversationSafari(threadId) {
