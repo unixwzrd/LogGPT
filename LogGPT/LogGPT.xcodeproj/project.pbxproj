@@ -7,20 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A50BB71A2D886B6B00D61162 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = A50BB7192D886B6B00D61162 /* manifest.json */; };
+		A50BB71B2D886E1D00D61162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56625562CD9248300FC29A8 /* Assets.xcassets */; };
+		A50BB71F2D88703B00D61162 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A50BB71E2D88703B00D61162 /* Icon.png */; };
+		A56625462CD9248200FC29A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56625452CD9248200FC29A8 /* AppDelegate.swift */; };
+		A566254A2CD9248200FC29A8 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = A56625482CD9248200FC29A8 /* Main.html */; };
+		A566254E2CD9248200FC29A8 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = A566254D2CD9248200FC29A8 /* Style.css */; };
+		A56625502CD9248200FC29A8 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = A566254F2CD9248200FC29A8 /* Script.js */; };
+		A56625522CD9248200FC29A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56625512CD9248200FC29A8 /* ViewController.swift */; };
+		A56625552CD9248200FC29A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A56625532CD9248200FC29A8 /* Main.storyboard */; };
 		A56625642CD9248300FC29A8 /* LogGPT Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56625632CD9248300FC29A8 /* LogGPT Tests.swift */; };
 		A566256E2CD9248300FC29A8 /* LogGPT UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566256D2CD9248300FC29A8 /* LogGPT UITests.swift */; };
 		A56625702CD9248300FC29A8 /* LogGPT UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566256F2CD9248300FC29A8 /* LogGPT UITestsLaunchTests.swift */; };
 		A56625762CD9248300FC29A8 /* LogGPT Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A56625752CD9248300FC29A8 /* LogGPT Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A566257B2CD9248300FC29A8 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566257A2CD9248300FC29A8 /* SafariWebExtensionHandler.swift */; };
-		A5950DF82D88A63800C5FBB1 /* changelog.md in Resources */ = {isa = PBXBuildFile; fileRef = A5950DD32D88A63800C5FBB1 /* changelog.md */; };
-		A5950DF92D88A63800C5FBB1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A5950DD42D88A63800C5FBB1 /* LICENSE */; };
-		A5950E072D88A68D00C5FBB1 /* README-ja.md in Resources */ = {isa = PBXBuildFile; fileRef = A5950E042D88A68D00C5FBB1 /* README-ja.md */; };
-		A5950E8E2D88D45500C5FBB1 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = A5950E8A2D88D45500C5FBB1 /* manifest.json */; };
-		A5950E8F2D88D45500C5FBB1 /* manifest-v2.json in Resources */ = {isa = PBXBuildFile; fileRef = A5950E8B2D88D45500C5FBB1 /* manifest-v2.json */; };
-		A5950E902D88D45500C5FBB1 /* LogGPT-conv-export.js in Resources */ = {isa = PBXBuildFile; fileRef = A5950E892D88D45500C5FBB1 /* LogGPT-conv-export.js */; };
-		A5950E912D88D45500C5FBB1 /* manifest-v3.json in Resources */ = {isa = PBXBuildFile; fileRef = A5950E8C2D88D45500C5FBB1 /* manifest-v3.json */; };
-		A5950E932D892AFD00C5FBB1 /* VERSION.mk in Resources */ = {isa = PBXBuildFile; fileRef = A5950E922D892AFD00C5FBB1 /* VERSION.mk */; };
-		A5950E962D8938F800C5FBB1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5950E952D8938F800C5FBB1 /* AppKit.framework */; };
+		A566259A2CD9248300FC29A8 /* Makefile.Firefox.mk in Resources */ = {isa = PBXBuildFile; fileRef = A566258E2CD9248300FC29A8 /* Makefile.Firefox.mk */; };
+		A566259B2CD9248300FC29A8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A566258F2CD9248300FC29A8 /* LICENSE */; };
+		A566259C2CD9248300FC29A8 /* changelog.md in Resources */ = {isa = PBXBuildFile; fileRef = A56625902CD9248300FC29A8 /* changelog.md */; };
+		A566259D2CD9248300FC29A8 /* LogGPT in Resources */ = {isa = PBXBuildFile; fileRef = A56625912CD9248300FC29A8 /* LogGPT */; };
+		A566259E2CD9248300FC29A8 /* README-ja.md in Resources */ = {isa = PBXBuildFile; fileRef = A56625922CD9248300FC29A8 /* README-ja.md */; };
+		A566259F2CD9248300FC29A8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A56625932CD9248300FC29A8 /* README.md */; };
+		A56625A02CD9248300FC29A8 /* VERSION.mk in Resources */ = {isa = PBXBuildFile; fileRef = A56625942CD9248300FC29A8 /* VERSION.mk */; };
+		A56625A12CD9248300FC29A8 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = A56625952CD9248300FC29A8 /* icons */; };
+		A56625A32CD9248300FC29A8 /* LogGPT-conv-export.js in Resources */ = {isa = PBXBuildFile; fileRef = A56625972CD9248300FC29A8 /* LogGPT-conv-export.js */; };
+		A56625A42CD9248300FC29A8 /* manifest-v3.json in Resources */ = {isa = PBXBuildFile; fileRef = A56625982CD9248300FC29A8 /* manifest-v3.json */; };
+		A56625A52CD9248300FC29A8 /* manifest-v2.json in Resources */ = {isa = PBXBuildFile; fileRef = A56625992CD9248300FC29A8 /* manifest-v2.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +73,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A50BB7192D886B6B00D61162 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../manifest.json; sourceTree = SOURCE_ROOT; };
+		A50BB71E2D88703B00D61162 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A56625422CD9248200FC29A8 /* LogGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A56625452CD9248200FC29A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A56625492CD9248200FC29A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
+		A566254D2CD9248200FC29A8 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		A566254F2CD9248200FC29A8 /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		A56625512CD9248200FC29A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A56625542CD9248200FC29A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A56625562CD9248300FC29A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A56625582CD9248300FC29A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A566255A2CD9248300FC29A8 /* LogGPT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LogGPT.entitlements; sourceTree = "<group>"; };
 		A566255F2CD9248300FC29A8 /* LogGPTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogGPTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56625632CD9248300FC29A8 /* LogGPT Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogGPT Tests.swift"; sourceTree = "<group>"; };
 		A56625692CD9248300FC29A8 /* LogGPTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogGPTUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,43 +94,24 @@
 		A566257A2CD9248300FC29A8 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
 		A566257C2CD9248300FC29A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A566257D2CD9248300FC29A8 /* LogGPT_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LogGPT_Extension.entitlements; sourceTree = "<group>"; };
-		A5950DD32D88A63800C5FBB1 /* changelog.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = changelog.md; sourceTree = "<group>"; };
-		A5950DD42D88A63800C5FBB1 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		A5950E042D88A68D00C5FBB1 /* README-ja.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "README-ja.md"; sourceTree = "<group>"; };
-		A5950E892D88D45500C5FBB1 /* LogGPT-conv-export.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "LogGPT-conv-export.js"; sourceTree = "<group>"; };
-		A5950E8A2D88D45500C5FBB1 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
-		A5950E8B2D88D45500C5FBB1 /* manifest-v2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "manifest-v2.json"; sourceTree = "<group>"; };
-		A5950E8C2D88D45500C5FBB1 /* manifest-v3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "manifest-v3.json"; sourceTree = "<group>"; };
-		A5950E922D892AFD00C5FBB1 /* VERSION.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = VERSION.mk; sourceTree = "<group>"; };
-		A5950E952D8938F800C5FBB1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		A566258E2CD9248300FC29A8 /* Makefile.Firefox.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = Makefile.Firefox.mk; path = ../../Makefile.Firefox.mk; sourceTree = "<group>"; };
+		A566258F2CD9248300FC29A8 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = ../../LICENSE; sourceTree = "<group>"; };
+		A56625902CD9248300FC29A8 /* changelog.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = changelog.md; path = ../../changelog.md; sourceTree = "<group>"; };
+		A56625912CD9248300FC29A8 /* LogGPT */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LogGPT; sourceTree = SOURCE_ROOT; };
+		A56625922CD9248300FC29A8 /* README-ja.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = "README-ja.md"; path = "../../README-ja.md"; sourceTree = "<group>"; };
+		A56625932CD9248300FC29A8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
+		A56625942CD9248300FC29A8 /* VERSION.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = VERSION.mk; path = ../../VERSION.mk; sourceTree = "<group>"; };
+		A56625952CD9248300FC29A8 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = icons; path = ../../icons; sourceTree = "<group>"; };
+		A56625972CD9248300FC29A8 /* LogGPT-conv-export.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "LogGPT-conv-export.js"; path = "../../LogGPT-conv-export.js"; sourceTree = "<group>"; };
+		A56625982CD9248300FC29A8 /* manifest-v3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "manifest-v3.json"; path = "../../manifest-v3.json"; sourceTree = "<group>"; };
+		A56625992CD9248300FC29A8 /* manifest-v2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "manifest-v2.json"; path = "../../manifest-v2.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		A5950E282D88A8CB00C5FBB1 /* LogGPT */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				A5950E982D89391600C5FBB1 /* Exceptions for "LogGPT" folder in "LogGPT" target */,
-				A5950F412D894EEE00C5FBB1 /* Exceptions for "LogGPT" folder in "LogGPT Extension" target */,
-			);
-			path = LogGPT;
-			sourceTree = "<group>";
-		};
-		A5950EF62D89420100C5FBB1 /* Resources */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				A5950F3B2D89461600C5FBB1 /* Exceptions for "Resources" folder in "LogGPT Extension" target */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A566253F2CD9248200FC29A8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5950E962D8938F800C5FBB1 /* AppKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,11 +142,10 @@
 		A56625392CD9248200FC29A8 = {
 			isa = PBXGroup;
 			children = (
-				A5950E282D88A8CB00C5FBB1 /* LogGPT */,
+				A56625442CD9248200FC29A8 /* LogGPT */,
 				A56625622CD9248300FC29A8 /* LogGPT Tests */,
 				A566256C2CD9248300FC29A8 /* LogGPT UITests */,
 				A56625792CD9248300FC29A8 /* LogGPT Extension */,
-				A5950E942D8938F800C5FBB1 /* Frameworks */,
 				A56625432CD9248200FC29A8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -157,6 +159,31 @@
 				A56625752CD9248300FC29A8 /* LogGPT Extension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A56625442CD9248200FC29A8 /* LogGPT */ = {
+			isa = PBXGroup;
+			children = (
+				A56625452CD9248200FC29A8 /* AppDelegate.swift */,
+				A56625512CD9248200FC29A8 /* ViewController.swift */,
+				A56625532CD9248200FC29A8 /* Main.storyboard */,
+				A56625562CD9248300FC29A8 /* Assets.xcassets */,
+				A56625582CD9248300FC29A8 /* Info.plist */,
+				A566255A2CD9248300FC29A8 /* LogGPT.entitlements */,
+				A56625472CD9248200FC29A8 /* Resources */,
+			);
+			path = LogGPT;
+			sourceTree = "<group>";
+		};
+		A56625472CD9248200FC29A8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A56625482CD9248200FC29A8 /* Main.html */,
+				A50BB71E2D88703B00D61162 /* Icon.png */,
+				A566254D2CD9248200FC29A8 /* Style.css */,
+				A566254F2CD9248200FC29A8 /* Script.js */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		A56625622CD9248300FC29A8 /* LogGPT Tests */ = {
@@ -179,29 +206,33 @@
 		A56625792CD9248300FC29A8 /* LogGPT Extension */ = {
 			isa = PBXGroup;
 			children = (
-				A5950EF62D89420100C5FBB1 /* Resources */,
-				A5950DD32D88A63800C5FBB1 /* changelog.md */,
-				A566257C2CD9248300FC29A8 /* Info.plist */,
-				A5950DD42D88A63800C5FBB1 /* LICENSE */,
-				A566257D2CD9248300FC29A8 /* LogGPT_Extension.entitlements */,
-				A5950E892D88D45500C5FBB1 /* LogGPT-conv-export.js */,
-				A5950E8A2D88D45500C5FBB1 /* manifest.json */,
-				A5950E8B2D88D45500C5FBB1 /* manifest-v2.json */,
-				A5950E8C2D88D45500C5FBB1 /* manifest-v3.json */,
-				A5950E042D88A68D00C5FBB1 /* README-ja.md */,
+				A566258D2CD9248300FC29A8 /* Resources */,
 				A566257A2CD9248300FC29A8 /* SafariWebExtensionHandler.swift */,
-				A5950E922D892AFD00C5FBB1 /* VERSION.mk */,
+				A566257C2CD9248300FC29A8 /* Info.plist */,
+				A566257D2CD9248300FC29A8 /* LogGPT_Extension.entitlements */,
 			);
 			path = "LogGPT Extension";
 			sourceTree = "<group>";
 		};
-		A5950E942D8938F800C5FBB1 /* Frameworks */ = {
+		A566258D2CD9248300FC29A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A5950E952D8938F800C5FBB1 /* AppKit.framework */,
+				A566258E2CD9248300FC29A8 /* Makefile.Firefox.mk */,
+				A566258F2CD9248300FC29A8 /* LICENSE */,
+				A56625902CD9248300FC29A8 /* changelog.md */,
+				A56625912CD9248300FC29A8 /* LogGPT */,
+				A56625922CD9248300FC29A8 /* README-ja.md */,
+				A56625932CD9248300FC29A8 /* README.md */,
+				A56625942CD9248300FC29A8 /* VERSION.mk */,
+				A56625952CD9248300FC29A8 /* icons */,
+				A50BB7192D886B6B00D61162 /* manifest.json */,
+				A56625972CD9248300FC29A8 /* LogGPT-conv-export.js */,
+				A56625982CD9248300FC29A8 /* manifest-v3.json */,
+				A56625992CD9248300FC29A8 /* manifest-v2.json */,
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
+			name = Resources;
+			path = "LogGPT Extension";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -279,10 +310,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				A5950E282D88A8CB00C5FBB1 /* LogGPT */,
-				A5950EF62D89420100C5FBB1 /* Resources */,
-			);
 			name = "LogGPT Extension";
 			packageProductDependencies = (
 			);
@@ -322,8 +349,6 @@
 			knownRegions = (
 				en,
 				Base,
-				"Base 2",
-				"base 2",
 			);
 			mainGroup = A56625392CD9248200FC29A8;
 			minimizedProjectReferenceProxies = 1;
@@ -345,6 +370,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A56625552CD9248200FC29A8 /* Main.storyboard in Resources */,
+				A56625502CD9248200FC29A8 /* Script.js in Resources */,
+				A566254A2CD9248200FC29A8 /* Main.html in Resources */,
+				A50BB71F2D88703B00D61162 /* Icon.png in Resources */,
+				A50BB71B2D886E1D00D61162 /* Assets.xcassets in Resources */,
+				A566254E2CD9248200FC29A8 /* Style.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,14 +397,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5950E932D892AFD00C5FBB1 /* VERSION.mk in Resources */,
-				A5950E8E2D88D45500C5FBB1 /* manifest.json in Resources */,
-				A5950E8F2D88D45500C5FBB1 /* manifest-v2.json in Resources */,
-				A5950E902D88D45500C5FBB1 /* LogGPT-conv-export.js in Resources */,
-				A5950E912D88D45500C5FBB1 /* manifest-v3.json in Resources */,
-				A5950E072D88A68D00C5FBB1 /* README-ja.md in Resources */,
-				A5950DF82D88A63800C5FBB1 /* changelog.md in Resources */,
-				A5950DF92D88A63800C5FBB1 /* LICENSE in Resources */,
+				A56625A32CD9248300FC29A8 /* LogGPT-conv-export.js in Resources */,
+				A566259F2CD9248300FC29A8 /* README.md in Resources */,
+				A56625A12CD9248300FC29A8 /* icons in Resources */,
+				A566259D2CD9248300FC29A8 /* LogGPT in Resources */,
+				A50BB71A2D886B6B00D61162 /* manifest.json in Resources */,
+				A56625A52CD9248300FC29A8 /* manifest-v2.json in Resources */,
+				A566259E2CD9248300FC29A8 /* README-ja.md in Resources */,
+				A56625A42CD9248300FC29A8 /* manifest-v3.json in Resources */,
+				A566259C2CD9248300FC29A8 /* changelog.md in Resources */,
+				A56625A02CD9248300FC29A8 /* VERSION.mk in Resources */,
+				A566259B2CD9248300FC29A8 /* LICENSE in Resources */,
+				A566259A2CD9248300FC29A8 /* Makefile.Firefox.mk in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +419,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A56625522CD9248200FC29A8 /* ViewController.swift in Sources */,
+				A56625462CD9248200FC29A8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +468,25 @@
 			targetProxy = A56625772CD9248300FC29A8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A56625482CD9248200FC29A8 /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A56625492CD9248200FC29A8 /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		A56625532CD9248200FC29A8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A56625542CD9248200FC29A8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A566257E2CD9248300FC29A8 /* Debug */ = {
@@ -489,7 +545,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				"MACH_O_TYPE[arch=*]" = "";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -500,7 +555,6 @@
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -544,7 +598,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -555,7 +608,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				"MACH_O_TYPE[arch=*]" = "";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -565,7 +617,6 @@
 				PRODUCT_NAME = LogGPT;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
