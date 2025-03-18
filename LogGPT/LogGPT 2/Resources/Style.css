@@ -1,0 +1,57 @@
+* {
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    cursor: default;
+}
+
+:root {
+    color-scheme: light dark;
+
+    --spacing: 20px;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: var(--spacing);
+    margin: 0 calc(var(--spacing) * 2);
+    height: 100%;
+
+    font: -apple-system-short-body;
+    text-align: center;
+
+    background: linear-gradient(to bottom, #245a99, #1f3a4d);
+}
+
+body:not(.state-on, .state-off) :is(.state-on, .state-off) {
+    display: none;
+}
+
+body.state-on :is(.state-off, .state-unknown) {
+    display: none;
+}
+
+body.state-off :is(.state-on, .state-unknown) {
+    display: none;
+}
+
+button {
+    font-size: 1em;
+    background-color: #6c6c70; /* Medium gray */
+    color: #dcdcdc; /* Off-white text */
+    border: 1px solid #5c5c5c; /* Slightly darker gray border */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5c5c5c; /* Slightly darker on hover */
+}
