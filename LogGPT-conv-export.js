@@ -4,6 +4,10 @@
 // Author: <https://github.com/unixwzrd>
 // Version: 1.0.3 Renamed the application and changed the oicons.
 // License: MIT
+//
+// Version 1.0.4
+// - Removed Chrome an Firefox code
+// - Changed the API handling for new Safari and deprecated API
 
 // Const variable
 const DOMAIN_LOGGPT = "chatgpt.com";
@@ -136,9 +140,12 @@ function downloadThreadId(threadId, jsonText) {
 
 // Download Icon Resource
 function getIconURL() {
-  const iconSVG = "icons/download-icon.min.svg";
-  // Safari
-  return safari.extension.baseURI + iconSVG;
+  if (typeof browser !== "undefined") {
+    return browser.runtime.getURL("icons/download-icon.min.svg");
+  } else {
+    console.error("Unsupported browser: Cannot determine icon URL");
+    return "";
+  }
 }
 
 // Display to confirm that the extended function is working

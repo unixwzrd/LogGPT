@@ -21,11 +21,9 @@
 		A56625702CD9248300FC29A8 /* LogGPT UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566256F2CD9248300FC29A8 /* LogGPT UITestsLaunchTests.swift */; };
 		A56625762CD9248300FC29A8 /* LogGPT Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A56625752CD9248300FC29A8 /* LogGPT Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A566257B2CD9248300FC29A8 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566257A2CD9248300FC29A8 /* SafariWebExtensionHandler.swift */; };
-		A566259A2CD9248300FC29A8 /* Makefile.Firefox.mk in Resources */ = {isa = PBXBuildFile; fileRef = A566258E2CD9248300FC29A8 /* Makefile.Firefox.mk */; };
 		A566259B2CD9248300FC29A8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A566258F2CD9248300FC29A8 /* LICENSE */; };
-		A566259C2CD9248300FC29A8 /* changelog.md in Resources */ = {isa = PBXBuildFile; fileRef = A56625902CD9248300FC29A8 /* changelog.md */; };
+		A566259C2CD9248300FC29A8 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = A56625902CD9248300FC29A8 /* CHANGELOG.md */; };
 		A566259D2CD9248300FC29A8 /* LogGPT in Resources */ = {isa = PBXBuildFile; fileRef = A56625912CD9248300FC29A8 /* LogGPT */; };
-		A566259E2CD9248300FC29A8 /* README-ja.md in Resources */ = {isa = PBXBuildFile; fileRef = A56625922CD9248300FC29A8 /* README-ja.md */; };
 		A566259F2CD9248300FC29A8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A56625932CD9248300FC29A8 /* README.md */; };
 		A56625A02CD9248300FC29A8 /* VERSION.mk in Resources */ = {isa = PBXBuildFile; fileRef = A56625942CD9248300FC29A8 /* VERSION.mk */; };
 		A56625A12CD9248300FC29A8 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = A56625952CD9248300FC29A8 /* icons */; };
@@ -94,11 +92,9 @@
 		A566257A2CD9248300FC29A8 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
 		A566257C2CD9248300FC29A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A566257D2CD9248300FC29A8 /* LogGPT_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LogGPT_Extension.entitlements; sourceTree = "<group>"; };
-		A566258E2CD9248300FC29A8 /* Makefile.Firefox.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = Makefile.Firefox.mk; path = ../../Makefile.Firefox.mk; sourceTree = "<group>"; };
 		A566258F2CD9248300FC29A8 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = ../../LICENSE; sourceTree = "<group>"; };
-		A56625902CD9248300FC29A8 /* changelog.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = changelog.md; path = ../../changelog.md; sourceTree = "<group>"; };
+		A56625902CD9248300FC29A8 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
 		A56625912CD9248300FC29A8 /* LogGPT */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LogGPT; sourceTree = SOURCE_ROOT; };
-		A56625922CD9248300FC29A8 /* README-ja.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = "README-ja.md"; path = "../../README-ja.md"; sourceTree = "<group>"; };
 		A56625932CD9248300FC29A8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		A56625942CD9248300FC29A8 /* VERSION.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = VERSION.mk; path = ../../VERSION.mk; sourceTree = "<group>"; };
 		A56625952CD9248300FC29A8 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = icons; path = ../../icons; sourceTree = "<group>"; };
@@ -217,11 +213,9 @@
 		A566258D2CD9248300FC29A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A566258E2CD9248300FC29A8 /* Makefile.Firefox.mk */,
 				A566258F2CD9248300FC29A8 /* LICENSE */,
-				A56625902CD9248300FC29A8 /* changelog.md */,
+				A56625902CD9248300FC29A8 /* CHANGELOG.md */,
 				A56625912CD9248300FC29A8 /* LogGPT */,
-				A56625922CD9248300FC29A8 /* README-ja.md */,
 				A56625932CD9248300FC29A8 /* README.md */,
 				A56625942CD9248300FC29A8 /* VERSION.mk */,
 				A56625952CD9248300FC29A8 /* icons */,
@@ -403,12 +397,10 @@
 				A566259D2CD9248300FC29A8 /* LogGPT in Resources */,
 				A50BB71A2D886B6B00D61162 /* manifest.json in Resources */,
 				A56625A52CD9248300FC29A8 /* manifest-v2.json in Resources */,
-				A566259E2CD9248300FC29A8 /* README-ja.md in Resources */,
 				A56625A42CD9248300FC29A8 /* manifest-v3.json in Resources */,
-				A566259C2CD9248300FC29A8 /* changelog.md in Resources */,
+				A566259C2CD9248300FC29A8 /* CHANGELOG.md in Resources */,
 				A56625A02CD9248300FC29A8 /* VERSION.mk in Resources */,
 				A566259B2CD9248300FC29A8 /* LICENSE in Resources */,
-				A566259A2CD9248300FC29A8 /* Makefile.Firefox.mk in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,11 +516,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.0.3;
+				CURRENT_PROJECT_VERSION = 1.0.4;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTABILITY = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -546,13 +538,14 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPT;
 				PRODUCT_NAME = LogGPT;
 				SDKROOT = macosx;
+				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -593,7 +586,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.0.3;
+				CURRENT_PROJECT_VERSION = 1.0.4;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -609,13 +602,14 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPT;
 				PRODUCT_NAME = LogGPT;
 				SDKROOT = macosx;
+				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
@@ -641,12 +635,12 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPT;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPT.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -676,12 +670,12 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPT;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPT.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -718,7 +712,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -761,7 +755,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,

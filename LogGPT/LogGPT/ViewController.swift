@@ -9,7 +9,7 @@ import Cocoa
 import SafariServices
 import WebKit
 
-let extensionBundleIdentifier = "LogGPT-conv-export.Extension"
+let extensionBundleIdentifier = "ai.unixwzrd.LogGPT"
 
 class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHandler {
 

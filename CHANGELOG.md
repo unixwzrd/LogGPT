@@ -1,10 +1,30 @@
 # Changelog
 
-2025/03/01  v1.0.3
+## 2025/03/19  v1.0.4
 
-- Updated icons
-- Changed the name of tge extension because Apple didn't like it.
-- Changed references in the cource Code to the new name.
+- Changed to new icons
+- Changed the name of the extension because Apple didn't like it.
+- Changed references in the source code to the new name.
+- Added UTF-8 support as default
+- Change to the Safari API handled.
+- Updated documentation.
+
+## 2025-03-10 v1.0.2
+
+- Prepared more screenshots for AppStore submission
+- Updated documentation
+- Minor changes in configuration
+- Submitted and rejected by Apple Appstore
+
+## 2025-01-06 V1.0.1
+
+- Made screenshots for uploading tto the Apple AppStore
+- Tidied up settings
+- Waited until March to be able to subit as paperqwork being processed.
+
+## 2024-11-04 v1.0.0
+
+- Ported and added code to support Safari
 
 2024/20/28  v0.3.2
 
