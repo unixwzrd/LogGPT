@@ -57,7 +57,7 @@ A version may be added to the Apple App Store, with a small fee to cover Apple D
 
 ## Manual Installation for Safari
 
-The downloadable package is here: [LogGPT.pkg](https://github.com/unixwzrd/chatgpt-chatlog-export/releases/tag/local-build-1.0.1)
+The downloadable package is here: [LogGPT.pkg](https://github.com/unixwzrd/chatgpt-chatlog-export/releases/tag/local-build-1.0.4)
 
 1. Download `LogGPT.pkg.zip`
 2. Extract the folder and run the `LogGPT.pkg`
@@ -84,7 +84,7 @@ The downloadable package is here: [LogGPT.pkg](https://github.com/unixwzrd/chatg
 
 You will need a copy of Xcode, you can get it and this extension on the App Store.
 
-[The Xcode project file is here.](https://github.com/unixwzrd/chatgpt-chatlog-export/tree/main/ChatGPT%20Export%20JSON%20Chatlogs) Clone the repository and try
+[The Xcode project file is here.](https://github.com/unixwzrd/chatgpt-chatlog-export/tree/main/LogGPT)) Clone the repository and try
   ```bash
   git clone https://github.com/unixwzrd/chatgpt-chatlog-export.git chatgpt-jason
   cd chatgpt-jason
