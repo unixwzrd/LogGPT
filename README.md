@@ -55,15 +55,6 @@ Obviously the best way is to buy it on the App Store, which I would prefer as a 
 
 A version may be added to the Apple App Store, with a small fee to cover Apple Developer Program costs. The binaries provided are signed with an Apple Developer Certificate for added security.
 
-## Manual Installation for Safari
-
-The downloadable package is here: [LogGPT.pkg](https://github.com/unixwzrd/chatgpt-chatlog-export/releases/tag/local-build-1.0.4)
-
-1. Download `LogGPT.pkg.zip`
-2. Extract the folder and run the `LogGPT.pkg`
-3. Enable the extension in **Safari** -> **Settings** -> **Extensions**.
-4. The extension icon should appear in the Safari toolbar, and it's ready to use.
-
 ### Using the Extension
 
 1. Open a ChatGPT session and click the extension icon ![download icon](./icons/download-icon.svg) browser window of your ChatGPT session. It will only be visible in ChatGPT. The Tool bar ICon wil show up when teh extension is loaded, but is not active at this time.
@@ -103,6 +94,12 @@ Again, I would appreciate it if you could buy one on the App Store or if you are
 If you find this extension helpful, consider supporting my work on [Patreon](https://patreon.com/unixwzrd) or [Ko-fi](https://ko-fi.com/unixwzrd). My goal with this project and others is to bring awareness to issues like parental alienation and to advocate for a child’s right to have both parents involved in their lives.
 
 Visit [Distributed Thinking Systems LLC](https://unixwzrd.ai/) for information about my other projects.
+
+## Changelog
+
+### 2025-04-29 v1.0.5
+- Changed to new icons
+- Changed spacing on the ChatGPT UI Download button, was covering "Canvas" button.
 
 ## Credits
 

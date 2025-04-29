@@ -28,6 +28,7 @@ body {
     text-align: center;
 
     background: linear-gradient(to bottom, #245a99, #1f3a4d);
+    transform: translateX(-48px);
 }
 
 body:not(.state-on, .state-off) :is(.state-on, .state-off) {

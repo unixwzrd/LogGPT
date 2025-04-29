@@ -1,5 +1,10 @@
 # Changelog
 
+## 2025/04/29  v1.0.5
+
+- Changed to new icons
+- Changed spacing on the ChatGPT UI Download button, was covering "Canvas" button.
+
 ## 2025/03/19  v1.0.4
 
 - Changed to new icons

@@ -5,7 +5,7 @@
 // Version: 1.0.3 Renamed the application and changed the oicons.
 // License: MIT
 //
-// Version 1.0.4
+// Version 1.0.5
 // - Removed Chrome an Firefox code
 // - Changed the API handling for new Safari and deprecated API
 
