@@ -26,10 +26,34 @@
 		A566259D2CD9248300FC29A8 /* LogGPT in Resources */ = {isa = PBXBuildFile; fileRef = A56625912CD9248300FC29A8 /* LogGPT */; };
 		A566259F2CD9248300FC29A8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A56625932CD9248300FC29A8 /* README.md */; };
 		A56625A02CD9248300FC29A8 /* VERSION.mk in Resources */ = {isa = PBXBuildFile; fileRef = A56625942CD9248300FC29A8 /* VERSION.mk */; };
-		A56625A12CD9248300FC29A8 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = A56625952CD9248300FC29A8 /* icons */; };
 		A56625A32CD9248300FC29A8 /* LogGPT-conv-export.js in Resources */ = {isa = PBXBuildFile; fileRef = A56625972CD9248300FC29A8 /* LogGPT-conv-export.js */; };
 		A56625A42CD9248300FC29A8 /* manifest-v3.json in Resources */ = {isa = PBXBuildFile; fileRef = A56625982CD9248300FC29A8 /* manifest-v3.json */; };
 		A56625A52CD9248300FC29A8 /* manifest-v2.json in Resources */ = {isa = PBXBuildFile; fileRef = A56625992CD9248300FC29A8 /* manifest-v2.json */; };
+		A5B27AE52DC1C29B002D9407 /* download-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19CF2DC18E6D00C593F5 /* download-icon.png */; };
+		A5B27AE62DC1C29B002D9407 /* download-icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D02DC18E6D00C593F5 /* download-icon.svg */; };
+		A5B27AE82DC1C29B002D9407 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D22DC18E6D00C593F5 /* Icon.png */; };
+		A5B27AE92DC1C29B002D9407 /* Icon-16.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D32DC18E6D00C593F5 /* Icon-16.png */; };
+		A5B27AEA2DC1C29B002D9407 /* Icon-16-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D42DC18E6D00C593F5 /* Icon-16-download.png */; };
+		A5B27AEB2DC1C29B002D9407 /* Icon-32.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D52DC18E6D00C593F5 /* Icon-32.png */; };
+		A5B27AEC2DC1C29B002D9407 /* Icon-32-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D62DC18E6D00C593F5 /* Icon-32-download.png */; };
+		A5B27AED2DC1C29B002D9407 /* Icon-48.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D72DC18E6D00C593F5 /* Icon-48.png */; };
+		A5B27AEE2DC1C29B002D9407 /* Icon-48-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D82DC18E6D00C593F5 /* Icon-48-download.png */; };
+		A5B27AEF2DC1C29B002D9407 /* Icon-64.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D92DC18E6D00C593F5 /* Icon-64.png */; };
+		A5B27AF02DC1C29B002D9407 /* Icon-64-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DA2DC18E6D00C593F5 /* Icon-64-download.png */; };
+		A5B27AF12DC1C29B002D9407 /* Icon-96.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DB2DC18E6D00C593F5 /* Icon-96.png */; };
+		A5B27AF22DC1C29B002D9407 /* Icon-96-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DC2DC18E6D00C593F5 /* Icon-96-download.png */; };
+		A5B27AF32DC1C29B002D9407 /* Icon-128.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DD2DC18E6D00C593F5 /* Icon-128.png */; };
+		A5B27AF42DC1C29B002D9407 /* Icon-128-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DE2DC18E6D00C593F5 /* Icon-128-download.png */; };
+		A5B27AF52DC1C29B002D9407 /* Icon-256.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DF2DC18E6D00C593F5 /* Icon-256.png */; };
+		A5B27AF62DC1C29B002D9407 /* Icon-256-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E02DC18E6D00C593F5 /* Icon-256-download.png */; };
+		A5B27AF72DC1C29B002D9407 /* Icon-512.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E12DC18E6D00C593F5 /* Icon-512.png */; };
+		A5B27AF82DC1C29B002D9407 /* Icon-512-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E22DC18E6D00C593F5 /* Icon-512-download.png */; };
+		A5B27AF92DC1C29B002D9407 /* LogGPTorig.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E32DC18E6D00C593F5 /* LogGPTorig.png */; };
+		A5B27AFA2DC1C29B002D9407 /* LogGPT.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E42DC18E6D00C593F5 /* LogGPT.png */; };
+		A5B27AFB2DC1C29B002D9407 /* LogGPT-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E52DC18E6D00C593F5 /* LogGPT-download.png */; };
+		A5B27AFC2DC1C29B002D9407 /* orig-download-icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E62DC18E6D00C593F5 /* orig-download-icon.svg */; };
+		A5B27AFD2DC1C29B002D9407 /* orig-download-icon.min.svg in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E72DC18E6D00C593F5 /* orig-download-icon.min.svg */; };
+		A5B27B012DC2EB47002D9407 /* download-icon-min.svg in Resources */ = {isa = PBXBuildFile; fileRef = A5B27B002DC2EB47002D9407 /* download-icon-min.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +97,30 @@
 /* Begin PBXFileReference section */
 		A50BB7192D886B6B00D61162 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../manifest.json; sourceTree = SOURCE_ROOT; };
 		A50BB71E2D88703B00D61162 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A55E19CF2DC18E6D00C593F5 /* download-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download-icon.png"; sourceTree = "<group>"; };
+		A55E19D02DC18E6D00C593F5 /* download-icon.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "download-icon.svg"; sourceTree = "<group>"; };
+		A55E19D22DC18E6D00C593F5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A55E19D32DC18E6D00C593F5 /* Icon-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-16.png"; sourceTree = "<group>"; };
+		A55E19D42DC18E6D00C593F5 /* Icon-16-download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-16-download.png"; sourceTree = "<group>"; };
+		A55E19D52DC18E6D00C593F5 /* Icon-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-32.png"; sourceTree = "<group>"; };
+		A55E19D62DC18E6D00C593F5 /* Icon-32-download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-32-download.png"; sourceTree = "<group>"; };
+		A55E19D72DC18E6D00C593F5 /* Icon-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-48.png"; sourceTree = "<group>"; };
+		A55E19D82DC18E6D00C593F5 /* Icon-48-download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-48-download.png"; sourceTree = "<group>"; };
+		A55E19D92DC18E6D00C593F5 /* Icon-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-64.png"; sourceTree = "<group>"; };
+		A55E19DA2DC18E6D00C593F5 /* Icon-64-download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-64-download.png"; sourceTree = "<group>"; };
+		A55E19DB2DC18E6D00C593F5 /* Icon-96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-96.png"; sourceTree = "<group>"; };
+		A55E19DC2DC18E6D00C593F5 /* Icon-96-download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-96-download.png"; sourceTree = "<group>"; };
+		A55E19DD2DC18E6D00C593F5 /* Icon-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-128.png"; sourceTree = "<group>"; };
+		A55E19DE2DC18E6D00C593F5 /* Icon-128-download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-128-download.png"; sourceTree = "<group>"; };
+		A55E19DF2DC18E6D00C593F5 /* Icon-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-256.png"; sourceTree = "<group>"; };
+		A55E19E02DC18E6D00C593F5 /* Icon-256-download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-256-download.png"; sourceTree = "<group>"; };
+		A55E19E12DC18E6D00C593F5 /* Icon-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-512.png"; sourceTree = "<group>"; };
+		A55E19E22DC18E6D00C593F5 /* Icon-512-download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-512-download.png"; sourceTree = "<group>"; };
+		A55E19E32DC18E6D00C593F5 /* LogGPTorig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogGPTorig.png; sourceTree = "<group>"; };
+		A55E19E42DC18E6D00C593F5 /* LogGPT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogGPT.png; sourceTree = "<group>"; };
+		A55E19E52DC18E6D00C593F5 /* LogGPT-download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogGPT-download.png"; sourceTree = "<group>"; };
+		A55E19E62DC18E6D00C593F5 /* orig-download-icon.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "orig-download-icon.svg"; sourceTree = "<group>"; };
+		A55E19E72DC18E6D00C593F5 /* orig-download-icon.min.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "orig-download-icon.min.svg"; sourceTree = "<group>"; };
 		A56625422CD9248200FC29A8 /* LogGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56625452CD9248200FC29A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A56625492CD9248200FC29A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
@@ -97,10 +145,10 @@
 		A56625912CD9248300FC29A8 /* LogGPT */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LogGPT; sourceTree = SOURCE_ROOT; };
 		A56625932CD9248300FC29A8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		A56625942CD9248300FC29A8 /* VERSION.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = VERSION.mk; path = ../../VERSION.mk; sourceTree = "<group>"; };
-		A56625952CD9248300FC29A8 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = icons; path = ../../icons; sourceTree = "<group>"; };
 		A56625972CD9248300FC29A8 /* LogGPT-conv-export.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "LogGPT-conv-export.js"; path = "../../LogGPT-conv-export.js"; sourceTree = "<group>"; };
 		A56625982CD9248300FC29A8 /* manifest-v3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "manifest-v3.json"; path = "../../manifest-v3.json"; sourceTree = "<group>"; };
 		A56625992CD9248300FC29A8 /* manifest-v2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "manifest-v2.json"; path = "../../manifest-v2.json"; sourceTree = "<group>"; };
+		A5B27B002DC2EB47002D9407 /* download-icon-min.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "download-icon-min.svg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +183,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A55E19E82DC18E6D00C593F5 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				A55E19CF2DC18E6D00C593F5 /* download-icon.png */,
+				A5B27B002DC2EB47002D9407 /* download-icon-min.svg */,
+				A55E19D02DC18E6D00C593F5 /* download-icon.svg */,
+				A55E19D22DC18E6D00C593F5 /* Icon.png */,
+				A55E19D32DC18E6D00C593F5 /* Icon-16.png */,
+				A55E19D42DC18E6D00C593F5 /* Icon-16-download.png */,
+				A55E19D52DC18E6D00C593F5 /* Icon-32.png */,
+				A55E19D62DC18E6D00C593F5 /* Icon-32-download.png */,
+				A55E19D72DC18E6D00C593F5 /* Icon-48.png */,
+				A55E19D82DC18E6D00C593F5 /* Icon-48-download.png */,
+				A55E19D92DC18E6D00C593F5 /* Icon-64.png */,
+				A55E19DA2DC18E6D00C593F5 /* Icon-64-download.png */,
+				A55E19DB2DC18E6D00C593F5 /* Icon-96.png */,
+				A55E19DC2DC18E6D00C593F5 /* Icon-96-download.png */,
+				A55E19DD2DC18E6D00C593F5 /* Icon-128.png */,
+				A55E19DE2DC18E6D00C593F5 /* Icon-128-download.png */,
+				A55E19DF2DC18E6D00C593F5 /* Icon-256.png */,
+				A55E19E02DC18E6D00C593F5 /* Icon-256-download.png */,
+				A55E19E12DC18E6D00C593F5 /* Icon-512.png */,
+				A55E19E22DC18E6D00C593F5 /* Icon-512-download.png */,
+				A55E19E32DC18E6D00C593F5 /* LogGPTorig.png */,
+				A55E19E42DC18E6D00C593F5 /* LogGPT.png */,
+				A55E19E52DC18E6D00C593F5 /* LogGPT-download.png */,
+				A55E19E62DC18E6D00C593F5 /* orig-download-icon.svg */,
+				A55E19E72DC18E6D00C593F5 /* orig-download-icon.min.svg */,
+			);
+			name = icons;
+			path = ../icons;
+			sourceTree = SOURCE_ROOT;
+		};
 		A56625392CD9248200FC29A8 = {
 			isa = PBXGroup;
 			children = (
@@ -215,10 +296,10 @@
 			children = (
 				A566258F2CD9248300FC29A8 /* LICENSE */,
 				A56625902CD9248300FC29A8 /* CHANGELOG.md */,
+				A55E19E82DC18E6D00C593F5 /* icons */,
 				A56625912CD9248300FC29A8 /* LogGPT */,
 				A56625932CD9248300FC29A8 /* README.md */,
 				A56625942CD9248300FC29A8 /* VERSION.mk */,
-				A56625952CD9248300FC29A8 /* icons */,
 				A50BB7192D886B6B00D61162 /* manifest.json */,
 				A56625972CD9248300FC29A8 /* LogGPT-conv-export.js */,
 				A56625982CD9248300FC29A8 /* manifest-v3.json */,
@@ -319,7 +400,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1610;
-				LastUpgradeCheck = 1620;
+				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					A56625412CD9248200FC29A8 = {
 						CreatedOnToolsVersion = 16.1;
@@ -391,9 +472,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B27AE52DC1C29B002D9407 /* download-icon.png in Resources */,
+				A5B27AE62DC1C29B002D9407 /* download-icon.svg in Resources */,
+				A5B27AE82DC1C29B002D9407 /* Icon.png in Resources */,
+				A5B27AE92DC1C29B002D9407 /* Icon-16.png in Resources */,
+				A5B27AEA2DC1C29B002D9407 /* Icon-16-download.png in Resources */,
+				A5B27AEB2DC1C29B002D9407 /* Icon-32.png in Resources */,
+				A5B27AEC2DC1C29B002D9407 /* Icon-32-download.png in Resources */,
+				A5B27AED2DC1C29B002D9407 /* Icon-48.png in Resources */,
+				A5B27AEE2DC1C29B002D9407 /* Icon-48-download.png in Resources */,
+				A5B27AEF2DC1C29B002D9407 /* Icon-64.png in Resources */,
+				A5B27AF02DC1C29B002D9407 /* Icon-64-download.png in Resources */,
+				A5B27AF12DC1C29B002D9407 /* Icon-96.png in Resources */,
+				A5B27B012DC2EB47002D9407 /* download-icon-min.svg in Resources */,
+				A5B27AF22DC1C29B002D9407 /* Icon-96-download.png in Resources */,
+				A5B27AF32DC1C29B002D9407 /* Icon-128.png in Resources */,
+				A5B27AF42DC1C29B002D9407 /* Icon-128-download.png in Resources */,
+				A5B27AF52DC1C29B002D9407 /* Icon-256.png in Resources */,
+				A5B27AF62DC1C29B002D9407 /* Icon-256-download.png in Resources */,
+				A5B27AF72DC1C29B002D9407 /* Icon-512.png in Resources */,
+				A5B27AF82DC1C29B002D9407 /* Icon-512-download.png in Resources */,
+				A5B27AF92DC1C29B002D9407 /* LogGPTorig.png in Resources */,
+				A5B27AFA2DC1C29B002D9407 /* LogGPT.png in Resources */,
+				A5B27AFB2DC1C29B002D9407 /* LogGPT-download.png in Resources */,
+				A5B27AFC2DC1C29B002D9407 /* orig-download-icon.svg in Resources */,
+				A5B27AFD2DC1C29B002D9407 /* orig-download-icon.min.svg in Resources */,
 				A56625A32CD9248300FC29A8 /* LogGPT-conv-export.js in Resources */,
 				A566259F2CD9248300FC29A8 /* README.md in Resources */,
-				A56625A12CD9248300FC29A8 /* icons in Resources */,
 				A566259D2CD9248300FC29A8 /* LogGPT in Resources */,
 				A50BB71A2D886B6B00D61162 /* manifest.json in Resources */,
 				A56625A52CD9248300FC29A8 /* manifest-v2.json in Resources */,
@@ -520,7 +625,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = NO;
+				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -621,7 +726,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -635,7 +740,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -656,7 +761,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -670,7 +775,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -695,7 +800,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_APP_SANDBOX = YES;
@@ -738,7 +843,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_APP_SANDBOX = YES;

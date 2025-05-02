@@ -14,7 +14,7 @@
     "web_accessible_resources": [
         {
             "resources": [
-                "icons/download-icon.min.svg",
+                "icons/download-icon-min.svg",
                 "icons/download-icon.png"
             ],
             "matches": [
@@ -43,7 +43,7 @@
         "default_icon": {
             "16": "icons/Icon-16.png",
             "32": "icons/Icon-32.png",
-            "48": "icons/Icon-48.png"
+            "48": "icons/Icon-48.png",
         }
     }
 }

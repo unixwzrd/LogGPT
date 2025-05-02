@@ -2,7 +2,7 @@
 // LogGPT: Chat Log Export
 //
 // Author: <https://github.com/unixwzrd>
-// Version: 1.0.3 Renamed the application and changed the oicons.
+// Version: 1.0.3 Renamed the application and changed the icons.
 // License: MIT
 //
 // Version 1.0.5
@@ -141,7 +141,7 @@ function downloadThreadId(threadId, jsonText) {
 // Download Icon Resource
 function getIconURL() {
   if (typeof browser !== "undefined") {
-    return browser.runtime.getURL("icons/download-icon.min.svg");
+    return browser.runtime.getURL("icons/download-icon-min.svg");
   } else {
     console.error("Unsupported browser: Cannot determine icon URL");
     return "";

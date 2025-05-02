@@ -28,7 +28,6 @@ body {
     text-align: center;
 
     background: linear-gradient(to bottom, #245a99, #1f3a4d);
-    transform: translateX(-48px);
 }
 
 body:not(.state-on, .state-off) :is(.state-on, .state-off) {
@@ -51,8 +50,9 @@ button {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    padding-right: 260px;
 }
 
 button:hover {
-    background-color: #5c5c5c; /* Slightly darker on hover */
+    background-color: #8d8d8d; /* Slightly darker on hover */
 }

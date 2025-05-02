@@ -13,12 +13,6 @@
       "size" : "16x16"
     },
     {
-      "filename" : "Icon-32-download 1.png",
-      "idiom" : "mac",
-      "scale" : "1x",
-      "size" : "32x32"
-    },
-    {
       "filename" : "Icon-64-download.png",
       "idiom" : "mac",
       "scale" : "2x",
@@ -37,22 +31,10 @@
       "size" : "128x128"
     },
     {
-      "filename" : "Icon-256-download 1.png",
-      "idiom" : "mac",
-      "scale" : "1x",
-      "size" : "256x256"
-    },
-    {
       "filename" : "Icon-512-download.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "256x256"
-    },
-    {
-      "filename" : "Icon-512-download 1.png",
-      "idiom" : "mac",
-      "scale" : "1x",
-      "size" : "512x512"
     },
     {
       "filename" : "LogGPT-download.png",
