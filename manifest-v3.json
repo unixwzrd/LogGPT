@@ -12,15 +12,15 @@
         "128": "icons/Icon-128.png"
     },
     "web_accessible_resources": [
-        {
-            "resources": [
-                "icons/download-icon-min.svg",
-                "icons/download-icon.png"
-            ],
-            "matches": [
-                "*://chatgpt.com/*"
-            ]
-        }
+      {
+        "resources": [
+          "icons/download-icon-min.svg",
+          "icons/download-icon.png",
+          "icons/Icon-32.png",
+          "icons/Icon-48.png"
+        ],
+        "matches": ["<all_urls>"]
+      }
     ],
     "content_scripts": [
         {
