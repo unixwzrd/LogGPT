@@ -29,31 +29,55 @@
 		A56625A32CD9248300FC29A8 /* LogGPT-conv-export.js in Resources */ = {isa = PBXBuildFile; fileRef = A56625972CD9248300FC29A8 /* LogGPT-conv-export.js */; };
 		A56625A42CD9248300FC29A8 /* manifest-v3.json in Resources */ = {isa = PBXBuildFile; fileRef = A56625982CD9248300FC29A8 /* manifest-v3.json */; };
 		A56625A52CD9248300FC29A8 /* manifest-v2.json in Resources */ = {isa = PBXBuildFile; fileRef = A56625992CD9248300FC29A8 /* manifest-v2.json */; };
-		A5B27AE52DC1C29B002D9407 /* download-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19CF2DC18E6D00C593F5 /* download-icon.png */; };
-		A5B27AE62DC1C29B002D9407 /* download-icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D02DC18E6D00C593F5 /* download-icon.svg */; };
-		A5B27AE82DC1C29B002D9407 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D22DC18E6D00C593F5 /* Icon.png */; };
-		A5B27AE92DC1C29B002D9407 /* Icon-16.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D32DC18E6D00C593F5 /* Icon-16.png */; };
-		A5B27AEA2DC1C29B002D9407 /* Icon-16-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D42DC18E6D00C593F5 /* Icon-16-download.png */; };
-		A5B27AEB2DC1C29B002D9407 /* Icon-32.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D52DC18E6D00C593F5 /* Icon-32.png */; };
-		A5B27AEC2DC1C29B002D9407 /* Icon-32-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D62DC18E6D00C593F5 /* Icon-32-download.png */; };
-		A5B27AED2DC1C29B002D9407 /* Icon-48.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D72DC18E6D00C593F5 /* Icon-48.png */; };
-		A5B27AEE2DC1C29B002D9407 /* Icon-48-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D82DC18E6D00C593F5 /* Icon-48-download.png */; };
-		A5B27AEF2DC1C29B002D9407 /* Icon-64.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D92DC18E6D00C593F5 /* Icon-64.png */; };
-		A5B27AF02DC1C29B002D9407 /* Icon-64-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DA2DC18E6D00C593F5 /* Icon-64-download.png */; };
-		A5B27AF12DC1C29B002D9407 /* Icon-96.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DB2DC18E6D00C593F5 /* Icon-96.png */; };
-		A5B27AF22DC1C29B002D9407 /* Icon-96-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DC2DC18E6D00C593F5 /* Icon-96-download.png */; };
-		A5B27AF32DC1C29B002D9407 /* Icon-128.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DD2DC18E6D00C593F5 /* Icon-128.png */; };
-		A5B27AF42DC1C29B002D9407 /* Icon-128-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DE2DC18E6D00C593F5 /* Icon-128-download.png */; };
-		A5B27AF52DC1C29B002D9407 /* Icon-256.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DF2DC18E6D00C593F5 /* Icon-256.png */; };
-		A5B27AF62DC1C29B002D9407 /* Icon-256-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E02DC18E6D00C593F5 /* Icon-256-download.png */; };
-		A5B27AF72DC1C29B002D9407 /* Icon-512.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E12DC18E6D00C593F5 /* Icon-512.png */; };
-		A5B27AF82DC1C29B002D9407 /* Icon-512-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E22DC18E6D00C593F5 /* Icon-512-download.png */; };
-		A5B27AF92DC1C29B002D9407 /* LogGPTorig.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E32DC18E6D00C593F5 /* LogGPTorig.png */; };
-		A5B27AFA2DC1C29B002D9407 /* LogGPT.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E42DC18E6D00C593F5 /* LogGPT.png */; };
-		A5B27AFB2DC1C29B002D9407 /* LogGPT-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E52DC18E6D00C593F5 /* LogGPT-download.png */; };
-		A5B27AFC2DC1C29B002D9407 /* orig-download-icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E62DC18E6D00C593F5 /* orig-download-icon.svg */; };
-		A5B27AFD2DC1C29B002D9407 /* orig-download-icon.min.svg in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E72DC18E6D00C593F5 /* orig-download-icon.min.svg */; };
-		A5B27B012DC2EB47002D9407 /* download-icon-min.svg in Resources */ = {isa = PBXBuildFile; fileRef = A5B27B002DC2EB47002D9407 /* download-icon-min.svg */; };
+		A5E527372DC44ECC00BC683C /* download-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19CF2DC18E6D00C593F5 /* download-icon.png */; };
+		A5E527382DC44ECC00BC683C /* download-icon-min.svg in Resources */ = {isa = PBXBuildFile; fileRef = A5B27B002DC2EB47002D9407 /* download-icon-min.svg */; };
+		A5E527392DC44ECC00BC683C /* download-icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D02DC18E6D00C593F5 /* download-icon.svg */; };
+		A5E5273A2DC44ECC00BC683C /* Icon-16.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D32DC18E6D00C593F5 /* Icon-16.png */; };
+		A5E5273B2DC44ECC00BC683C /* Icon-16-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D42DC18E6D00C593F5 /* Icon-16-download.png */; };
+		A5E5273C2DC44ECC00BC683C /* Icon-32.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D52DC18E6D00C593F5 /* Icon-32.png */; };
+		A5E5273D2DC44ECC00BC683C /* Icon-32-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D62DC18E6D00C593F5 /* Icon-32-download.png */; };
+		A5E5273E2DC44ECC00BC683C /* Icon-48.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D72DC18E6D00C593F5 /* Icon-48.png */; };
+		A5E5273F2DC44ECC00BC683C /* Icon-48-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D82DC18E6D00C593F5 /* Icon-48-download.png */; };
+		A5E527402DC44ECC00BC683C /* Icon-64.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D92DC18E6D00C593F5 /* Icon-64.png */; };
+		A5E527412DC44ECC00BC683C /* Icon-64-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DA2DC18E6D00C593F5 /* Icon-64-download.png */; };
+		A5E527422DC44ECC00BC683C /* Icon-96.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DB2DC18E6D00C593F5 /* Icon-96.png */; };
+		A5E527432DC44ECC00BC683C /* Icon-96-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DC2DC18E6D00C593F5 /* Icon-96-download.png */; };
+		A5E527442DC44ECC00BC683C /* Icon-128.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DD2DC18E6D00C593F5 /* Icon-128.png */; };
+		A5E527452DC44ECC00BC683C /* Icon-128-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DE2DC18E6D00C593F5 /* Icon-128-download.png */; };
+		A5E527462DC44ECC00BC683C /* Icon-256.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DF2DC18E6D00C593F5 /* Icon-256.png */; };
+		A5E527472DC44ECC00BC683C /* Icon-256-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E02DC18E6D00C593F5 /* Icon-256-download.png */; };
+		A5E527482DC44ECC00BC683C /* Icon-512.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E12DC18E6D00C593F5 /* Icon-512.png */; };
+		A5E527492DC44ECC00BC683C /* Icon-512-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E22DC18E6D00C593F5 /* Icon-512-download.png */; };
+		A5E5274A2DC44ECC00BC683C /* LogGPTorig.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E32DC18E6D00C593F5 /* LogGPTorig.png */; };
+		A5E5274B2DC44ECC00BC683C /* LogGPT.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E42DC18E6D00C593F5 /* LogGPT.png */; };
+		A5E5274C2DC44ECC00BC683C /* LogGPT-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E52DC18E6D00C593F5 /* LogGPT-download.png */; };
+		A5E5274D2DC44ECC00BC683C /* orig-download-icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E62DC18E6D00C593F5 /* orig-download-icon.svg */; };
+		A5E5274E2DC44ECC00BC683C /* orig-download-icon.min.svg in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E72DC18E6D00C593F5 /* orig-download-icon.min.svg */; };
+		A5E5274F2DC44EF700BC683C /* download-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19CF2DC18E6D00C593F5 /* download-icon.png */; };
+		A5E527502DC44EF700BC683C /* download-icon-min.svg in Resources */ = {isa = PBXBuildFile; fileRef = A5B27B002DC2EB47002D9407 /* download-icon-min.svg */; };
+		A5E527512DC44EF700BC683C /* download-icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D02DC18E6D00C593F5 /* download-icon.svg */; };
+		A5E527522DC44EF700BC683C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D22DC18E6D00C593F5 /* Icon.png */; };
+		A5E527532DC44EF700BC683C /* Icon-16.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D32DC18E6D00C593F5 /* Icon-16.png */; };
+		A5E527542DC44EF700BC683C /* Icon-16-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D42DC18E6D00C593F5 /* Icon-16-download.png */; };
+		A5E527552DC44EF700BC683C /* Icon-32.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D52DC18E6D00C593F5 /* Icon-32.png */; };
+		A5E527562DC44EF700BC683C /* Icon-32-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D62DC18E6D00C593F5 /* Icon-32-download.png */; };
+		A5E527572DC44EF700BC683C /* Icon-48.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D72DC18E6D00C593F5 /* Icon-48.png */; };
+		A5E527582DC44EF700BC683C /* Icon-48-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D82DC18E6D00C593F5 /* Icon-48-download.png */; };
+		A5E527592DC44EF700BC683C /* Icon-64.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19D92DC18E6D00C593F5 /* Icon-64.png */; };
+		A5E5275A2DC44EF700BC683C /* Icon-64-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DA2DC18E6D00C593F5 /* Icon-64-download.png */; };
+		A5E5275B2DC44EF700BC683C /* Icon-96.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DB2DC18E6D00C593F5 /* Icon-96.png */; };
+		A5E5275C2DC44EF700BC683C /* Icon-96-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DC2DC18E6D00C593F5 /* Icon-96-download.png */; };
+		A5E5275D2DC44EF700BC683C /* Icon-128.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DD2DC18E6D00C593F5 /* Icon-128.png */; };
+		A5E5275E2DC44EF700BC683C /* Icon-128-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DE2DC18E6D00C593F5 /* Icon-128-download.png */; };
+		A5E5275F2DC44EF700BC683C /* Icon-256.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19DF2DC18E6D00C593F5 /* Icon-256.png */; };
+		A5E527602DC44EF700BC683C /* Icon-256-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E02DC18E6D00C593F5 /* Icon-256-download.png */; };
+		A5E527612DC44EF700BC683C /* Icon-512.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E12DC18E6D00C593F5 /* Icon-512.png */; };
+		A5E527622DC44EF700BC683C /* Icon-512-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E22DC18E6D00C593F5 /* Icon-512-download.png */; };
+		A5E527632DC44EF700BC683C /* LogGPTorig.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E32DC18E6D00C593F5 /* LogGPTorig.png */; };
+		A5E527642DC44EF700BC683C /* LogGPT.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E42DC18E6D00C593F5 /* LogGPT.png */; };
+		A5E527652DC44EF700BC683C /* LogGPT-download.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E52DC18E6D00C593F5 /* LogGPT-download.png */; };
+		A5E527662DC44EF700BC683C /* orig-download-icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E62DC18E6D00C593F5 /* orig-download-icon.svg */; };
+		A5E527672DC44EF700BC683C /* orig-download-icon.min.svg in Resources */ = {isa = PBXBuildFile; fileRef = A55E19E72DC18E6D00C593F5 /* orig-download-icon.min.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -445,6 +469,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5E527372DC44ECC00BC683C /* download-icon.png in Resources */,
+				A5E527382DC44ECC00BC683C /* download-icon-min.svg in Resources */,
+				A5E527392DC44ECC00BC683C /* download-icon.svg in Resources */,
+				A5E5273A2DC44ECC00BC683C /* Icon-16.png in Resources */,
+				A5E5273B2DC44ECC00BC683C /* Icon-16-download.png in Resources */,
+				A5E5273C2DC44ECC00BC683C /* Icon-32.png in Resources */,
+				A5E5273D2DC44ECC00BC683C /* Icon-32-download.png in Resources */,
+				A5E5273E2DC44ECC00BC683C /* Icon-48.png in Resources */,
+				A5E5273F2DC44ECC00BC683C /* Icon-48-download.png in Resources */,
+				A5E527402DC44ECC00BC683C /* Icon-64.png in Resources */,
+				A5E527412DC44ECC00BC683C /* Icon-64-download.png in Resources */,
+				A5E527422DC44ECC00BC683C /* Icon-96.png in Resources */,
+				A5E527432DC44ECC00BC683C /* Icon-96-download.png in Resources */,
+				A5E527442DC44ECC00BC683C /* Icon-128.png in Resources */,
+				A5E527452DC44ECC00BC683C /* Icon-128-download.png in Resources */,
+				A5E527462DC44ECC00BC683C /* Icon-256.png in Resources */,
+				A5E527472DC44ECC00BC683C /* Icon-256-download.png in Resources */,
+				A5E527482DC44ECC00BC683C /* Icon-512.png in Resources */,
+				A5E527492DC44ECC00BC683C /* Icon-512-download.png in Resources */,
+				A5E5274A2DC44ECC00BC683C /* LogGPTorig.png in Resources */,
+				A5E5274B2DC44ECC00BC683C /* LogGPT.png in Resources */,
+				A5E5274C2DC44ECC00BC683C /* LogGPT-download.png in Resources */,
+				A5E5274D2DC44ECC00BC683C /* orig-download-icon.svg in Resources */,
+				A5E5274E2DC44ECC00BC683C /* orig-download-icon.min.svg in Resources */,
 				A56625552CD9248200FC29A8 /* Main.storyboard in Resources */,
 				A56625502CD9248200FC29A8 /* Script.js in Resources */,
 				A566254A2CD9248200FC29A8 /* Main.html in Resources */,
@@ -472,31 +520,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5B27AE52DC1C29B002D9407 /* download-icon.png in Resources */,
-				A5B27AE62DC1C29B002D9407 /* download-icon.svg in Resources */,
-				A5B27AE82DC1C29B002D9407 /* Icon.png in Resources */,
-				A5B27AE92DC1C29B002D9407 /* Icon-16.png in Resources */,
-				A5B27AEA2DC1C29B002D9407 /* Icon-16-download.png in Resources */,
-				A5B27AEB2DC1C29B002D9407 /* Icon-32.png in Resources */,
-				A5B27AEC2DC1C29B002D9407 /* Icon-32-download.png in Resources */,
-				A5B27AED2DC1C29B002D9407 /* Icon-48.png in Resources */,
-				A5B27AEE2DC1C29B002D9407 /* Icon-48-download.png in Resources */,
-				A5B27AEF2DC1C29B002D9407 /* Icon-64.png in Resources */,
-				A5B27AF02DC1C29B002D9407 /* Icon-64-download.png in Resources */,
-				A5B27AF12DC1C29B002D9407 /* Icon-96.png in Resources */,
-				A5B27B012DC2EB47002D9407 /* download-icon-min.svg in Resources */,
-				A5B27AF22DC1C29B002D9407 /* Icon-96-download.png in Resources */,
-				A5B27AF32DC1C29B002D9407 /* Icon-128.png in Resources */,
-				A5B27AF42DC1C29B002D9407 /* Icon-128-download.png in Resources */,
-				A5B27AF52DC1C29B002D9407 /* Icon-256.png in Resources */,
-				A5B27AF62DC1C29B002D9407 /* Icon-256-download.png in Resources */,
-				A5B27AF72DC1C29B002D9407 /* Icon-512.png in Resources */,
-				A5B27AF82DC1C29B002D9407 /* Icon-512-download.png in Resources */,
-				A5B27AF92DC1C29B002D9407 /* LogGPTorig.png in Resources */,
-				A5B27AFA2DC1C29B002D9407 /* LogGPT.png in Resources */,
-				A5B27AFB2DC1C29B002D9407 /* LogGPT-download.png in Resources */,
-				A5B27AFC2DC1C29B002D9407 /* orig-download-icon.svg in Resources */,
-				A5B27AFD2DC1C29B002D9407 /* orig-download-icon.min.svg in Resources */,
+				A5E5274F2DC44EF700BC683C /* download-icon.png in Resources */,
+				A5E527502DC44EF700BC683C /* download-icon-min.svg in Resources */,
+				A5E527512DC44EF700BC683C /* download-icon.svg in Resources */,
+				A5E527522DC44EF700BC683C /* Icon.png in Resources */,
+				A5E527532DC44EF700BC683C /* Icon-16.png in Resources */,
+				A5E527542DC44EF700BC683C /* Icon-16-download.png in Resources */,
+				A5E527552DC44EF700BC683C /* Icon-32.png in Resources */,
+				A5E527562DC44EF700BC683C /* Icon-32-download.png in Resources */,
+				A5E527572DC44EF700BC683C /* Icon-48.png in Resources */,
+				A5E527582DC44EF700BC683C /* Icon-48-download.png in Resources */,
+				A5E527592DC44EF700BC683C /* Icon-64.png in Resources */,
+				A5E5275A2DC44EF700BC683C /* Icon-64-download.png in Resources */,
+				A5E5275B2DC44EF700BC683C /* Icon-96.png in Resources */,
+				A5E5275C2DC44EF700BC683C /* Icon-96-download.png in Resources */,
+				A5E5275D2DC44EF700BC683C /* Icon-128.png in Resources */,
+				A5E5275E2DC44EF700BC683C /* Icon-128-download.png in Resources */,
+				A5E5275F2DC44EF700BC683C /* Icon-256.png in Resources */,
+				A5E527602DC44EF700BC683C /* Icon-256-download.png in Resources */,
+				A5E527612DC44EF700BC683C /* Icon-512.png in Resources */,
+				A5E527622DC44EF700BC683C /* Icon-512-download.png in Resources */,
+				A5E527632DC44EF700BC683C /* LogGPTorig.png in Resources */,
+				A5E527642DC44EF700BC683C /* LogGPT.png in Resources */,
+				A5E527652DC44EF700BC683C /* LogGPT-download.png in Resources */,
+				A5E527662DC44EF700BC683C /* orig-download-icon.svg in Resources */,
+				A5E527672DC44EF700BC683C /* orig-download-icon.min.svg in Resources */,
 				A56625A32CD9248300FC29A8 /* LogGPT-conv-export.js in Resources */,
 				A566259F2CD9248300FC29A8 /* README.md in Resources */,
 				A566259D2CD9248300FC29A8 /* LogGPT in Resources */,
