@@ -2,7 +2,9 @@
 
 It appears the security policy changes with Apple and I have managed to get the app submitted to the App Store. There are also no time restrictions on having to reset the Allow Unsigned extensions anymore, though I could be wrong, in fact it seems to install and stay installed and function now without having to allow for unsigned extensions. I have not been able to try this out, but am adding a signed binary compile using my valid Apple Developer Certificate to the repo.
 
-![LogGPT Icon](./icons/LogGPT.png)
+<p align="center">
+  <img src="./LogGPT/LogGPT%20Extension/icons/Icon-512.png" alt="LogGPT Icon" />
+</p>
 
 ## Table of Contents
 
@@ -85,11 +87,11 @@ You will need a copy of Xcode, you can get it and this extension on the App Stor
 
 [The Xcode project file is here.](https://github.com/unixwzrd/chatgpt-chatlog-export/tree/main/LogGPT)) Clone the repository and try
 
-  ```bash
+  \`\`\`bash
   git clone https://github.com/unixwzrd/chatgpt-chatlog-export.git chatgpt-jason
   cd chatgpt-jason
   xcodebuild build -project 'LogGPT.xcodeproj'
-  ```
+  \`\`\`
 
 ### If You Build It Yourself
 
