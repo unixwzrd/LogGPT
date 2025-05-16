@@ -14,7 +14,7 @@
     },
 
     "web_accessible_resources": [
-      "icons/download-icon-min.svg",
+
       "icons/download-icon.png",
       "icons/Icon-32.png",
       "icons/Icon-48.png"

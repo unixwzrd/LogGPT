@@ -141,7 +141,7 @@ function downloadThreadId(threadId, jsonText) {
 // Download Icon Resource
 function getIconURL() {
   if (typeof browser !== "undefined") {
-    return browser.runtime.getURL("icons/download-icon-min.svg");
+    return browser.runtime.getURL("icons/download-icon.svg");
   } else {
     console.error("Unsupported browser: Cannot determine icon URL");
     return "";
