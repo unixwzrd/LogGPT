@@ -412,4 +412,5 @@ iOSInjectionProject/
 
 tmp/
 Backup/
+*.bak
 bashexp*.txt
