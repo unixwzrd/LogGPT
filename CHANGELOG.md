@@ -1,9 +1,13 @@
 # Changelog
 
-## 2025/04/29  v1.0.5
+## 2025/05/15  v1.0.5
 
 - Changed to new icons
 - Changed spacing on the ChatGPT UI Download button, was covering "Canvas" button.
+- Button icon now dynamically positions itself to the left of the standard
+  OpenAI Web UI interface elements like Casvas, Share, "Stacked Dots" for archive/delete, and
+  User Settings.
+- Icon/button will change positiojn based on the OpenAI Web UI elements.
 
 ## 2025/03/19  v1.0.4
 

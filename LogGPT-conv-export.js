@@ -159,25 +159,49 @@ clog(`[debug] iconURL: ${iconURL}`);
 const iconImage = document.createElement("img");
 iconImage.src = iconURL;
 iconImage.alt = "Download";
+// Set icon size to 32x32px
+iconImage.style.width = "32px";
+iconImage.style.height = "32px";
 saveButton.appendChild(iconImage);
 
-// Image icon position
-saveButton.style.position = "fixed";
-saveButton.style.top = "0.8em";
-saveButton.style.right = "15em";
-saveButton.style.zIndex = "9999";
+// Remove fixed positioning and set button size to 96x32px (3x32px)
+saveButton.style.position = "";
+saveButton.style.top = "";
+saveButton.style.right = "";
+saveButton.style.zIndex = "";
+saveButton.style.width = "48px";
+saveButton.style.height = "32px";
+saveButton.style.background = "none";
+saveButton.style.border = "none";
+saveButton.style.padding = "0";
+saveButton.style.cursor = "pointer";
+saveButton.style.display = "flex";
+saveButton.style.alignItems = "center";
+saveButton.style.justifyContent = "center";
 
-// Insert a save button into your page
+// Function to inject the button as the left-most item in the conversation header actions
+function injectSaveButton() {
+    const headerActions = document.getElementById("conversation-header-actions");
+    if (headerActions && !headerActions.contains(saveButton)) {
+        headerActions.insertBefore(saveButton, headerActions.firstChild);
+    }
+}
+
+// Monitor the thread ID and inject/remove button as needed
 let currentThreadId = -1;
 setInterval(() => {
-  // Monitor the thread ID and delete it if it cannot be obtained
   const threadId = getThreadId();
   if (currentThreadId != threadId) {
     currentThreadId = threadId;
-    if (threadId != null) document.body.appendChild(saveButton);
-    else if (saveButton.parentNode) {
+    if (threadId != null) {
+      injectSaveButton();
+    } else if (saveButton.parentNode) {
       saveButton.parentNode.removeChild(saveButton);
     }
+  }
+  // Re-inject periodically in case the header is re-rendered
+  if (currentThreadId != null) {
+    injectSaveButton();
   }
 }, 1000);
 
