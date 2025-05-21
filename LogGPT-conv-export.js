@@ -1,248 +1,266 @@
-// Language: JavaScript
-// LogGPT: Chat Log Export
-//
-// Author: <https://github.com/unixwzrd>
-// Version: 1.0.3 Renamed the application and changed the icons.
-// License: MIT
-//
-// Version 1.0.5
-// - Removed Chrome an Firefox code
-// - Changed the API handling for new Safari and deprecated API
+// ==UserScript==
+// @name         LogGPT: Chat Log Export (Safari Only)
+// @version      1.0.7
+// @author       unixwzrd
+// @license      MIT
+// ==/UserScript==
 
-// Const variable
 const DOMAIN_LOGGPT = "chatgpt.com";
-
 const DEBUG = false;
+
+let isActive = false;
+let loggptExportInterval = null;
+let currentThreadId = null;
 const gptSession = { data: null };
-if (DEBUG) document.body.style.border = "5px solid red";
 
-// logging
-function clog(msg) {
-  if (DEBUG) if (msg.startsWith("[debug]")) console.log(msg);
+// Logging helper
+function clog(msg) { if (DEBUG) console.log(msg); }
+
+// --- UI Injection and Removal ---
+function injectSaveButton() {
+    if (!isOnChatGPT() || document.getElementById('loggpt-save-btn')) return;
+    const headerActions = document.getElementById("conversation-header-actions");
+    if (!headerActions) return;
+
+    const iconURL = getIconURL();
+    if (!iconURL) return;
+
+    const saveButton = document.createElement("button");
+    saveButton.id = 'loggpt-save-btn';
+    Object.assign(saveButton.style, {
+        width: "48px", height: "32px", background: "none", border: "none",
+        padding: "0", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center"
+    });
+    const iconImage = document.createElement("img");
+    iconImage.src = iconURL;
+    iconImage.alt = "Download";
+    iconImage.style.width = "32px";
+    iconImage.style.height = "32px";
+    saveButton.appendChild(iconImage);
+
+    saveButton.addEventListener("click", async () => {
+        const threadId = getThreadId();
+        const data = await getConversation(threadId);
+        downloadThreadId(threadId, JSON.stringify(data, null, 2));
+    });
+
+    headerActions.insertBefore(saveButton, headerActions.firstChild);
+    clog('[debug] Save button injected.');
 }
 
-// Detect Browser
-const BRW_SAFARI = "Safari";
-
-function detectBrowser() {
-  return BRW_SAFARI;
+function removeSaveButton() {
+    const existing = document.getElementById('loggpt-save-btn');
+    if (existing && existing.parentNode) {
+        existing.parentNode.removeChild(existing);
+        clog('[debug] Save button removed.');
+    }
 }
-const DETECT_BROWSER = detectBrowser();
 
-// Encryption and decryption
+// --- Activation/Deactivation ---
 
-// Shuffle String
+function activateExtension() {
+    if (isActive) return; // Already active
+    isActive = true;
+    clog('[debug] Extension activated.');
+    startInjectionInterval();
+}
+
+function deactivateExtension() {
+    if (!isActive) return; // Already inactive
+    isActive = false;
+    cleanupExtension();
+    clog('[debug] Extension deactivated.');
+}
+
+function cleanupExtension() {
+    stopInjectionInterval();
+    removeSaveButton();
+    currentThreadId = null;
+}
+
+// --- Interval Logic ---
+
+function startInjectionInterval() {
+    if (loggptExportInterval) return; // Only one interval ever
+    loggptExportInterval = setInterval(() => {
+        if (!isActive) return;
+        const threadId = getThreadId();
+        const headerActions = document.getElementById("conversation-header-actions");
+        if (!headerActions) return;
+        if (currentThreadId !== threadId) {
+            removeSaveButton();
+            currentThreadId = threadId;
+        }
+        if (currentThreadId && !document.getElementById('loggpt-save-btn')) {
+            injectSaveButton();
+        }
+    }, 1000);
+    clog('[debug] Injection interval started.');
+}
+
+function stopInjectionInterval() {
+    if (loggptExportInterval) {
+        clearInterval(loggptExportInterval);
+        loggptExportInterval = null;
+        clog('[debug] Injection interval stopped.');
+    }
+}
+
+// --- Util Functions ---
+
+function getThreadId() {
+    const url = window.location.href;
+    const match = url.match(/c\/([\w-]+)/);
+    return match ? match[1] : null;
+}
+
+function isOnChatGPT() {
+    return window.location.hostname.endsWith(DOMAIN_LOGGPT);
+}
+
+function getIconURL() {
+    // Safari-only, no browser.runtime.* or cross-browser checks
+    if (typeof safari !== "undefined" && safari.extension && safari.extension.baseURI)
+        return safari.extension.baseURI + "icons/download-icon.svg";
+    return "";
+}
+
+// --- Download logic ---
+
+function downloadThreadId(threadId, jsonText) {
+    const prefix = "LogGPT-clog";
+    const blob = new Blob([jsonText], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${prefix}-${threadId}.json`;
+    a.click();
+}
+
+// --- Safari Messaging Only (NO Chrome/Firefox/WebExtension) ---
+
+if (typeof safari !== "undefined" && safari.self && safari.self.addEventListener) {
+    safari.self.addEventListener("message", event => {
+        if (event.name === "activate") activateExtension();
+        else if (event.name === "deactivate" || event.name === "kill") deactivateExtension();
+    }, false);
+}
+
+// --- On page load: Start only if extension is active (Safari auto-injects content script) ---
+
+if (isOnChatGPT()) {
+    activateExtension();
+    // Remove everything on window unload (tab close, reload, navigation away)
+    window.addEventListener('unload', () => { deactivateExtension(); });
+}
+
+// --- Conversation Fetch/Token logic unchanged ---
+
 function shuffleString(str) {
-  const chars = str.split(""); // Split a string into an array character by character
-  for (let i = chars.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1)); // random integer from 0 to i
-    [chars[i], chars[j]] = [chars[j], chars[i]]; // replace split string
-  }
-  return chars.join(""); // return array to string
+    const chars = str.split("");
+    for (let i = chars.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [chars[i], chars[j]] = [chars[j], chars[i]];
+    }
+    return chars.join("");
 }
 
-// Create a temporary encryption key
 function generateRandomString(length) {
-  const array = new Uint8Array(length);
-  window.crypto.getRandomValues(array);
-  const charset = shuffleString(
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-  );
-  clog(`[debug] charset: ${charset}`);
-  return Array.from(array, (x) => charset[x % charset.length]).join("");
+    const array = new Uint8Array(length);
+    window.crypto.getRandomValues(array);
+    const charset = shuffleString(
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    );
+    clog(`[debug] charset: ${charset}`);
+    return Array.from(array, (x) => charset[x % charset.length]).join("");
 }
 const KEY_TOKEN = generateRandomString(32);
 clog(`[debug] KEY_TOKEN: ${KEY_TOKEN}`);
 
-// Encryption
 function encryptToken(token, key) {
-  let encrypted = "";
-  for (let i = 0; i < token.length; i++) {
-    let charCode = token.charCodeAt(i) ^ key.charCodeAt(i % key.length);
-    encrypted += String.fromCharCode(charCode);
-  }
-  return encrypted;
+    let encrypted = "";
+    for (let i = 0; i < token.length; i++) {
+        let charCode = token.charCodeAt(i) ^ key.charCodeAt(i % key.length);
+        encrypted += String.fromCharCode(charCode);
+    }
+    return encrypted;
 }
 
-// Decryption
 function decryptToken(token, key) {
-  let decrypted = "";
-  for (let i = 0; i < token.length; i++) {
-    let charCode = token.charCodeAt(i) ^ key.charCodeAt(i % key.length);
-    decrypted += String.fromCharCode(charCode);
-  }
-  return decrypted;
+    let decrypted = "";
+    for (let i = 0; i < token.length; i++) {
+        let charCode = token.charCodeAt(i) ^ key.charCodeAt(i % key.length);
+        decrypted += String.fromCharCode(charCode);
+    }
+    return decrypted;
 }
 
-// Get ThreadId (ChatId)
-function getThreadId() {
-  const url = window.location.href;
-  const match = url.match(/c\/([\w-]+)/);
-  return match ? match[1] : null;
-}
-
-// Get AccessToken
 async function getAccessToken() {
-  return await getAccessTokenSafari();
+    return await getAccessTokenSafari();
 }
 
 async function getAccessTokenSafari() {
-  clog(`[debug] gptSession.data: ${gptSession.data == null}`);
-  if (gptSession.data == null) {
-    const threadId = getThreadId();
-    const response = await fetch(`https://${DOMAIN_LOGGPT}/api/auth/session`, {
-      credentials: "include",
-      headers: {
-        "User-Agent": window.navigator.userAgent,
-        Accept: "*/*",
-        "Accept-Language": navigator.language,
-        "Alt-Used": `${DOMAIN_LOGGPT}`,
-        Pragma: "no-cache",
-        "Cache-Control": "no-cache",
-      },
-      referrer: `https://${DOMAIN_LOGGPT}/c/${threadId}`,
-      method: "GET",
-      mode: "cors",
-    });
+    clog(`[debug] gptSession.data: ${gptSession.data == null}`);
+    if (gptSession.data == null) {
+        const threadId = getThreadId();
+        const response = await fetch(`https://${DOMAIN_LOGGPT}/api/auth/session`, {
+            credentials: "include",
+            headers: {
+                "User-Agent": window.navigator.userAgent,
+                Accept: "*/*",
+                "Accept-Language": navigator.language,
+                "Alt-Used": `${DOMAIN_LOGGPT}`,
+                Pragma: "no-cache",
+                "Cache-Control": "no-cache",
+            },
+            referrer: `https://${DOMAIN_LOGGPT}/c/${threadId}`,
+            method: "GET",
+            mode: "cors",
+        });
 
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        clog(`[debug] getAccessToken() response: ${data != null}`);
+        data.accessToken = encryptToken(data.accessToken, KEY_TOKEN);
+        gptSession.data = data;
+        clog(`[debug] accessToken: ${gptSession.data != null}`);
+        if (gptSession.data != null) {
+            if (DEBUG) document.body.style.border = "5px solid green";
+        }
     }
-
-    const data = await response.json();
-    clog(`[debug] getAccessToken() response: ${data != null}`);
-    // Encrypt the accessToken
-    data.accessToken = encryptToken(data.accessToken, KEY_TOKEN);
-    // cache
-    gptSession.data = data;
-    clog(`[debug] accessToken: ${gptSession.data != null}`);
-    if (gptSession.data != null) {
-      // cache OK
-      if (DEBUG) document.body.style.border = "5px solid green";
-    }
-  } else {
-    // Do not refetch if cached
-  }
-  // decrypt and return
-  return decryptToken(gptSession.data.accessToken, KEY_TOKEN);
+    return decryptToken(gptSession.data.accessToken, KEY_TOKEN);
 }
-
-// Export conversation (download)
-function downloadThreadId(threadId, jsonText) {
-  const prefix = "LogGPT-clog";
-  const blob = new Blob([jsonText], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `${prefix}-${threadId}.json`;
-  a.click();
-}
-
-// Download Icon Resource
-function getIconURL() {
-  if (typeof browser !== "undefined") {
-    return browser.runtime.getURL("icons/download-icon.svg");
-  } else {
-    console.error("Unsupported browser: Cannot determine icon URL");
-    return "";
-  }
-}
-
-// Display to confirm that the extended function is working
-if (DEBUG) document.body.style.border = "5px solid yellow";
-
-// Create a save button (export button)
-const saveButton = document.createElement("button");
-const iconURL = getIconURL();
-clog(`[debug] iconURL: ${iconURL}`);
-
-const iconImage = document.createElement("img");
-iconImage.src = iconURL;
-iconImage.alt = "Download";
-// Set icon size to 32x32px
-iconImage.style.width = "32px";
-iconImage.style.height = "32px";
-saveButton.appendChild(iconImage);
-
-// Remove fixed positioning and set button size to 96x32px (3x32px)
-saveButton.style.position = "";
-saveButton.style.top = "";
-saveButton.style.right = "";
-saveButton.style.zIndex = "";
-saveButton.style.width = "48px";
-saveButton.style.height = "32px";
-saveButton.style.background = "none";
-saveButton.style.border = "none";
-saveButton.style.padding = "0";
-saveButton.style.cursor = "pointer";
-saveButton.style.display = "flex";
-saveButton.style.alignItems = "center";
-saveButton.style.justifyContent = "center";
-
-// Function to inject the button as the left-most item in the conversation header actions
-function injectSaveButton() {
-    const headerActions = document.getElementById("conversation-header-actions");
-    if (headerActions && !headerActions.contains(saveButton)) {
-        headerActions.insertBefore(saveButton, headerActions.firstChild);
-    }
-}
-
-// Monitor the thread ID and inject/remove button as needed
-let currentThreadId = -1;
-setInterval(() => {
-  const threadId = getThreadId();
-  if (currentThreadId != threadId) {
-    currentThreadId = threadId;
-    if (threadId != null) {
-      injectSaveButton();
-    } else if (saveButton.parentNode) {
-      saveButton.parentNode.removeChild(saveButton);
-    }
-  }
-  // Re-inject periodically in case the header is re-rendered
-  if (currentThreadId != null) {
-    injectSaveButton();
-  }
-}, 1000);
 
 async function getConversation(threadId) {
-  return await getConversationSafari(threadId);
+    return await getConversationSafari(threadId);
 }
 
 async function getConversationSafari(threadId) {
-  const token = await getAccessToken();
-  clog(`[debug] threadId: ${threadId}`);
-  clog(`[debug] token: ${token != null}`);
-  const response = await fetch(
-    `https://${DOMAIN_LOGGPT}/backend-api/conversation/${threadId}`,
-    {
-      credentials: "include",
-      headers: {
-        "User-Agent": window.navigator.userAgent,
-        Accept: "*/*",
-        "Accept-Language": navigator.language,
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-        "Alt-Used": `${DOMAIN_LOGGPT}`,
-        Pragma: "no-cache",
-        "Cache-Control": "no-cache",
-      },
-      referrer: `https://${DOMAIN_LOGGPT}/chat/${threadId}`,
-      method: "GET",
-      mode: "cors",
-    }
-  );
-  const data = await response.json();
-  return data;
+    const token = await getAccessToken();
+    clog(`[debug] threadId: ${threadId}`);
+    clog(`[debug] token: ${token != null}`);
+    const response = await fetch(
+        `https://${DOMAIN_LOGGPT}/backend-api/conversation/${threadId}`,
+        {
+            credentials: "include",
+            headers: {
+                "User-Agent": window.navigator.userAgent,
+                Accept: "*/*",
+                "Accept-Language": navigator.language,
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+                "Alt-Used": `${DOMAIN_LOGGPT}`,
+                Pragma: "no-cache",
+                "Cache-Control": "no-cache",
+            },
+            referrer: `https://${DOMAIN_LOGGPT}/chat/${threadId}`,
+            method: "GET",
+            mode: "cors",
+        }
+    );
+    const data = await response.json();
+    return data;
 }
-
-// Handle when the download button is clicked
-saveButton.addEventListener("click", async () => {
-  clog("[debug] click -> export download");
-
-  // Get conversation data
-  const threadId = getThreadId();
-  const data = await getConversation(threadId);
-  // Format and download acquired conversation data
-  downloadThreadId(threadId, JSON.stringify(data, null, 2));
-});

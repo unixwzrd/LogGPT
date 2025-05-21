@@ -40,3 +40,20 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     }
 
 }
+
+extension SafariWebExtensionHandler {
+    // This is called when the extension is being disabled (macOS 11+)
+    static func extensionDidDisconnect() {
+        SFSafariApplication.getAllWindows { windows in
+            for window in windows {
+                window.getAllTabs { tabs in
+                    for tab in tabs {
+                        tab.getActivePage { page in
+                            page?.dispatchMessageToScript(withName: "deactivate", userInfo: nil)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

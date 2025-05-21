@@ -23,7 +23,8 @@
     "content_scripts": [
       {
         "matches": ["*://chatgpt.com/*"],
-        "js": ["LogGPT-conv-export.js"]
+        "js": ["LogGPT-conv-export.js"],
+        "run_at": "document_idle"
       }
     ]
   }
