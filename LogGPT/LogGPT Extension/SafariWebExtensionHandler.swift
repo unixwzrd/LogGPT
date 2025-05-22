@@ -2,8 +2,6 @@
 //  SafariWebExtensionHandler.swift
 //  LogGPT Extension
 //
-//  Created by Michael Sullivan on 11/4/24.
-//
 
 import SafariServices
 import os.log
@@ -39,17 +37,23 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         context.completeRequest(returningItems: [ response ], completionHandler: nil)
     }
 
-}
+    func handleExtensionDeactivation() {
+        os_log("Extension is being deactivated. Reloading all ChatGPT tabs.")
+        reloadAllChatGPTTabs()
+    }
 
-extension SafariWebExtensionHandler {
-    // This is called when the extension is being disabled (macOS 11+)
-    static func extensionDidDisconnect() {
+    func reloadAllChatGPTTabs() {
         SFSafariApplication.getAllWindows { windows in
             for window in windows {
                 window.getAllTabs { tabs in
                     for tab in tabs {
                         tab.getActivePage { page in
-                            page?.dispatchMessageToScript(withName: "deactivate", userInfo: nil)
+                            page?.getPropertiesWithCompletionHandler { properties in
+                                if let url = properties?.url, url.host?.contains("chatgpt.com") == true {
+                                    page?.reload()
+                                    os_log("Reloaded tab with URL: %@", url.absoluteString)
+                                }
+                            }
                         }
                     }
                 }

@@ -1,23 +1,27 @@
 // ==UserScript==
-// @name         LogGPT: Chat Log Export (Safari Only)
-// @version      1.0.7
-// @author       unixwzrd
-// @license      MIT
+// @name         LogGPT: Chat Log Export (Safari Only, Debugging)
+// @version      1.0.6
 // ==/UserScript==
 
+// --- Config ---
 const DOMAIN_LOGGPT = "chatgpt.com";
 const DEBUG = false;
 
+// --- State ---
 let isActive = false;
 let loggptExportInterval = null;
 let currentThreadId = null;
-const gptSession = { data: null };
 
-// Logging helper
 function clog(msg) { if (DEBUG) console.log(msg); }
 
-// --- UI Injection and Removal ---
+console.log("LogGPT content script loaded!");
+
+// --- Hard cleanup at script load ---
+cleanupExtension();
+
+// --- UI Button Injection ---
 function injectSaveButton() {
+    // Never double-inject
     if (!isOnChatGPT() || document.getElementById('loggpt-save-btn')) return;
     const headerActions = document.getElementById("conversation-header-actions");
     if (!headerActions) return;
@@ -38,55 +42,47 @@ function injectSaveButton() {
     iconImage.style.height = "32px";
     saveButton.appendChild(iconImage);
 
-    saveButton.addEventListener("click", async () => {
-        const threadId = getThreadId();
-        const data = await getConversation(threadId);
-        downloadThreadId(threadId, JSON.stringify(data, null, 2));
+    saveButton.addEventListener("click", () => {
+        alert("Download clicked!");
     });
 
     headerActions.insertBefore(saveButton, headerActions.firstChild);
-    clog('[debug] Save button injected.');
+    clog('Save button injected.');
 }
 
 function removeSaveButton() {
     const existing = document.getElementById('loggpt-save-btn');
     if (existing && existing.parentNode) {
         existing.parentNode.removeChild(existing);
-        clog('[debug] Save button removed.');
+        clog('Save button removed.');
     }
 }
 
 // --- Activation/Deactivation ---
-
 function activateExtension() {
-    if (isActive) return; // Already active
+    if (isActive) return;
     isActive = true;
-    clog('[debug] Extension activated.');
     startInjectionInterval();
+    clog("Extension activated");
 }
-
 function deactivateExtension() {
-    if (!isActive) return; // Already inactive
+    if (!isActive) return;
     isActive = false;
-    cleanupExtension();
-    clog('[debug] Extension deactivated.');
-}
-
-function cleanupExtension() {
     stopInjectionInterval();
     removeSaveButton();
     currentThreadId = null;
+    clog("Extension deactivated");
 }
 
 // --- Interval Logic ---
-
 function startInjectionInterval() {
-    if (loggptExportInterval) return; // Only one interval ever
+    stopInjectionInterval();
     loggptExportInterval = setInterval(() => {
         if (!isActive) return;
         const threadId = getThreadId();
         const headerActions = document.getElementById("conversation-header-actions");
-        if (!headerActions) return;
+
+        // Only update when the thread changes or the button is missing
         if (currentThreadId !== threadId) {
             removeSaveButton();
             currentThreadId = threadId;
@@ -97,7 +93,6 @@ function startInjectionInterval() {
     }, 1000);
     clog('[debug] Injection interval started.');
 }
-
 function stopInjectionInterval() {
     if (loggptExportInterval) {
         clearInterval(loggptExportInterval);
@@ -106,8 +101,7 @@ function stopInjectionInterval() {
     }
 }
 
-// --- Util Functions ---
-
+// --- Util ---
 function getThreadId() {
     const url = window.location.href;
     const match = url.match(/c\/([\w-]+)/);
@@ -119,26 +113,17 @@ function isOnChatGPT() {
 }
 
 function getIconURL() {
-    // Safari-only, no browser.runtime.* or cross-browser checks
-    if (typeof safari !== "undefined" && safari.extension && safari.extension.baseURI)
-        return safari.extension.baseURI + "icons/download-icon.svg";
-    return "";
+    return browser.runtime.getURL("icons/download-icon.svg");
 }
 
-// --- Download logic ---
-
-function downloadThreadId(threadId, jsonText) {
-    const prefix = "LogGPT-clog";
-    const blob = new Blob([jsonText], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${prefix}-${threadId}.json`;
-    a.click();
+// --- Cleanup on every script load! ---
+function cleanupExtension() {
+    stopInjectionInterval();
+    removeSaveButton();
+    currentThreadId = null;
 }
 
-// --- Safari Messaging Only (NO Chrome/Firefox/WebExtension) ---
-
+// --- Messaging for Safari only ---
 if (typeof safari !== "undefined" && safari.self && safari.self.addEventListener) {
     safari.self.addEventListener("message", event => {
         if (event.name === "activate") activateExtension();
@@ -146,15 +131,14 @@ if (typeof safari !== "undefined" && safari.self && safari.self.addEventListener
     }, false);
 }
 
-// --- On page load: Start only if extension is active (Safari auto-injects content script) ---
-
+// --- Start on page load if ChatGPT ---
 if (isOnChatGPT()) {
     activateExtension();
-    // Remove everything on window unload (tab close, reload, navigation away)
     window.addEventListener('unload', () => { deactivateExtension(); });
 }
 
-// --- Conversation Fetch/Token logic unchanged ---
+
+// --- Conversation Fetch/Token logic ---
 
 function shuffleString(str) {
     const chars = str.split("");
@@ -263,4 +247,4 @@ async function getConversationSafari(threadId) {
     );
     const data = await response.json();
     return data;
-}
+    }
