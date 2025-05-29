@@ -11,6 +11,7 @@
 		A50BB71B2D886E1D00D61162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56625562CD9248300FC29A8 /* Assets.xcassets */; };
 		A50BB71F2D88703B00D61162 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A50BB71E2D88703B00D61162 /* Icon.png */; };
 		A5395FD02DD53F67006FB261 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = A5395FCF2DD53F67006FB261 /* icons */; };
+		A55B3A822DE651420095EA51 /* icon.js in Resources */ = {isa = PBXBuildFile; fileRef = A55B3A812DE651420095EA51 /* icon.js */; };
 		A56625462CD9248200FC29A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56625452CD9248200FC29A8 /* AppDelegate.swift */; };
 		A566254A2CD9248200FC29A8 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = A56625482CD9248200FC29A8 /* Main.html */; };
 		A566254E2CD9248200FC29A8 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = A566254D2CD9248200FC29A8 /* Style.css */; };
@@ -70,6 +71,7 @@
 		A50BB7192D886B6B00D61162 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../manifest.json; sourceTree = SOURCE_ROOT; };
 		A50BB71E2D88703B00D61162 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A5395FCF2DD53F67006FB261 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icons; sourceTree = "<group>"; };
+		A55B3A812DE651420095EA51 /* icon.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = icon.js; path = ../icon.js; sourceTree = SOURCE_ROOT; };
 		A56625422CD9248200FC29A8 /* LogGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56625452CD9248200FC29A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A56625492CD9248200FC29A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				A56625932CD9248300FC29A8 /* README.md */,
 				A56625942CD9248300FC29A8 /* VERSION.mk */,
 				A50BB7192D886B6B00D61162 /* manifest.json */,
+				A55B3A812DE651420095EA51 /* icon.js */,
 				A56625972CD9248300FC29A8 /* LogGPT-conv-export.js */,
 				A56625982CD9248300FC29A8 /* manifest-v3.json */,
 				A56625992CD9248300FC29A8 /* manifest-v2.json */,
@@ -399,6 +402,7 @@
 				A50BB71A2D886B6B00D61162 /* manifest.json in Resources */,
 				A56625A52CD9248300FC29A8 /* manifest-v2.json in Resources */,
 				A5395FD02DD53F67006FB261 /* icons in Resources */,
+				A55B3A822DE651420095EA51 /* icon.js in Resources */,
 				A56625A42CD9248300FC29A8 /* manifest-v3.json in Resources */,
 				A566259B2CD9248300FC29A8 /* LICENSE in Resources */,
 			);

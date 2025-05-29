@@ -28,6 +28,7 @@
         "*://chatgpt.com/*"
       ],
       "js": [
+        "icon.js",
         "LogGPT-conv-export.js"
       ]
     }
