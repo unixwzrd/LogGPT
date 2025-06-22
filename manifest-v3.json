@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "LogGPT",
   "author": "Distributed Thinking Systems LLC",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "LogGPT: Export ChatGPT conversation JSON logs.",
   "icons": {
     "16": "icons/Icon-16.png",

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LogGPT: Chat Log Export (Safari Only, Minimal)
-// @version      1.0.5
+// @version      1.0.6
 // @author       unixwzrd
 // @license      MIT
 // ==/UserScript==
@@ -16,54 +16,6 @@
     function getThreadId() {
         const match = location.pathname.match(/c\/([\w-]+)/);
         return match ? match[1] : null;
-    }
-
-    // --- Inject Save Button ---
-    function injectSaveButton() {
-        if (document.getElementById('loggpt-save-btn')) return;
-        // Try known header container, fallback to any header
-        const header = document.getElementById("conversation-header-actions")
-                   || document.querySelector("header");
-        if (!header) return;
-
-        const btn = document.createElement('button');
-        btn.id = 'loggpt-save-btn';
-        btn.title = 'Save conversation as JSON';
-        btn.style.cssText = `
-            width:32px; height:32px; background:none; border:none; 
-            padding:0; cursor:pointer; display:flex; align-items:center; justify-content:center;
-        `;
-        // Using inline SVG with data URL to avoid external file dependencies
-        const img = document.createElement('img');
-        img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(getIconSVG());
-        img.alt = 'Download';
-        img.style.width = '24px';
-        img.style.height = '24px';
-
-
-        btn.appendChild(img);
-
-        btn.addEventListener('click', async () => {
-            const threadId = getThreadId();
-            if (!threadId) return alert('No conversation detected.');
-            try {
-                const data = await getConversation(threadId);
-                downloadJSON(threadId, data);
-            } catch (e) {
-                clog('Failed to download:', e);
-                alert('Failed to download conversation.');
-            }
-        });
-
-        header.insertBefore(btn, header.firstChild);
-        clog('Save button injected');
-    }
-
-    // --- Remove Save Button ---
-    function removeSaveButton() {
-        const btn = document.getElementById('loggpt-save-btn');
-        if (btn && btn.parentNode) btn.parentNode.removeChild(btn);
-        clog('Save button removed');
     }
 
     // --- Download as JSON ---
@@ -84,12 +36,12 @@
 
     // --- Fetch token and conversation ---
     async function getAccessToken() {
-        // Try session endpoint (Safari still allows this)
         const resp = await fetch('https://chatgpt.com/api/auth/session', { credentials: 'include' });
         if (!resp.ok) throw new Error('Failed to get access token');
         const json = await resp.json();
         return json.accessToken;
     }
+    
     async function getConversation(threadId) {
         const token = await getAccessToken();
         const resp = await fetch(`https://chatgpt.com/backend-api/conversation/${threadId}`, {
@@ -103,28 +55,79 @@
         return await resp.json();
     }
 
-    // --- React to navigation (SPA) ---
-    let lastThread = null;
-    function checkNav() {
+    // --- Download button click handler ---
+    async function handleDownloadClick() {
         const threadId = getThreadId();
-        if (threadId !== lastThread) {
-            lastThread = threadId;
-            removeSaveButton();
-            if (isOnChatGPT() && threadId) injectSaveButton();
+        if (!threadId) return alert('No conversation detected.');
+        try {
+            const data = await getConversation(threadId);
+            downloadJSON(threadId, data);
+        } catch (e) {
+            alert('Failed to download conversation.');
         }
     }
 
-    // Patch history API to detect navigation changes
-    const origPush = history.pushState;
-    history.pushState = function() { origPush.apply(this, arguments); checkNav(); };
-    const origReplace = history.replaceState;
-    history.replaceState = function() { origReplace.apply(this, arguments); checkNav(); };
-    window.addEventListener('popstate', checkNav);
+    // --- Create and inject download button ---
+    function injectDownloadButton() {
+        if (!isOnChatGPT()) return false;
+        if (document.getElementById('loggpt-download-btn')) return true;
+        
+        // Try multiple possible header containers
+        const header = document.getElementById("conversation-header-actions") ||
+                      document.querySelector("[data-testid='conversation-header-actions']") ||
+                      document.querySelector("header") ||
+                      document.querySelector("[role='banner']");
+        
+        if (!header) return false;
 
-    // --- Initial run ---
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => { checkNav(); });
-    } else {
-        checkNav();
+        const btn = document.createElement('button');
+        btn.id = 'loggpt-download-btn';
+        btn.title = 'Download conversation as JSON';
+        btn.style.cssText = `
+            width:32px; height:32px; background:none; border:none; 
+            padding:0; cursor:pointer; display:flex; align-items:center; justify-content:center;
+            margin-right:8px; color:inherit;
+        `;
+        
+        // Create icon
+        const img = document.createElement('img');
+        img.alt = 'Download';
+        img.style.width = '24px';
+        img.style.height = '24px';
+        
+        // Apply the download icon
+        const svgContent = getIconSVG();
+        img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgContent);
+        btn.appendChild(img);
+
+        // Setup download handler
+        btn.addEventListener('click', handleDownloadClick);
+
+        header.insertBefore(btn, header.firstChild);
+        return true;
     }
+
+    // --- Main execution logic ---
+    
+    //  Check if we have already been activated and loaded and return if so.
+    if (window.ai_unixwzrd_LogGPT_instance || 
+        document.getElementById('loggpt-download-btn')) {
+        clog('Already loaded and activated, returning.');
+        return;
+    }
+    
+    // Set flag so we aren't activated twice.
+    window.ai_unixwzrd_LogGPT_instance = true;
+    
+    // Inject button and watch for changes
+    injectDownloadButton();
+    
+    // Watch for chat content changes and re-inject if needed
+    const observer = new MutationObserver(() => {
+        if (!document.getElementById('loggpt-download-btn')) {
+            injectDownloadButton();
+        }
+    });
+    
+    observer.observe(document.body, { childList: true, subtree: true });
 })();

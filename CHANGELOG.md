@@ -1,13 +1,21 @@
 # Changelog
 
+## 2025/06/22  v1.0.6
+
+- **FIXED**: Button persistence issue when page refreshes or DOM changes
+- **REFACTORED**: Separated button creation from event handler logic for better performance
+- Moved download button handler to dedicated function to avoid recreation on each injection
+- Simplified button injection function to focus solely on DOM manipulation
+- Button now persists through ChatGPT's dynamic UI updates and page refreshes
+
 ## 2025/05/15  v1.0.5
 
 - Changed to new icons
 - Changed spacing on the ChatGPT UI Download button, was covering "Canvas" button.
 - Button icon now dynamically positions itself to the left of the standard
-  OpenAI Web UI interface elements like Casvas, Share, "Stacked Dots" for archive/delete, and
+  OpenAI Web UI interface elements like Canvas, Share, "Stacked Dots" for archive/delete, and
   User Settings.
-- Icon/button will change positiojn based on the OpenAI Web UI elements.
+- Icon/button will change position based on the OpenAI Web UI elements.
 
 ## 2025/03/19  v1.0.4
 
@@ -23,13 +31,13 @@
 - Prepared more screenshots for AppStore submission
 - Updated documentation
 - Minor changes in configuration
-- Submitted and rejected by Apple Appstore
+- Submitted and rejected by Apple AppStore
 
 ## 2025-01-06 V1.0.1
 
 - Made screenshots for uploading tto the Apple AppStore
 - Tidied up settings
-- Waited until March to be able to subit as paperqwork being processed.
+- Waited until March to be able to submit as paper work being processed.
 
 ## 2024-11-04 v1.0.0
 
