@@ -21,8 +21,7 @@ It appears the security policy changes with Apple and I have managed to get the 
     - [If You Build It Yourself](#if-you-build-it-yourself)
   - [Support](#support)
   - [Changelog](#changelog)
-    - [2025-06-19 v1.0.6](#2025-06-19-v106)
-    - [2025-04-29 v1.0.5](#2025-04-29-v105)
+    - [2025-06-22  v1.0.6](#2025-06-22--v106)
   - [Credits](#credits)
   
 ## Project Update
@@ -112,29 +111,13 @@ Visit [Distributed Thinking Systems LLC](https://unixwzrd.ai/) for information a
 
 ## Changelog
 
-### 2025-06-19 v1.0.6
+### 2025-06-22  v1.0.6
 
-- **FIXED**: Multiple instance prevention when extension is reactivated
-- Improved instance detection using multiple indicators (button, interval, global flag)
-- Added cleanup of duplicate buttons and intervals to prevent conflicts
-- Enhanced graceful shutdown to properly remove all event listeners
-- Fixed race conditions during extension deactivation/reactivation cycles
-- Added robust initialization that clears any leftover state
-- Extension now properly handles Safari's script injection context resets
-- **FIXED**: Download icon persistence across page refreshes and navigation
-- Fixed issue where download button showed black down arrow instead of proper icon
-- Improved icon application logic to always use correct download icon from icon.js
-- Button now consistently shows proper download icon on page refresh, tab changes, and DOM updates
-- Resolved compatibility issue with OpenAI's dynamic page loading changes
-
-### 2025-04-29 v1.0.5
-
-- **MAJOR UPDATE**: Complete redesign to comply with Apple App Store requirements
-- Changed application icons and branding to avoid confusion with ChatGPT
-- Updated UI spacing and positioning to prevent overlap with Canvas button
-- Button icon now dynamically positions itself to the left of standard OpenAI Web UI elements
-- Improved integration with ChatGPT's interface elements (Canvas, Share, Archive/Delete, User Settings)
-- Enhanced compatibility with Apple's App Store review guidelines
+- **FIXED**: Button persistence issue when page refreshes or DOM changes
+- **REFACTORED**: Separated button creation from event handler logic for better performance
+- Moved download button handler to dedicated function to avoid recreation on each injection
+- Simplified button injection function to focus solely on DOM manipulation
+- Button now persists through ChatGPT's dynamic UI updates and page refreshes
 
 ## Credits
 
