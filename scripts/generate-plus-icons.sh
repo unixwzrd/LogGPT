@@ -7,6 +7,7 @@ source_svg="$repo_dir/graphics/LogGPT-Plus.source.svg"
 output_svg="$repo_dir/graphics/LogGPT-Plus.svg"
 app_icon_dir="$repo_dir/LogGPT/LogGPT/Assets.xcassets/AppIconPlus.appiconset"
 extension_icon_dir="$repo_dir/LogGPT/LogGPT Plus Extension/Resources/icons"
+base_plus_icon_dir="$repo_dir/LogGPT/LogGPT Extension/icons/plus"
 plus_resource_dir="$repo_dir/LogGPT/LogGPT Plus Resources"
 work_dir=$(mktemp -d)
 trap 'rm -rf "$work_dir"' EXIT
@@ -18,7 +19,7 @@ for tool in base64 qlmanage sips; do
   fi
 done
 
-mkdir -p "$app_icon_dir" "$extension_icon_dir" "$plus_resource_dir"
+mkdir -p "$app_icon_dir" "$extension_icon_dir" "$base_plus_icon_dir" "$plus_resource_dir"
 
 # Embed the existing 1024px LogGPT artwork so the review/delivery SVG is portable.
 while IFS= read -r line || [[ -n "$line" ]]; do
@@ -52,9 +53,13 @@ done
 
 for size in 16 32 48 64 96 128 256 512; do
   render_png "$size" "$extension_icon_dir/Icon-${size}.png"
+  render_png "$size" "$base_plus_icon_dir/Icon-${size}.png"
 done
 render_png 32 "$extension_icon_dir/download-icon.png"
+render_png 32 "$base_plus_icon_dir/download-icon.png"
 render_png 512 "$plus_resource_dir/Icon.png"
+render_png 512 "$plus_resource_dir/PlusIcon.png"
 cp "$output_svg" "$extension_icon_dir/download-icon.svg"
+cp "$output_svg" "$base_plus_icon_dir/download-icon.svg"
 
 echo "Generated the self-contained SVG and LogGPT+ PNG asset sets."

@@ -414,3 +414,11 @@ tmp/
 Backup/
 *.bak
 bashexp*.txt
+
+# Local browser automation state and generated visual QA output
+/.playwright-cli/
+/output/playwright/
+
+# Private release and App Store operator notes
+/local-docs/
+/local-artifacts/

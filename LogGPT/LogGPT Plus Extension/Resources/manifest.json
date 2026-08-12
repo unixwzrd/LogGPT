@@ -20,7 +20,7 @@
     "js": ["icon.js", "LogGPT-conv-export.js"]
   }],
   "host_permissions": ["*://chatgpt.com/*"],
-  "permissions": ["activeTab", "downloads", "nativeMessaging", "storage"],
+  "permissions": ["downloads", "nativeMessaging", "storage"],
   "background": {
     "scripts": ["background.js"]
   },

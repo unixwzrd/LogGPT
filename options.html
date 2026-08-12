@@ -11,9 +11,11 @@
       padding: 20px;
       color: #111;
       background: #f5f5f5;
+      min-width: 360px;
     }
     .panel {
-      max-width: 540px;
+      width: 380px;
+      max-width: calc(100vw - 40px);
       margin: 0 auto;
       background: white;
       padding: 20px;
@@ -79,13 +81,17 @@
         <li>Files you uploaded to the conversation</li>
         <li>JSON and an artifact manifest in one portable ZIP</li>
       </ul>
-      <p class="muted">One-time upgrade. Basic JSON downloads always remain available.</p>
+      <p class="muted">One-time in-app purchase. Basic JSON downloads always remain available.</p>
       <button class="upgrade-button" type="button" id="open-loggpt">Get LogGPT Plus…</button>
       <button type="button" id="refresh-entitlement">Check Again</button>
     </div>
     <div id="plus-settings" hidden>
       <p><strong>Plus is unlocked</strong></p>
       <p class="muted">Choose which artifacts LogGPT Plus includes in the conversation ZIP. Uploaded content takes precedence when an artifact is referenced by both categories.</p>
+      <label>
+        <input type="checkbox" id="download-artifacts">
+        <span><strong>Download Artifacts</strong><br><span class="muted">When off, downloads contain JSON only.</span></span>
+      </label>
       <label>
         <input type="checkbox" id="include-generated">
         <span>Generated Content</span>
@@ -98,6 +104,12 @@
         <button type="button" id="select-all">Select All</button>
         <button type="button" id="select-none">Select None</button>
       </div>
+      <label>
+        <input type="checkbox" id="ask-every-time">
+        <span>Ask for download choices every time</span>
+      </label>
+      <button type="button" id="reset-defaults">Reset to Defaults</button>
+      <p class="muted">Reset enables artifact downloads, both content types, and the per-download question. It also restores informational notices dismissed with “Don't show this again.”</p>
     </div>
     <div class="saved" id="saved-message"></div>
   </div>

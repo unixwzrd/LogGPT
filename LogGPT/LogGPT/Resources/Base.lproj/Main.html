@@ -16,13 +16,18 @@
     <p class="extension-state state-off">Turn on LogGPT in Safari Extensions to start downloading conversations.</p>
     <button class="open-preferences">Quit then Activate in Safari Extensions Preferences…</button>
     <section class="plus-upgrade" aria-labelledby="plus-heading">
-        <p class="plus-eyebrow">ONE-TIME UPGRADE</p>
+        <p class="plus-eyebrow" id="plus-eyebrow">ONE-TIME UPGRADE</p>
         <h2 id="plus-heading">Get LogGPT Plus</h2>
         <p class="plus-summary">Add generated images, charts, and uploaded files to one portable conversation ZIP.</p>
         <p id="plus-status" role="status">Checking your Plus upgrade…</p>
+        <p id="plus-source" class="privacy-note"></p>
         <div class="plus-actions">
             <button type="button" id="purchase-plus" disabled>Upgrade to Plus</button>
             <button type="button" id="restore-purchases">Restore Purchases</button>
+        </div>
+        <div id="debug-plus-controls" hidden>
+            <button type="button" id="reset-plus-development-cache">Force Basic Mode (Debug)</button>
+            <p class="privacy-note">For Basic-mode testing only. This forces Basic until Upgrade or Restore is selected.</p>
         </div>
         <p class="privacy-note">Private by design · StoreKit purchase · No tracking</p>
     </section>

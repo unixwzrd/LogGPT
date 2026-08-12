@@ -17,17 +17,17 @@
          href="__LOGGPT_BASE_IMAGE__" />
 
   <g id="plus-badge">
-    <circle cx="820"
-            cy="214"
-            r="126"
+    <circle cx="824"
+            cy="190"
+            r="190"
             fill="#11191f"
             fill-opacity="0.94"
             stroke="#43edf0"
-            stroke-width="22" />
-    <path d="M 820 147 V 281 M 753 214 H 887"
+            stroke-width="28" />
+    <path d="M 824 82 V 298 M 716 190 H 932"
           fill="none"
           stroke="#ffffff"
-          stroke-width="34"
+          stroke-width="52"
           stroke-linecap="round" />
   </g>
 </svg>

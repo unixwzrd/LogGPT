@@ -31,6 +31,9 @@ class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHan
         StoreKitManager.shared.onChange = { [weak self] snapshot in
             self?.showPlusPurchase(snapshot)
         }
+        StoreKitManager.shared.onPurchaseCompleted = { [weak self] in
+            self?.showPurchaseConfirmationAndQuit()
+        }
         StoreKitManager.shared.start()
 
         self.webView.loadFileURL(Bundle.main.url(forResource: "Main", withExtension: "html")!, allowingReadAccessTo: Bundle.main.resourceURL!)
@@ -77,22 +80,45 @@ class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHan
             Task { await StoreKitManager.shared.restore() }
         case "refresh-purchases":
             Task { await StoreKitManager.shared.reload() }
+        #if DEBUG
+        case "reset-plus-development-cache":
+            StoreKitManager.shared.clearDevelopmentEntitlementCache()
+        #endif
         default:
             break
         }
     }
 
     private func showPlusPurchase(_ snapshot: StoreKitManager.Snapshot) {
+        (NSApplication.shared.delegate as? AppDelegate)?.updateBranding(hasPlus: snapshot.hasPlus)
         let payload: [String: Any] = [
             "hasPlus": snapshot.hasPlus,
             "isLoading": snapshot.isLoading,
             "displayPrice": snapshot.displayPrice ?? NSNull(),
             "message": snapshot.message,
+            "entitlementSource": snapshot.entitlementSource,
+            "showDebugControls": _isDebugAssertConfiguration(),
         ]
         guard JSONSerialization.isValidJSONObject(payload),
               let data = try? JSONSerialization.data(withJSONObject: payload),
               let json = String(data: data, encoding: .utf8) else { return }
         webView.evaluateJavaScript("updatePlusPurchase(\(json))")
+    }
+
+    private func showPurchaseConfirmationAndQuit() {
+        let alert = NSAlert()
+        alert.alertStyle = .informational
+        alert.messageText = "LogGPT Plus is ready"
+        alert.informativeText = "Generated and uploaded artifact downloads are enabled. No additional Safari configuration is required."
+        alert.addButton(withTitle: "Done")
+        if let window = view.window {
+            alert.beginSheetModal(for: window) { _ in
+                NSApplication.shared.terminate(nil)
+            }
+        } else {
+            alert.runModal()
+            NSApplication.shared.terminate(nil)
+        }
     }
 
 }

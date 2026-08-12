@@ -23,6 +23,10 @@ function updatePlusPurchase(status) {
     const purchaseButton = document.getElementById("purchase-plus");
     const restoreButton = document.getElementById("restore-purchases");
     const statusText = document.getElementById("plus-status");
+    const heading = document.getElementById("plus-heading");
+    const eyebrow = document.getElementById("plus-eyebrow");
+    const sourceText = document.getElementById("plus-source");
+    const debugControls = document.getElementById("debug-plus-controls");
     if (!purchaseButton || !restoreButton || !statusText) return;
 
     statusText.innerText = status.message || "";
@@ -30,6 +34,10 @@ function updatePlusPurchase(status) {
     restoreButton.disabled = Boolean(status.isLoading);
     purchaseButton.hidden = Boolean(status.hasPlus);
     restoreButton.hidden = Boolean(status.hasPlus);
+    heading.innerText = status.hasPlus ? "LogGPT Plus is active" : "Get LogGPT Plus";
+    eyebrow.innerText = status.hasPlus ? "PLUS UNLOCKED" : "ONE-TIME UPGRADE";
+    sourceText.innerText = status.entitlementSource ? `Status: ${status.entitlementSource}` : "";
+    debugControls.hidden = !status.showDebugControls;
     if (status.displayPrice) {
         purchaseButton.innerText = `Upgrade to Plus — ${status.displayPrice}`;
     }
@@ -42,3 +50,4 @@ function sendAction(action) {
 document.querySelector("button.open-preferences").addEventListener("click", openPreferences);
 document.getElementById("purchase-plus").addEventListener("click", () => sendAction("purchase-plus"));
 document.getElementById("restore-purchases").addEventListener("click", () => sendAction("restore-purchases"));
+document.getElementById("reset-plus-development-cache").addEventListener("click", () => sendAction("reset-plus-development-cache"));

@@ -35,7 +35,10 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             case "getPlusEntitlement":
                 responseMessage = [
                     "hasPlus": PlusEntitlement.cachedValue,
-                    "source": PlusEntitlement.buildIncludesPlus ? "plus-build" : "verified-cache",
+                    "displayPrice": PlusEntitlement.cachedDisplayPrice ?? "",
+                    "source": PlusEntitlement.buildIncludesPlus
+                        ? "plus-build"
+                        : entitlementSource,
                 ]
             case "openContainingApp":
                 responseMessage = ["opened": openContainingApp()]
@@ -56,13 +59,29 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         context.completeRequest(returningItems: [ response ], completionHandler: nil)
     }
 
+    private var entitlementSource: String {
+        #if DEBUG
+        if PlusEntitlement.forceBasicForDevelopment {
+            return "development-basic-override"
+        }
+        #endif
+        if PlusEntitlement.cachedValue { return "verified-cache" }
+        return "basic"
+    }
+
     private func openContainingApp() -> Bool {
-        let appURL = Bundle.main.bundleURL
-            .deletingLastPathComponent()
-            .deletingLastPathComponent()
-            .deletingLastPathComponent()
+        var appURL = Bundle.main.bundleURL
+        while appURL.pathExtension.lowercased() != "app" && appURL.pathComponents.count > 1 {
+            appURL.deleteLastPathComponent()
+        }
         guard appURL.pathExtension == "app" else { return false }
-        NSWorkspace.shared.open(appURL)
+        let configuration = NSWorkspace.OpenConfiguration()
+        configuration.activates = true
+        NSWorkspace.shared.openApplication(at: appURL, configuration: configuration) { _, error in
+            if let error {
+                os_log(.error, "Unable to open containing LogGPT app: %@", error.localizedDescription)
+            }
+        }
         return true
     }
 

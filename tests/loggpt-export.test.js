@@ -4,6 +4,7 @@ const assert = require("assert");
 const fs = require("fs");
 const vm = require("vm");
 const { webcrypto } = require("crypto");
+const { TextDecoder } = require("util");
 
 const fetchCalls = [];
 const context = {
@@ -11,6 +12,7 @@ const context = {
   console,
   Blob,
   TextEncoder,
+  TextDecoder,
   URL,
   crypto: webcrypto,
   location: { hostname: "chatgpt.com", pathname: "/c/thread" },
@@ -18,7 +20,32 @@ const context = {
   document: {},
   fetch: async (url, options = {}) => {
     fetchCalls.push({ url: String(url), options });
-    return { ok: true, blob: async () => new Blob(["artifact"], { type: "image/png" }) };
+    const response = (body, type, disposition = null) => ({
+      ok: true,
+      headers: { get: name => ({ "content-type": type, "content-disposition": disposition }[String(name).toLowerCase()] || null) },
+      blob: async () => new Blob([body], { type }),
+    });
+    if (String(url).includes("/files/file-chart/download")) {
+      const descriptor = {
+        download_url: "https://chatgpt.com/backend-api/estuary/content?id=file-chart&sig=test",
+        file_name: "chart-output",
+      };
+      return {
+        ok: true,
+        headers: { get: () => "application/json" },
+        clone() { return { json: async () => descriptor }; },
+        blob: async () => new Blob([JSON.stringify(descriptor)], { type: "application/json" }),
+      };
+    }
+    if (String(url).includes("estuary/content?id=file-chart")) {
+      return response(Uint8Array.from([0x89, 0x50, 0x4e, 0x47, 1]), "application/octet-stream", 'attachment; filename="final-chart.png"');
+    }
+    if (String(url).includes("file-vector")) return response('<svg xmlns="http://www.w3.org/2000/svg"></svg>', "image/svg+xml");
+    if (String(url).includes("file-audio")) return response(Uint8Array.from([0x49, 0x44, 0x33, 1]), "application/octet-stream");
+    if (String(url).includes("file-table")) return response("name\tvalue\na\t1\n", "text/tab-separated-values", 'attachment; filename="results.tsv"');
+    if (String(url).includes("file-unknown")) return response(Uint8Array.from([1, 2, 3, 4]), "application/octet-stream");
+    if (String(url).includes("file-upload")) return response(Uint8Array.from([0x89, 0x50, 0x4e, 0x47]), "image/png");
+    throw new Error(`Unexpected fetch: ${url}`);
   },
 };
 context.globalThis = context;
@@ -38,7 +65,22 @@ const conversation = {
   mapping: {
     uploaded: { message: {
       id: "message-uploaded", author: { role: "user" }, content: { content_type: "multimodal_text" },
-      metadata: { attachments: [{ id: "file-upload", name: "input.png", url: "https://example.test/input.png?sig=secret" }] },
+      metadata: { attachments: [{ id: "file-upload", name: "input.png", url: "https://chatgpt.com/backend-api/estuary/content?id=file-upload&sig=secret" }] },
+    } },
+    moreGenerated: { message: {
+      id: "message-more", author: { role: "tool" }, content: { content_type: "execution_output" },
+      metadata: {
+        artifacts: [
+          { file_id: "file-vector", title: "diagram", mime_type: "image/svg+xml" },
+          { audio_asset_pointer: "file-service://file-audio", title: "narration" },
+          { file_id: "file-table", title: "results" },
+          { file_id: "file-unknown", title: "mystery" },
+        ],
+      },
+    } },
+    externalCitation: { message: {
+      id: "message-external", author: { role: "assistant" }, content: { content_type: "text" },
+      metadata: { citation: { url: "https://example.test/not-an-artifact.pdf" } },
     } },
     generated: { message: {
       id: "message-generated", author: { role: "tool" }, content: { content_type: "execution_output" },
@@ -53,6 +95,7 @@ const conversation = {
 const entries = api.scanConversationMedia(conversation);
 assert(entries.some(entry => entry.canonicalId === "file-upload" && entry.origin === "uploaded"));
 assert(entries.some(entry => entry.canonicalId === "file-chart" && entry.origin === "generated"));
+assert(!entries.some(entry => entry.sourceUrl === "https://example.test/not-an-artifact.pdf"));
 
 function storedZipEntries(bytes) {
   const result = new Map();
@@ -76,13 +119,18 @@ api.buildArchiveZipBlob("archive", conversation, entries, "token", { includeGene
     const files = storedZipEntries(bytes);
     assert(files.has("archive.json"));
     assert(files.has("archive/artifact-manifest.json"));
-    assert([...files.keys()].some(name => name.includes("archive/artifacts/generated/file-chart")));
-    assert([...files.keys()].some(name => name.includes("archive/artifacts/uploaded/file-upload")));
+    assert([...files.keys()].some(name => name.endsWith("final-chart.png")), `${[...files.keys()].join("\n")}\n${fetchCalls.map(call => call.url).join("\n")}`);
+    assert([...files.keys()].some(name => name.endsWith("diagram.svg")));
+    assert([...files.keys()].some(name => name.endsWith("narration.mp3")));
+    assert([...files.keys()].some(name => name.endsWith("results.tsv")));
+    assert([...files.keys()].some(name => name.endsWith("mystery.bin")));
+    assert(fetchCalls.some(call => call.url.includes("/estuary/content?id=file-chart")));
+    assert([...files.keys()].some(name => name.includes("archive/artifacts/uploaded/input.png")));
     assert(!files.get("archive/artifact-manifest.json").toString("utf8").includes("sig=secret"));
-    const externalCall = fetchCalls.find(call => call.url.startsWith("https://example.test/"));
-    assert(externalCall);
-    assert.equal(externalCall.options.credentials, "omit");
-    assert.equal(externalCall.options.headers.Authorization, undefined);
+    const manifest = JSON.parse(files.get("archive/artifact-manifest.json").toString("utf8"));
+    assert.equal(manifest.format_version, 2);
+    assert(manifest.artifacts.some(item => item.saved_filename === "narration.mp3" && item.detected_mime_type === "audio/mpeg"));
+    assert(!fetchCalls.some(call => call.url.startsWith("https://example.test/")));
     console.log("LogGPT exporter tests passed");
   })
   .catch(error => { console.error(error); process.exitCode = 1; });

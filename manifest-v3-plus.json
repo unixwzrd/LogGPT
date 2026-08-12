@@ -3,7 +3,7 @@
   "name": "LogGPT Plus",
   "author": "Distributed Thinking Systems LLC",
   "version": "1.2.0",
-  "description": "LogGPT Plus: Export ChatGPT conversation JSON logs and optional media bundles.",
+  "description": "Export ChatGPT conversations with generated and uploaded artifacts in portable ZIP archives.",
   "icons": {
     "16": "icons/Icon-16.png",
     "32": "icons/Icon-32.png",
@@ -37,7 +37,6 @@
     "*://chatgpt.com/*"
   ],
   "permissions": [
-    "activeTab",
     "downloads",
     "nativeMessaging",
     "storage"

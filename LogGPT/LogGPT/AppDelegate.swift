@@ -4,6 +4,8 @@ import os.log
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
+    private var basicApplicationIcon: NSImage?
+
     private var extensionBundleIdentifier: String {
         if let configured = Bundle.main.object(forInfoDictionaryKey: "LogGPTExtensionBundleIdentifier") as? String,
            !configured.isEmpty {
@@ -13,6 +15,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        basicApplicationIcon = NSApplication.shared.applicationIconImage
+        configureApplicationMenu(hasPlus: PlusEntitlement.cachedValue)
+        updateApplicationIcon(hasPlus: PlusEntitlement.cachedValue)
         // Check the current state of the extension
         SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: extensionBundleIdentifier) { state, error in
             if let error = error {
@@ -33,6 +38,72 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Observe for extension state changes
         NotificationCenter.default.addObserver(self, selector: #selector(extensionStateDidChange(_:)), name: NSNotification.Name("SFSafariExtensionStateDidChangeNotification"), object: nil)
+    }
+
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        true
+    }
+
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if !flag {
+            showMainWindow()
+        }
+        return true
+    }
+
+    func updateBranding(hasPlus: Bool) {
+        updateApplicationIcon(hasPlus: hasPlus)
+        configureApplicationMenu(hasPlus: hasPlus)
+    }
+
+    @objc private func showMainWindow() {
+        NSApplication.shared.windows.first { $0.canBecomeMain }?.makeKeyAndOrderFront(nil)
+        NSApplication.shared.activate(ignoringOtherApps: true)
+    }
+
+    @objc private func showAboutPanel() {
+        let hasPlus = PlusEntitlement.cachedValue
+        let name = hasPlus ? "LogGPT Plus" : "LogGPT Basic"
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+        let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? ""
+        NSApplication.shared.orderFrontStandardAboutPanel(options: [
+            .applicationName: name,
+            .applicationVersion: version,
+            .version: build,
+            .credits: NSAttributedString(string: hasPlus
+                ? "Plus artifact archiving is unlocked. No analytics or personal information is collected."
+                : "Basic JSON export. Upgrade to Plus for generated and uploaded artifact archiving."),
+        ])
+    }
+
+    private func configureApplicationMenu(hasPlus: Bool) {
+        guard let appMenu = NSApplication.shared.mainMenu?.items.first?.submenu else { return }
+        if let about = appMenu.items.first {
+            about.title = hasPlus ? "About LogGPT Plus" : "About LogGPT Basic"
+            about.target = self
+            about.action = #selector(showAboutPanel)
+        }
+        let identifier = NSUserInterfaceItemIdentifier("LogGPT.PlusMenuItem")
+        let plusItem: NSMenuItem
+        if let existing = appMenu.items.first(where: { $0.identifier == identifier }) {
+            plusItem = existing
+        } else {
+            plusItem = NSMenuItem(title: "", action: #selector(showMainWindow), keyEquivalent: "")
+            plusItem.identifier = identifier
+            plusItem.target = self
+            appMenu.insertItem(plusItem, at: min(2, appMenu.items.count))
+        }
+        plusItem.title = hasPlus ? "LogGPT Plus Settings…" : "Get LogGPT Plus…"
+    }
+
+    private func updateApplicationIcon(hasPlus: Bool) {
+        if hasPlus,
+           let url = Bundle.main.url(forResource: "PlusIcon", withExtension: "png"),
+           let image = NSImage(contentsOf: url) {
+            NSApplication.shared.applicationIconImage = image
+        } else if let basicApplicationIcon {
+            NSApplication.shared.applicationIconImage = basicApplicationIcon
+        }
     }
 
     @objc func extensionStateDidChange(_ notification: Notification) {

@@ -71,13 +71,19 @@ The shared export contract with `extract-chat` is:
 - `<stem>/artifacts/uploaded/`
 - `<stem>/artifacts/derived/`
 
-`extract-chat` can now consume the extracted media directory or manifest and prefer local media links in rendered Markdown/HTML.
+The version-2 manifest records detected and declared MIME types, hashes, sizes,
+stable file IDs, and sanitized source URLs. Artifact capture is format-agnostic:
+images, vector graphics, audio, video, documents, tabular files, archives, and
+unknown binary data are preserved byte-for-byte. `extract-chat` consumes this
+package offline and prefers local artifact links in rendered Markdown/HTML.
 
 Current status:
 
 - The Xcode project contains distinct `LogGPT` and `LogGPT Plus` app/extension targets backed by shared Swift and JavaScript sources.
-- The base extension packages only the JSON-only manifest; the Plus extension packages its own manifest and toolbar popup.
+- The Basic and Plus products share extension sources; StoreKit entitlement or the standalone Plus bundle gates artifact capture.
 - Partial artifact failures still produce a usable ZIP and are recorded in the artifact manifest.
+- Basic users see one concise upgrade explanation on their first JSON download. It is dismissed by default, can be restored from Reset to Defaults, and never interrupts Plus exports.
+- Entitlement-aware toolbar and page icons refresh without a ChatGPT page reload (on focus, hover, download, and a lightweight ten-second visible-page check).
 
 ## Safari Extension
 
@@ -136,9 +142,6 @@ You will need a copy of Xcode, you can get it and this extension on the App Stor
   ```
 
 Build the `LogGPT` or `LogGPT Plus` scheme. Each scheme embeds its matching Safari extension target.
-
-For local purchase testing and the App Store Connect setup, see
-[`docs/STOREKIT-SETUP.md`](docs/STOREKIT-SETUP.md).
 
 ### Regenerating the LogGPT+ Icons
 

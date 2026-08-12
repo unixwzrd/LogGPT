@@ -9,8 +9,10 @@ function loadBackground(name, nativeResponse) {
   const context = {
     console,
     browser: {
+      action: { setIcon: async () => {} },
       runtime: {
         getManifest: () => ({ name }),
+        getURL: path => `extension://${path}`,
         sendNativeMessage: async (_application, message) => {
           assert.equal(message.command, "getPlusEntitlement");
           return nativeResponse;
@@ -25,13 +27,13 @@ function loadBackground(name, nativeResponse) {
 }
 
 (async () => {
-  const basicLocked = loadBackground("LogGPT", { hasPlus: false, source: "verified-cache" });
+  const basicLocked = loadBackground("LogGPT", { hasPlus: false, source: "development-basic-override", displayPrice: "$2.99" });
   assert.deepEqual(
     await basicLocked({ type: "loggpt.getPlusEntitlement" }),
-    { hasPlus: false, source: "verified-cache" }
+    { hasPlus: false, source: "development-basic-override", displayPrice: "$2.99" }
   );
 
-  const basicUnlocked = loadBackground("LogGPT", { hasPlus: true, source: "verified-cache" });
+  const basicUnlocked = loadBackground("LogGPT", { hasPlus: true, source: "verified-cache", displayPrice: "$2.99" });
   assert.equal((await basicUnlocked({ type: "loggpt.getPlusEntitlement" })).hasPlus, true);
 
   const plusBuild = loadBackground("LogGPT Plus", { hasPlus: false });

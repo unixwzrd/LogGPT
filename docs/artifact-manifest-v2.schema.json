@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unixwzrd.ai/schemas/loggpt/artifact-manifest-v2.schema.json",
+  "title": "LogGPT Artifact Manifest v2",
+  "type": "object",
+  "required": ["format_version", "source_file", "item_count", "artifacts"],
+  "properties": {
+    "format_version": { "const": 2 },
+    "product": { "type": "string" },
+    "source_file": { "type": "string" },
+    "conversation_title": { "type": ["string", "null"] },
+    "conversation_id": { "type": ["string", "null"] },
+    "exported_at": { "type": "string", "format": "date-time" },
+    "item_count": { "type": "integer", "minimum": 0 },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["canonical_id", "origin", "download_status"],
+        "properties": {
+          "canonical_id": { "type": ["string", "null"] },
+          "asset_pointer": { "type": ["string", "null"] },
+          "origin": { "enum": ["generated", "uploaded", "derived"] },
+          "original_filename": { "type": ["string", "null"] },
+          "saved_filename": { "type": ["string", "null"] },
+          "relative_path": { "type": ["string", "null"] },
+          "source_url": { "type": ["string", "null"] },
+          "declared_mime_type": { "type": ["string", "null"] },
+          "detected_mime_type": { "type": ["string", "null"] },
+          "mime_type": { "type": ["string", "null"] },
+          "size": { "type": ["integer", "null"], "minimum": 0 },
+          "sha256": { "type": ["string", "null"] },
+          "width": { "type": ["number", "null"] },
+          "height": { "type": ["number", "null"] },
+          "duration": { "type": ["number", "null"] },
+          "turn_id": { "type": ["string", "null"] },
+          "message_id": { "type": ["string", "null"] },
+          "role": { "type": ["string", "null"] },
+          "content_type": { "type": ["string", "null"] },
+          "download_status": {
+            "enum": ["downloaded", "failed", "skipped_by_user"]
+          },
+          "failure_reason": { "type": ["string", "null"] }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

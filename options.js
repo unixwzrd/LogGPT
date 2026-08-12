@@ -4,6 +4,7 @@
     includeMediaByDefault: "loggpt.includeMediaByDefault",
     includeGenerated: "loggpt.includeGenerated",
     includeUploaded: "loggpt.includeUploaded",
+    basicUpgradeNoticeDismissed: "loggpt.basicUpgradeNoticeDismissed",
   };
 
   function getStorageArea() {
@@ -24,13 +25,17 @@
 
   async function requestEntitlement() {
     const runtime = getRuntime();
-    if (!runtime?.sendMessage) return false;
+    if (!runtime?.sendMessage) return { hasPlus: false, displayPrice: null };
     try {
       const response = await runtime.sendMessage({ type: "loggpt.getPlusEntitlement" });
-      return response?.hasPlus === true;
+      return {
+        hasPlus: response?.hasPlus === true,
+        displayPrice: response?.displayPrice || null,
+        source: response?.source || "basic",
+      };
     } catch (error) {
       console.error("[LogGPT Plus] Could not check entitlement", error);
-      return false;
+      return { hasPlus: false, displayPrice: null, source: "unavailable" };
     }
   }
 
@@ -38,7 +43,7 @@
     const storage = getStorageArea();
     if (!storage) {
       return {
-        promptOnDownload: false,
+        promptOnDownload: localStorage.getItem(STORAGE_KEYS.promptOnDownload) !== "false",
         includeMediaByDefault: localStorage.getItem(STORAGE_KEYS.includeMediaByDefault) !== "false",
         includeGenerated: localStorage.getItem(STORAGE_KEYS.includeGenerated) !== "false",
         includeUploaded: localStorage.getItem(STORAGE_KEYS.includeUploaded) !== "false",
@@ -47,7 +52,7 @@
 
     const values = await storage.get(Object.values(STORAGE_KEYS));
     return {
-      promptOnDownload: false,
+      promptOnDownload: values[STORAGE_KEYS.promptOnDownload] !== false,
       includeMediaByDefault: values[STORAGE_KEYS.includeMediaByDefault] !== false,
       includeGenerated: values[STORAGE_KEYS.includeGenerated] !== false,
       includeUploaded: values[STORAGE_KEYS.includeUploaded] !== false,
@@ -74,34 +79,28 @@
   async function initialize() {
     const generatedCheckbox = document.getElementById("include-generated");
     const uploadedCheckbox = document.getElementById("include-uploaded");
+    const downloadArtifactsCheckbox = document.getElementById("download-artifacts");
+    const askEveryTimeCheckbox = document.getElementById("ask-every-time");
     const savedMessage = document.getElementById("saved-message");
 
-    async function showEntitlement() {
-      savedMessage.textContent = "Checking Plus access…";
-      const hasPlus = await requestEntitlement();
-      document.getElementById("product-heading").textContent = hasPlus ? "LogGPT Plus" : "LogGPT";
-      document.getElementById("locked").hidden = hasPlus;
-      document.getElementById("plus-settings").hidden = !hasPlus;
-      savedMessage.textContent = "";
-      return hasPlus;
+    function updateArtifactControls() {
+      generatedCheckbox.disabled = !downloadArtifactsCheckbox.checked;
+      uploadedCheckbox.disabled = !downloadArtifactsCheckbox.checked;
     }
 
-    document.getElementById("open-loggpt").addEventListener("click", async () => {
-      const runtime = getRuntime();
-      await runtime?.sendMessage?.({ type: "loggpt.openContainingApp" });
-    });
-    document.getElementById("refresh-entitlement").addEventListener("click", showEntitlement);
-
-    if (!await showEntitlement()) return;
-
-    const settings = await readSettings();
-    generatedCheckbox.checked = settings.includeGenerated;
-    uploadedCheckbox.checked = settings.includeUploaded;
+    async function loadSettings() {
+      const settings = await readSettings();
+      generatedCheckbox.checked = settings.includeGenerated;
+      uploadedCheckbox.checked = settings.includeUploaded;
+      downloadArtifactsCheckbox.checked = settings.includeMediaByDefault;
+      askEveryTimeCheckbox.checked = settings.promptOnDownload;
+      updateArtifactControls();
+    }
 
     async function persist() {
       const nextSettings = {
-        promptOnDownload: false,
-        includeMediaByDefault: generatedCheckbox.checked || uploadedCheckbox.checked,
+        promptOnDownload: askEveryTimeCheckbox.checked,
+        includeMediaByDefault: downloadArtifactsCheckbox.checked,
         includeGenerated: generatedCheckbox.checked,
         includeUploaded: uploadedCheckbox.checked,
       };
@@ -114,18 +113,71 @@
       }, 1200);
     }
 
+    async function showEntitlement() {
+      savedMessage.textContent = "Checking Plus access…";
+      const entitlement = await requestEntitlement();
+      const hasPlus = entitlement.hasPlus;
+      document.getElementById("product-heading").textContent = hasPlus ? "LogGPT Plus" : "LogGPT";
+      document.getElementById("locked").hidden = hasPlus;
+      document.getElementById("plus-settings").hidden = !hasPlus;
+      const upgradeButton = document.getElementById("open-loggpt");
+      upgradeButton.textContent = entitlement.displayPrice
+        ? `Upgrade to LogGPT Plus — ${entitlement.displayPrice}`
+        : "Get LogGPT Plus…";
+      if (hasPlus) {
+        await loadSettings();
+      }
+      savedMessage.textContent = "";
+      return hasPlus;
+    }
+
+    document.getElementById("open-loggpt").addEventListener("click", async () => {
+      const runtime = getRuntime();
+      const response = await runtime?.sendMessage?.({ type: "loggpt.openContainingApp" });
+      if (response?.opened !== false) {
+        window.close();
+      }
+    });
+    document.getElementById("refresh-entitlement").addEventListener("click", showEntitlement);
+
     generatedCheckbox.addEventListener("change", persist);
     uploadedCheckbox.addEventListener("change", persist);
+    askEveryTimeCheckbox.addEventListener("change", persist);
+    downloadArtifactsCheckbox.addEventListener("change", () => {
+      updateArtifactControls();
+      persist();
+    });
     document.getElementById("select-all").addEventListener("click", () => {
+      downloadArtifactsCheckbox.checked = true;
       generatedCheckbox.checked = true;
       uploadedCheckbox.checked = true;
+      updateArtifactControls();
       persist();
+    });
+    document.getElementById("reset-defaults").addEventListener("click", async () => {
+      downloadArtifactsCheckbox.checked = true;
+      generatedCheckbox.checked = true;
+      uploadedCheckbox.checked = true;
+      askEveryTimeCheckbox.checked = true;
+      updateArtifactControls();
+      await persist();
+      const storage = getStorageArea();
+      if (storage) {
+        await storage.remove(STORAGE_KEYS.basicUpgradeNoticeDismissed);
+      } else {
+        localStorage.removeItem(STORAGE_KEYS.basicUpgradeNoticeDismissed);
+      }
+      savedMessage.textContent = "Defaults restored";
     });
     document.getElementById("select-none").addEventListener("click", () => {
+      downloadArtifactsCheckbox.checked = false;
       generatedCheckbox.checked = false;
       uploadedCheckbox.checked = false;
+      updateArtifactControls();
       persist();
     });
+
+    await showEntitlement();
   }
 
   initialize().catch(error => {
