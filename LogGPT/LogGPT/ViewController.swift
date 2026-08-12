@@ -9,11 +9,17 @@ import Cocoa
 import SafariServices
 import WebKit
 
-let extensionBundleIdentifier = "ai.unixwzrd.LogGPT"
-
 class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHandler {
 
     @IBOutlet var webView: WKWebView!
+
+    private var extensionBundleIdentifier: String {
+        if let configured = Bundle.main.object(forInfoDictionaryKey: "LogGPTExtensionBundleIdentifier") as? String,
+           !configured.isEmpty {
+            return configured
+        }
+        return "ai.unixwzrd.LogGPT.Extension"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +27,11 @@ class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHan
         self.webView.navigationDelegate = self
 
         self.webView.configuration.userContentController.add(self, name: "controller")
+
+        StoreKitManager.shared.onChange = { [weak self] snapshot in
+            self?.showPlusPurchase(snapshot)
+        }
+        StoreKitManager.shared.start()
 
         self.webView.loadFileURL(Bundle.main.url(forResource: "Main", withExtension: "html")!, allowingReadAccessTo: Bundle.main.resourceURL!)
     }
@@ -40,18 +51,48 @@ class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHan
                 }
             }
         }
+        showPlusPurchase(StoreKitManager.shared.currentSnapshot)
     }
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        if (message.body as! String != "open-preferences") {
-            return;
+        let action: String?
+        if let string = message.body as? String {
+            action = string
+        } else if let dictionary = message.body as? [String: Any] {
+            action = dictionary["action"] as? String
+        } else {
+            action = nil
         }
 
-        SFSafariApplication.showPreferencesForExtension(withIdentifier: extensionBundleIdentifier) { error in
-            DispatchQueue.main.async {
-                NSApplication.shared.terminate(nil)
+        switch action {
+        case "open-preferences":
+            SFSafariApplication.showPreferencesForExtension(withIdentifier: extensionBundleIdentifier) { _ in
+                DispatchQueue.main.async {
+                    NSApplication.shared.terminate(nil)
+                }
             }
+        case "purchase-plus":
+            Task { await StoreKitManager.shared.purchase() }
+        case "restore-purchases":
+            Task { await StoreKitManager.shared.restore() }
+        case "refresh-purchases":
+            Task { await StoreKitManager.shared.reload() }
+        default:
+            break
         }
+    }
+
+    private func showPlusPurchase(_ snapshot: StoreKitManager.Snapshot) {
+        let payload: [String: Any] = [
+            "hasPlus": snapshot.hasPlus,
+            "isLoading": snapshot.isLoading,
+            "displayPrice": snapshot.displayPrice ?? NSNull(),
+            "message": snapshot.message,
+        ]
+        guard JSONSerialization.isValidJSONObject(payload),
+              let data = try? JSONSerialization.data(withJSONObject: payload),
+              let json = String(data: data, encoding: .utf8) else { return }
+        webView.evaluateJavaScript("updatePlusPurchase(\(json))")
     }
 
 }

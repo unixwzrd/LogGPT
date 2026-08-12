@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1024"
+     height="1024"
+     viewBox="0 0 1024 1024"
+     role="img"
+     aria-labelledby="title description">
+  <title id="title">LogGPT Plus application icon</title>
+  <desc id="description">The LogGPT download icon with a high-contrast plus badge.</desc>
+
+  <!-- The generator replaces this token with the original PNG as a data URL. -->
+  <image x="0"
+         y="0"
+         width="1024"
+         height="1024"
+         preserveAspectRatio="xMidYMid meet"
+         href="__LOGGPT_BASE_IMAGE__" />
+
+  <g id="plus-badge">
+    <circle cx="820"
+            cy="214"
+            r="126"
+            fill="#11191f"
+            fill-opacity="0.94"
+            stroke="#43edf0"
+            stroke-width="22" />
+    <path d="M 820 147 V 281 M 753 214 H 887"
+          fill="none"
+          stroke="#ffffff"
+          stroke-width="34"
+          stroke-linecap="round" />
+  </g>
+</svg>

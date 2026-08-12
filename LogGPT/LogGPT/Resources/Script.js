@@ -19,4 +19,26 @@ function openPreferences() {
     webkit.messageHandlers.controller.postMessage("open-preferences");
 }
 
+function updatePlusPurchase(status) {
+    const purchaseButton = document.getElementById("purchase-plus");
+    const restoreButton = document.getElementById("restore-purchases");
+    const statusText = document.getElementById("plus-status");
+    if (!purchaseButton || !restoreButton || !statusText) return;
+
+    statusText.innerText = status.message || "";
+    purchaseButton.disabled = Boolean(status.isLoading || status.hasPlus || !status.displayPrice);
+    restoreButton.disabled = Boolean(status.isLoading);
+    purchaseButton.hidden = Boolean(status.hasPlus);
+    restoreButton.hidden = Boolean(status.hasPlus);
+    if (status.displayPrice) {
+        purchaseButton.innerText = `Upgrade to Plus — ${status.displayPrice}`;
+    }
+}
+
+function sendAction(action) {
+    webkit.messageHandlers.controller.postMessage({ action });
+}
+
 document.querySelector("button.open-preferences").addEventListener("click", openPreferences);
+document.getElementById("purchase-plus").addEventListener("click", () => sendAction("purchase-plus"));
+document.getElementById("restore-purchases").addEventListener("click", () => sendAction("restore-purchases"));

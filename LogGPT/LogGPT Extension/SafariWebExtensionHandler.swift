@@ -4,6 +4,7 @@
 //
 
 import SafariServices
+import AppKit
 import os.log
 
 class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
@@ -25,16 +26,44 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             message = request?.userInfo?["message"]
         }
 
-        os_log(.default, "Received message from browser.runtime.sendNativeMessage: %@ (profile: %@)", String(describing: message), profile?.uuidString ?? "none")
+        os_log(.default, "Received native extension message (profile: %@)", profile?.uuidString ?? "none")
+
+        let responseMessage: [String: Any]
+        if let dictionary = message as? [String: Any],
+           let command = dictionary["command"] as? String {
+            switch command {
+            case "getPlusEntitlement":
+                responseMessage = [
+                    "hasPlus": PlusEntitlement.cachedValue,
+                    "source": PlusEntitlement.buildIncludesPlus ? "plus-build" : "verified-cache",
+                ]
+            case "openContainingApp":
+                responseMessage = ["opened": openContainingApp()]
+            default:
+                responseMessage = ["error": "Unknown native message command"]
+            }
+        } else {
+            responseMessage = ["error": "Invalid native message"]
+        }
 
         let response = NSExtensionItem()
         if #available(iOS 15.0, macOS 11.0, *) {
-            response.userInfo = [ SFExtensionMessageKey: [ "echo": message ] ]
+            response.userInfo = [SFExtensionMessageKey: responseMessage]
         } else {
-            response.userInfo = [ "message": [ "echo": message ] ]
+            response.userInfo = ["message": responseMessage]
         }
 
         context.completeRequest(returningItems: [ response ], completionHandler: nil)
+    }
+
+    private func openContainingApp() -> Bool {
+        let appURL = Bundle.main.bundleURL
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        guard appURL.pathExtension == "app" else { return false }
+        NSWorkspace.shared.open(appURL)
+        return true
     }
 
     func handleExtensionDeactivation() {

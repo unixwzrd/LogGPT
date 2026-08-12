@@ -4,10 +4,15 @@ import os.log
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
+    private var extensionBundleIdentifier: String {
+        if let configured = Bundle.main.object(forInfoDictionaryKey: "LogGPTExtensionBundleIdentifier") as? String,
+           !configured.isEmpty {
+            return configured
+        }
+        return "ai.unixwzrd.LogGPT.Extension"
+    }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        let extensionBundleIdentifier = "ai.unixwzrd.LogGPT" // Use your actual extension's bundle identifier
-
         // Check the current state of the extension
         SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: extensionBundleIdentifier) { state, error in
             if let error = error {
@@ -31,8 +36,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func extensionStateDidChange(_ notification: Notification) {
-        let extensionBundleIdentifier = "ai.unixwzrd.LogGPT" // Use your actual extension's bundle identifier
-
         // Re-check the state when a change is detected
         SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: extensionBundleIdentifier) { state, error in
             if let error = error {

@@ -1,0 +1,13 @@
+- generic [active] [ref=e1]:
+  - img "LogGPT Icon" [ref=e2]
+  - paragraph [ref=e3]: Turn on LogGPT in Safari Extensions to start downloading conversations.
+  - button "Quit then Activate in Safari Extensions Preferences…" [ref=e4] [cursor=pointer]
+  - region [ref=e5]:
+    - paragraph [ref=e6]: ONE-TIME UPGRADE
+    - heading "Get LogGPT Plus" [level=2] [ref=e7]
+    - paragraph [ref=e8]: Add generated images, charts, and uploaded files to one portable conversation ZIP.
+    - status [ref=e9]: Checking your Plus upgrade…
+    - generic [ref=e10]:
+      - button "Upgrade to Plus" [disabled] [ref=e11]
+      - button "Restore Purchases" [ref=e12] [cursor=pointer]
+    - paragraph [ref=e13]: Private by design · StoreKit purchase · No tracking

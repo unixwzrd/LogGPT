@@ -7,7 +7,7 @@
 :root {
     color-scheme: light dark;
 
-    --spacing: 20px;
+    --spacing: 5px;
 }
 
 html {
@@ -21,10 +21,14 @@ body {
     flex-direction: column;
 
     gap: var(--spacing);
-    margin: 0 calc(var(--spacing) * 2);
-    height: 100%;
+    margin: 0 18px;
+    min-height: 100%;
+    box-sizing: border-box;
+    padding: 6px 0;
 
-    font: -apple-system-short-body;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 13px;
     text-align: center;
 
     background: linear-gradient(to bottom, #245a99, #1f3a4d);
@@ -43,16 +47,76 @@ body.state-off :is(.state-on, .state-unknown) {
 }
 
 button {
-    font-size: 1em;
+    font-size: 0.9em;
     background-color: #6c6c70; /* Medium gray */
     color: #dcdcdc; /* Off-white text */
     border: 1px solid #5c5c5c; /* Slightly darker gray border */
-    padding: 10px 20px;
+    padding: 7px 12px;
     border-radius: 5px;
     cursor: pointer;
-    padding-right: 260px;
 }
 
 button:hover {
     background-color: #8d8d8d; /* Slightly darker on hover */
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.plus-upgrade {
+    width: min(440px, calc(100vw - 40px));
+    box-sizing: border-box;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.18);
+}
+
+.app-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+}
+
+.extension-state {
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.plus-upgrade h2 {
+    margin: 1px 0 4px;
+    font-size: 1.3em;
+}
+
+.plus-upgrade p {
+    margin: 0 0 6px;
+    line-height: 1.15;
+}
+
+.plus-eyebrow {
+    font-size: 0.72em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #9dc8ff;
+}
+
+.plus-summary {
+    font-size: 0.88em;
+}
+
+.plus-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.privacy-note {
+    margin-top: 5px !important;
+    margin-bottom: 0 !important;
+    font-size: 0.76em;
+    opacity: 0.8;
 }

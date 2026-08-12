@@ -27,6 +27,37 @@
 		A56625A32CD9248300FC29A8 /* LogGPT-conv-export.js in Resources */ = {isa = PBXBuildFile; fileRef = A56625972CD9248300FC29A8 /* LogGPT-conv-export.js */; };
 		A56625A42CD9248300FC29A8 /* manifest-v3.json in Resources */ = {isa = PBXBuildFile; fileRef = A56625982CD9248300FC29A8 /* manifest-v3.json */; };
 		A56625A52CD9248300FC29A8 /* manifest-v2.json in Resources */ = {isa = PBXBuildFile; fileRef = A56625992CD9248300FC29A8 /* manifest-v2.json */; };
+		A60A00012E00100100ABCDEF /* manifest-v3-plus.json in Resources */ = {isa = PBXBuildFile; fileRef = A60A00022E00100100ABCDEF /* manifest-v3-plus.json */; };
+		A60A00032E00100100ABCDEF /* manifest-v2-plus.json in Resources */ = {isa = PBXBuildFile; fileRef = A60A00042E00100100ABCDEF /* manifest-v2-plus.json */; };
+		A60A00052E00100100ABCDEF /* options.html in Resources */ = {isa = PBXBuildFile; fileRef = A60A00062E00100100ABCDEF /* options.html */; };
+		A60A00072E00100100ABCDEF /* options.js in Resources */ = {isa = PBXBuildFile; fileRef = A60A00082E00100100ABCDEF /* options.js */; };
+		A61000012E00200100ABCDEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56625452CD9248200FC29A8 /* AppDelegate.swift */; };
+		A61000022E00200100ABCDEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56625512CD9248200FC29A8 /* ViewController.swift */; };
+		A61000032E00200100ABCDEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A56625532CD9248200FC29A8 /* Main.storyboard */; };
+		A61000042E00200100ABCDEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56625562CD9248300FC29A8 /* Assets.xcassets */; };
+		A61000052E00200100ABCDEF /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = A56625482CD9248200FC29A8 /* Main.html */; };
+		A61000062E00200100ABCDEF /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = A566254D2CD9248200FC29A8 /* Style.css */; };
+		A61000072E00200100ABCDEF /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = A566254F2CD9248200FC29A8 /* Script.js */; };
+		A61000082E00200100ABCDEF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A61000812E00300100ABCDEF /* Icon.png */; };
+		A61000092E00200100ABCDEF /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566257A2CD9248300FC29A8 /* SafariWebExtensionHandler.swift */; };
+		A610000A2E00200100ABCDEF /* LogGPT-conv-export.js in Resources */ = {isa = PBXBuildFile; fileRef = A56625972CD9248300FC29A8 /* LogGPT-conv-export.js */; };
+		A610000B2E00200100ABCDEF /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = A61000202E00200100ABCDEF /* manifest.json */; };
+		A610000C2E00200100ABCDEF /* icons in Resources */ = {isa = PBXBuildFile; fileRef = A61000802E00300100ABCDEF /* icons */; };
+		A610000D2E00200100ABCDEF /* icon.js in Resources */ = {isa = PBXBuildFile; fileRef = A55B3A812DE651420095EA51 /* icon.js */; };
+		A610000E2E00200100ABCDEF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A566258F2CD9248300FC29A8 /* LICENSE */; };
+		A610000F2E00200100ABCDEF /* options.html in Resources */ = {isa = PBXBuildFile; fileRef = A60A00062E00100100ABCDEF /* options.html */; };
+		A61000102E00200100ABCDEF /* options.js in Resources */ = {isa = PBXBuildFile; fileRef = A60A00082E00100100ABCDEF /* options.js */; };
+		A61000112E00200100ABCDEF /* LogGPT Plus Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A61000222E00200100ABCDEF /* LogGPT Plus Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A62000012E00400100ABCDEF /* PlusEntitlement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62000102E00400100ABCDEF /* PlusEntitlement.swift */; };
+		A62000022E00400100ABCDEF /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62000112E00400100ABCDEF /* StoreKitManager.swift */; };
+		A62000032E00400100ABCDEF /* PlusEntitlement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62000102E00400100ABCDEF /* PlusEntitlement.swift */; };
+		A62000042E00400100ABCDEF /* PlusEntitlement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62000102E00400100ABCDEF /* PlusEntitlement.swift */; };
+		A62000052E00400100ABCDEF /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62000112E00400100ABCDEF /* StoreKitManager.swift */; };
+		A62000062E00400100ABCDEF /* PlusEntitlement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62000102E00400100ABCDEF /* PlusEntitlement.swift */; };
+		A62000072E00400100ABCDEF /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = A62000122E00400100ABCDEF /* background.js */; };
+		A62000082E00400100ABCDEF /* options.html in Resources */ = {isa = PBXBuildFile; fileRef = A60A00062E00100100ABCDEF /* options.html */; };
+		A62000092E00400100ABCDEF /* options.js in Resources */ = {isa = PBXBuildFile; fileRef = A60A00082E00100100ABCDEF /* options.js */; };
+		A620000A2E00400100ABCDEF /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = A62000122E00400100ABCDEF /* background.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +82,13 @@
 			remoteGlobalIDString = A56625742CD9248300FC29A8;
 			remoteInfo = "LogGPT Extension";
 		};
+		A61000232E00200100ABCDEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A566253A2CD9248200FC29A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A61000422E00200100ABCDEF;
+			remoteInfo = "LogGPT Plus Extension";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +99,17 @@
 			dstSubfolderSpec = 13;
 			files = (
 				A56625762CD9248300FC29A8 /* LogGPT Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A61000302E00200100ABCDEF /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A61000112E00200100ABCDEF /* LogGPT Plus Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,6 +148,19 @@
 		A56625972CD9248300FC29A8 /* LogGPT-conv-export.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "LogGPT-conv-export.js"; path = "../../LogGPT-conv-export.js"; sourceTree = "<group>"; };
 		A56625982CD9248300FC29A8 /* manifest-v3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "manifest-v3.json"; path = "../../manifest-v3.json"; sourceTree = "<group>"; };
 		A56625992CD9248300FC29A8 /* manifest-v2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "manifest-v2.json"; path = "../../manifest-v2.json"; sourceTree = "<group>"; };
+		A60A00022E00100100ABCDEF /* manifest-v3-plus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "manifest-v3-plus.json"; path = "../../manifest-v3-plus.json"; sourceTree = "<group>"; };
+		A60A00042E00100100ABCDEF /* manifest-v2-plus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "manifest-v2-plus.json"; path = "../../manifest-v2-plus.json"; sourceTree = "<group>"; };
+		A60A00062E00100100ABCDEF /* options.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "options.html"; path = "../../options.html"; sourceTree = "<group>"; };
+		A60A00082E00100100ABCDEF /* options.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "options.js"; path = "../../options.js"; sourceTree = "<group>"; };
+		A61000202E00200100ABCDEF /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "LogGPT Plus Extension/Resources/manifest.json"; sourceTree = SOURCE_ROOT; };
+		A61000212E00200100ABCDEF /* LogGPT Plus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LogGPT Plus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A61000222E00200100ABCDEF /* LogGPT Plus Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "LogGPT Plus Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A61000802E00300100ABCDEF /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "LogGPT Plus Extension/Resources/icons"; sourceTree = SOURCE_ROOT; };
+		A61000812E00300100ABCDEF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogGPT Plus Resources/Icon.png"; sourceTree = SOURCE_ROOT; };
+		A62000102E00400100ABCDEF /* PlusEntitlement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusEntitlement.swift; sourceTree = "<group>"; };
+		A62000112E00400100ABCDEF /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
+		A62000122E00400100ABCDEF /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.js; path = ../../background.js; sourceTree = "<group>"; };
+		A62000132E00400100ABCDEF /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +192,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A61000312E00200100ABCDEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = ();
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A61000322E00200100ABCDEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = ();
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -152,6 +226,8 @@
 				A566255F2CD9248300FC29A8 /* LogGPTTests.xctest */,
 				A56625692CD9248300FC29A8 /* LogGPTUITests.xctest */,
 				A56625752CD9248300FC29A8 /* LogGPT Extension.appex */,
+				A61000212E00200100ABCDEF /* LogGPT Plus.app */,
+				A61000222E00200100ABCDEF /* LogGPT Plus Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,6 +237,9 @@
 			children = (
 				A56625452CD9248200FC29A8 /* AppDelegate.swift */,
 				A56625512CD9248200FC29A8 /* ViewController.swift */,
+				A62000102E00400100ABCDEF /* PlusEntitlement.swift */,
+				A62000112E00400100ABCDEF /* StoreKitManager.swift */,
+				A62000132E00400100ABCDEF /* Configuration.storekit */,
 				A56625532CD9248200FC29A8 /* Main.storyboard */,
 				A56625562CD9248300FC29A8 /* Assets.xcassets */,
 				A56625582CD9248300FC29A8 /* Info.plist */,
@@ -223,6 +302,12 @@
 				A56625972CD9248300FC29A8 /* LogGPT-conv-export.js */,
 				A56625982CD9248300FC29A8 /* manifest-v3.json */,
 				A56625992CD9248300FC29A8 /* manifest-v2.json */,
+				A60A00022E00100100ABCDEF /* manifest-v3-plus.json */,
+				A60A00042E00100100ABCDEF /* manifest-v2-plus.json */,
+				A60A00062E00100100ABCDEF /* options.html */,
+				A60A00082E00100100ABCDEF /* options.js */,
+				A62000122E00400100ABCDEF /* background.js */,
+				A61000202E00200100ABCDEF /* manifest.json */,
 			);
 			name = Resources;
 			path = "LogGPT Extension";
@@ -318,6 +403,39 @@
 			productReference = A56625752CD9248300FC29A8 /* LogGPT Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		A61000412E00200100ABCDEF /* LogGPT Plus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A61000602E00200100ABCDEF /* Build configuration list for PBXNativeTarget "LogGPT Plus" */;
+			buildPhases = (
+				A61000332E00200100ABCDEF /* Sources */,
+				A61000312E00200100ABCDEF /* Frameworks */,
+				A61000352E00200100ABCDEF /* Resources */,
+				A61000302E00200100ABCDEF /* Embed Foundation Extensions */,
+			);
+			buildRules = ();
+			dependencies = (A61000502E00200100ABCDEF /* PBXTargetDependency */,);
+			name = "LogGPT Plus";
+			packageProductDependencies = ();
+			productName = "LogGPT Plus";
+			productReference = A61000212E00200100ABCDEF /* LogGPT Plus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A61000422E00200100ABCDEF /* LogGPT Plus Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A61000612E00200100ABCDEF /* Build configuration list for PBXNativeTarget "LogGPT Plus Extension" */;
+			buildPhases = (
+				A61000342E00200100ABCDEF /* Sources */,
+				A61000322E00200100ABCDEF /* Frameworks */,
+				A61000362E00200100ABCDEF /* Resources */,
+			);
+			buildRules = ();
+			dependencies = ();
+			name = "LogGPT Plus Extension";
+			packageProductDependencies = ();
+			productName = "LogGPT Plus Extension";
+			productReference = A61000222E00200100ABCDEF /* LogGPT Plus Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -342,6 +460,8 @@
 					A56625742CD9248300FC29A8 = {
 						CreatedOnToolsVersion = 16.1;
 					};
+					A61000412E00200100ABCDEF = { CreatedOnToolsVersion = 16.1; };
+					A61000422E00200100ABCDEF = { CreatedOnToolsVersion = 16.1; };
 				};
 			};
 			buildConfigurationList = A566253D2CD9248200FC29A8 /* Build configuration list for PBXProject "LogGPT" */;
@@ -362,6 +482,8 @@
 				A566255E2CD9248300FC29A8 /* LogGPTTests */,
 				A56625682CD9248300FC29A8 /* LogGPTUITests */,
 				A56625742CD9248300FC29A8 /* LogGPT Extension */,
+				A61000412E00200100ABCDEF /* LogGPT Plus */,
+				A61000422E00200100ABCDEF /* LogGPT Plus Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -400,11 +522,39 @@
 			files = (
 				A56625A32CD9248300FC29A8 /* LogGPT-conv-export.js in Resources */,
 				A50BB71A2D886B6B00D61162 /* manifest.json in Resources */,
-				A56625A52CD9248300FC29A8 /* manifest-v2.json in Resources */,
 				A5395FD02DD53F67006FB261 /* icons in Resources */,
 				A55B3A822DE651420095EA51 /* icon.js in Resources */,
-				A56625A42CD9248300FC29A8 /* manifest-v3.json in Resources */,
 				A566259B2CD9248300FC29A8 /* LICENSE in Resources */,
+				A62000072E00400100ABCDEF /* background.js in Resources */,
+				A62000082E00400100ABCDEF /* options.html in Resources */,
+				A62000092E00400100ABCDEF /* options.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A61000352E00200100ABCDEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A61000032E00200100ABCDEF /* Main.storyboard in Resources */,
+				A61000042E00200100ABCDEF /* Assets.xcassets in Resources */,
+				A61000052E00200100ABCDEF /* Main.html in Resources */,
+				A61000072E00200100ABCDEF /* Script.js in Resources */,
+				A61000082E00200100ABCDEF /* Icon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A61000362E00200100ABCDEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A610000A2E00200100ABCDEF /* LogGPT-conv-export.js in Resources */,
+				A610000B2E00200100ABCDEF /* manifest.json in Resources */,
+				A610000C2E00200100ABCDEF /* icons in Resources */,
+				A610000D2E00200100ABCDEF /* icon.js in Resources */,
+				A610000E2E00200100ABCDEF /* LICENSE in Resources */,
+				A610000F2E00200100ABCDEF /* options.html in Resources */,
+				A61000102E00200100ABCDEF /* options.js in Resources */,
+				A620000A2E00400100ABCDEF /* background.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +567,8 @@
 			files = (
 				A56625522CD9248200FC29A8 /* ViewController.swift in Sources */,
 				A56625462CD9248200FC29A8 /* AppDelegate.swift in Sources */,
+				A62000012E00400100ABCDEF /* PlusEntitlement.swift in Sources */,
+				A62000022E00400100ABCDEF /* StoreKitManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +594,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				A566257B2CD9248300FC29A8 /* SafariWebExtensionHandler.swift in Sources */,
+				A62000032E00400100ABCDEF /* PlusEntitlement.swift in Sources */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A61000332E00200100ABCDEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (A61000012E00200100ABCDEF /* AppDelegate.swift in Sources */, A61000022E00200100ABCDEF /* ViewController.swift in Sources */, A62000042E00400100ABCDEF /* PlusEntitlement.swift in Sources */, A62000052E00400100ABCDEF /* StoreKitManager.swift in Sources */,);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A61000342E00200100ABCDEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (A61000092E00200100ABCDEF /* SafariWebExtensionHandler.swift in Sources */, A62000062E00400100ABCDEF /* PlusEntitlement.swift in Sources */,);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
@@ -462,6 +627,11 @@
 			isa = PBXTargetDependency;
 			target = A56625742CD9248300FC29A8 /* LogGPT Extension */;
 			targetProxy = A56625772CD9248300FC29A8 /* PBXContainerItemProxy */;
+		};
+		A61000502E00200100ABCDEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A61000422E00200100ABCDEF /* LogGPT Plus Extension */;
+			targetProxy = A61000232E00200100ABCDEF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -625,7 +795,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -638,7 +808,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0.6;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -660,7 +830,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -673,7 +843,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0.6;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -715,7 +885,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0.6;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -758,7 +928,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0.6;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -783,7 +953,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "LogGPT-conv-exportTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -802,7 +972,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "LogGPT-conv-exportTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -843,6 +1013,106 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = LogGPT;
+			};
+			name = Release;
+		};
+		A61000702E00200100ABCDEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconPlus;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LogGPT/LogGPT.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 6;
+				DEVELOPMENT_TEAM = 69H57JTW3S;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LogGPT/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "LogGPT Plus";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.2.0;
+				OTHER_LDFLAGS = ("-framework", SafariServices, "-framework", WebKit,);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPTPlus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A61000712E00200100ABCDEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconPlus;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LogGPT/LogGPT.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 6;
+				DEVELOPMENT_TEAM = 69H57JTW3S;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LogGPT/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "LogGPT Plus";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.2.0;
+				OTHER_LDFLAGS = ("-framework", SafariServices, "-framework", WebKit,);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPTPlus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A61000722E00200100ABCDEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "LogGPT Extension/LogGPT_Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
+				DEVELOPMENT_TEAM = 69H57JTW3S;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LogGPT Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "LogGPT Plus Extension";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.2.0;
+				OTHER_LDFLAGS = ("-framework", SafariServices,);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPTPlus.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A61000732E00200100ABCDEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "LogGPT Extension/LogGPT_Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
+				DEVELOPMENT_TEAM = 69H57JTW3S;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LogGPT Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "LogGPT Plus Extension";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.2.0;
+				OTHER_LDFLAGS = ("-framework", SafariServices,);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPTPlus.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -891,6 +1161,18 @@
 				A566258B2CD9248300FC29A8 /* Debug */,
 				A566258C2CD9248300FC29A8 /* Release */,
 			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A61000602E00200100ABCDEF /* Build configuration list for PBXNativeTarget "LogGPT Plus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (A61000702E00200100ABCDEF /* Debug */, A61000712E00200100ABCDEF /* Release */,);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A61000612E00200100ABCDEF /* Build configuration list for PBXNativeTarget "LogGPT Plus Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (A61000722E00200100ABCDEF /* Debug */, A61000732E00200100ABCDEF /* Release */,);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};

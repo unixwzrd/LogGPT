@@ -50,6 +50,35 @@ This extension allows users to download complete conversation logs from OpenAI's
 - Preserves chat logs for documentation, import, and analysis
 - Prioritizes user privacy: **no tracking or data collection**
 
+### LogGPT and the Plus upgrade
+
+The App Store product remains one app:
+
+- `LogGPT` downloads conversation JSON without an upgrade.
+- The permanent `LogGPT Plus` non-consumable unlocks a single JSON-plus-artifacts
+  archive as `<stem>.zip`.
+
+The upgrade uses Apple StoreKit entirely on-device. LogGPT has no user accounts,
+analytics, telemetry, or purchase server. The repo retains the standalone
+`LogGPT Plus` target as an optional future SKU, but it is not required for the
+current upgrade model.
+
+The shared export contract with `extract-chat` is:
+
+- `<stem>.json`
+- `<stem>/artifact-manifest.json`
+- `<stem>/artifacts/generated/`
+- `<stem>/artifacts/uploaded/`
+- `<stem>/artifacts/derived/`
+
+`extract-chat` can now consume the extracted media directory or manifest and prefer local media links in rendered Markdown/HTML.
+
+Current status:
+
+- The Xcode project contains distinct `LogGPT` and `LogGPT Plus` app/extension targets backed by shared Swift and JavaScript sources.
+- The base extension packages only the JSON-only manifest; the Plus extension packages its own manifest and toolbar popup.
+- Partial artifact failures still produce a usable ZIP and are recorded in the artifact manifest.
+
 ## Safari Extension
 
 There are two ways to get this extension:
@@ -73,6 +102,17 @@ A version may be added to the Apple App Store, with a small fee to cover Apple D
 2. The export/save button ![download icon](./icons/download-icon.svg) will appear as the **left-most button in the conversation header bar** (next to the other action buttons, not floating or fixed in the viewport).
 3. Click the export/save button to download the current conversation as a JSON file to your `Downloads` folder.
 
+After purchasing `LogGPT Plus`, click the Safari toolbar extension icon to configure:
+
+- `Generated Content`
+- `Uploaded Content`
+- `Select All` / `Select None`
+
+With both categories off, the injected button downloads JSON only. Otherwise it
+downloads one ZIP containing the JSON, artifacts, hashes, provenance, failures,
+and user-skipped entries. Uploaded classification takes precedence when an item
+is referenced in both contexts.
+
 - While the extension is active, the icon in the Menu Bar will be "on" and when inactive it will be greyed out.
 
   ![Screenshot of Safari Extension](./graphics/Screenshot%202025-03-17%20at%2008.00.57.png)
@@ -95,6 +135,25 @@ You will need a copy of Xcode, you can get it and this extension on the App Stor
   xcodebuild build -project 'LogGPT.xcodeproj'
   ```
 
+Build the `LogGPT` or `LogGPT Plus` scheme. Each scheme embeds its matching Safari extension target.
+
+For local purchase testing and the App Store Connect setup, see
+[`docs/STOREKIT-SETUP.md`](docs/STOREKIT-SETUP.md).
+
+### Regenerating the LogGPT+ Icons
+
+The approved LogGPT+ artwork is generated from the existing 1024-pixel LogGPT
+icon plus the vector badge in `graphics/LogGPT-Plus.source.svg`. On macOS, run:
+
+```bash
+./scripts/generate-plus-icons.sh
+```
+
+The script uses the system `qlmanage` and `sips` tools. It creates a portable,
+self-contained `graphics/LogGPT-Plus.svg`, the `AppIconPlus` asset catalog, the
+Plus extension icon set, and the Plus containing-app icon. It does not modify
+the original LogGPT icon files.
+
 ### If You Build It Yourself
 
 You will likely need to check the "Allow Unsigned Extensions" checkbox in Safari to run, unless you can sign it yourself.  I have uploaded a signed version, it is a package and would appreciate it if someone could test it out. So this step should no longer necessary and you will have to do is download the .pkg file and install it.
@@ -110,6 +169,15 @@ If you find this extension helpful, consider supporting my work on [Patreon](htt
 Visit [Distributed Thinking Systems LLC](https://unixwzrd.ai/) for information about my other projects.
 
 ## Changelog
+
+### 2026-03-18  v1.2.0
+
+- Added a target-ready `LogGPT Plus` export contract with premium manifests
+- Refactored the content script so the base product remains JSON-only while the Plus SKU can prompt for optional media export
+- Added a single ZIP containing JSON, categorized artifacts, and `artifact-manifest.json`
+- Added generated/uploaded artifact controls in the toolbar popup
+- Aligned export naming with `extract-chat` so JSON and media bundles share a deterministic stem
+- Added separate base and Plus Xcode app/extension targets with shared sources
 
 ### 2025-06-22  v1.0.6
 

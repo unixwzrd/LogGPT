@@ -1,0 +1,41 @@
+{
+  "identifier" : "8151C8A5-58DA-4F79-A96C-C5D57560AC2B",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "1AFD096F-3232-4860-A201-723A27D0E594",
+      "localizations" : [
+        {
+          "description" : "Archive generated and uploaded ChatGPT artifacts in a portable ZIP.",
+          "displayName" : "LogGPT Plus Upgrade",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "ai.unixwzrd.LogGPT.plus.upgrade",
+      "referenceName" : "LogGPT Plus Upgrade",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "",
+    "_developerTeamID" : "69H57JTW3S",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 0,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

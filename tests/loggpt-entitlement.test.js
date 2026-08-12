@@ -1,0 +1,47 @@
+"use strict";
+
+const assert = require("assert");
+const fs = require("fs");
+const vm = require("vm");
+
+function loadBackground(name, nativeResponse) {
+  let listener;
+  const context = {
+    console,
+    browser: {
+      runtime: {
+        getManifest: () => ({ name }),
+        sendNativeMessage: async (_application, message) => {
+          assert.equal(message.command, "getPlusEntitlement");
+          return nativeResponse;
+        },
+        onMessage: { addListener(value) { listener = value; } },
+      },
+    },
+  };
+  vm.createContext(context);
+  vm.runInContext(fs.readFileSync("background.js", "utf8"), context);
+  return listener;
+}
+
+(async () => {
+  const basicLocked = loadBackground("LogGPT", { hasPlus: false, source: "verified-cache" });
+  assert.deepEqual(
+    await basicLocked({ type: "loggpt.getPlusEntitlement" }),
+    { hasPlus: false, source: "verified-cache" }
+  );
+
+  const basicUnlocked = loadBackground("LogGPT", { hasPlus: true, source: "verified-cache" });
+  assert.equal((await basicUnlocked({ type: "loggpt.getPlusEntitlement" })).hasPlus, true);
+
+  const plusBuild = loadBackground("LogGPT Plus", { hasPlus: false });
+  assert.deepEqual(
+    await plusBuild({ type: "loggpt.getPlusEntitlement" }),
+    { hasPlus: true, source: "plus-build" }
+  );
+
+  console.log("LogGPT entitlement tests passed");
+})().catch(error => {
+  console.error(error);
+  process.exitCode = 1;
+});

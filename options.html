@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LogGPT Plus Settings</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #111;
+      background: #f5f5f5;
+    }
+    .panel {
+      max-width: 540px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 22px;
+    }
+    label {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin: 14px 0;
+      line-height: 1.4;
+    }
+    .muted {
+      color: #555;
+      font-size: 14px;
+    }
+    .saved {
+      margin-top: 14px;
+      color: #0a7a34;
+      min-height: 20px;
+      font-size: 14px;
+    }
+    .locked {
+      padding: 14px;
+      border-radius: 10px;
+      background: #f0f4ff;
+      margin: 14px 0;
+    }
+    .benefits {
+      margin: 12px 0;
+      padding-left: 22px;
+      color: #333;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .upgrade-button {
+      background: #1769e0;
+      border: 0;
+      border-radius: 7px;
+      color: white;
+      font-weight: 600;
+    }
+    button {
+      padding: 7px 12px;
+    }
+    [hidden] {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <h1 id="product-heading">LogGPT</h1>
+    <div id="locked" class="locked" hidden>
+      <strong>Keep the whole conversation with LogGPT Plus</strong>
+      <ul class="benefits">
+        <li>Generated images, charts, and files</li>
+        <li>Files you uploaded to the conversation</li>
+        <li>JSON and an artifact manifest in one portable ZIP</li>
+      </ul>
+      <p class="muted">One-time upgrade. Basic JSON downloads always remain available.</p>
+      <button class="upgrade-button" type="button" id="open-loggpt">Get LogGPT Plus…</button>
+      <button type="button" id="refresh-entitlement">Check Again</button>
+    </div>
+    <div id="plus-settings" hidden>
+      <p><strong>Plus is unlocked</strong></p>
+      <p class="muted">Choose which artifacts LogGPT Plus includes in the conversation ZIP. Uploaded content takes precedence when an artifact is referenced by both categories.</p>
+      <label>
+        <input type="checkbox" id="include-generated">
+        <span>Generated Content</span>
+      </label>
+      <label>
+        <input type="checkbox" id="include-uploaded">
+        <span>Uploaded Content</span>
+      </label>
+      <div style="display:flex;gap:8px;margin-top:14px;">
+        <button type="button" id="select-all">Select All</button>
+        <button type="button" id="select-none">Select None</button>
+      </div>
+    </div>
+    <div class="saved" id="saved-message"></div>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>
