@@ -39,7 +39,20 @@ class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHan
         self.webView.loadFileURL(Bundle.main.url(forResource: "Main", withExtension: "html")!, allowingReadAccessTo: Bundle.main.resourceURL!)
     }
 
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        view.window?.title = PlusEntitlement.cachedValue ? "LogGPT Plus" : "LogGPT"
+    }
+
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        let useSettingsInsteadOfPreferences: Bool
+        if #available(macOS 13, *) {
+            useSettingsInsteadOfPreferences = true
+        } else {
+            useSettingsInsteadOfPreferences = false
+        }
+        webView.evaluateJavaScript("show(null, \(useSettingsInsteadOfPreferences))")
+
         SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: extensionBundleIdentifier) { (state, error) in
             guard let state = state, error == nil else {
                 // Insert code to inform the user that something went wrong.
@@ -47,11 +60,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHan
             }
 
             DispatchQueue.main.async {
-                if #available(macOS 13, *) {
-                    webView.evaluateJavaScript("show(\(state.isEnabled), true)")
-                } else {
-                    webView.evaluateJavaScript("show(\(state.isEnabled), false)")
-                }
+                webView.evaluateJavaScript("show(\(state.isEnabled), \(useSettingsInsteadOfPreferences))")
             }
         }
         showPlusPurchase(StoreKitManager.shared.currentSnapshot)
@@ -91,6 +100,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHan
 
     private func showPlusPurchase(_ snapshot: StoreKitManager.Snapshot) {
         (NSApplication.shared.delegate as? AppDelegate)?.updateBranding(hasPlus: snapshot.hasPlus)
+        view.window?.title = snapshot.hasPlus ? "LogGPT Plus" : "LogGPT"
         let payload: [String: Any] = [
             "hasPlus": snapshot.hasPlus,
             "isLoading": snapshot.isLoading,

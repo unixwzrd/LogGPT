@@ -55,13 +55,9 @@ This extension allows users to download complete conversation logs from OpenAI's
 The App Store product remains one app:
 
 - `LogGPT` downloads conversation JSON without an upgrade.
-- The permanent `LogGPT Plus` non-consumable unlocks a single JSON-plus-artifacts
-  archive as `<stem>.zip`.
+- The permanent `LogGPT Plus` non-consumable unlocks a single JSON-plus-artifacts archive as `<stem>.zip`.
 
-The upgrade uses Apple StoreKit entirely on-device. LogGPT has no user accounts,
-analytics, telemetry, or purchase server. The repo retains the standalone
-`LogGPT Plus` target as an optional future SKU, but it is not required for the
-current upgrade model.
+The upgrade uses Apple StoreKit entirely on-device. LogGPT has no user accounts, analytics, telemetry, or purchase server. The repo retains the standalone `LogGPT Plus` target as an optional future SKU, but it is not required for the current upgrade model.
 
 The shared export contract with `extract-chat` is:
 
@@ -71,11 +67,7 @@ The shared export contract with `extract-chat` is:
 - `<stem>/artifacts/uploaded/`
 - `<stem>/artifacts/derived/`
 
-The version-2 manifest records detected and declared MIME types, hashes, sizes,
-stable file IDs, and sanitized source URLs. Artifact capture is format-agnostic:
-images, vector graphics, audio, video, documents, tabular files, archives, and
-unknown binary data are preserved byte-for-byte. `extract-chat` consumes this
-package offline and prefers local artifact links in rendered Markdown/HTML.
+The version-2 manifest records detected and declared MIME types, hashes, sizes, stable file IDs, and sanitized source URLs. Artifact capture is format-agnostic: images, vector graphics, audio, video, documents, tabular files, archives, and unknown binary data are preserved byte-for-byte. `extract-chat` consumes this package offline and prefers local artifact links in rendered Markdown/HTML.
 
 Current status:
 
@@ -114,10 +106,7 @@ After purchasing `LogGPT Plus`, click the Safari toolbar extension icon to confi
 - `Uploaded Content`
 - `Select All` / `Select None`
 
-With both categories off, the injected button downloads JSON only. Otherwise it
-downloads one ZIP containing the JSON, artifacts, hashes, provenance, failures,
-and user-skipped entries. Uploaded classification takes precedence when an item
-is referenced in both contexts.
+With both categories off, the injected button downloads JSON only. Otherwise it downloads one ZIP containing the JSON, artifacts, hashes, provenance, failures, and user-skipped entries. Uploaded classification takes precedence when an item is referenced in both contexts.
 
 - While the extension is active, the icon in the Menu Bar will be "on" and when inactive it will be greyed out.
 
@@ -131,31 +120,15 @@ is referenced in both contexts.
 
 ## Build It Yourself
 
-You will need a copy of Xcode, you can get it and this extension on the App Store.
-
-[The Xcode project file is here.](https://github.com/unixwzrd/chatgpt-chatlog-export/tree/main/LogGPT)) Clone the repository and try
-
-  ```bash
-  git clone https://github.com/unixwzrd/chatgpt-chatlog-export.git chatgpt-jason
-  cd chatgpt-jason
-  xcodebuild build -project 'LogGPT.xcodeproj'
-  ```
-
-Build the `LogGPT` or `LogGPT Plus` scheme. Each scheme embeds its matching Safari extension target.
-
-### Regenerating the LogGPT+ Icons
-
-The approved LogGPT+ artwork is generated from the existing 1024-pixel LogGPT
-icon plus the vector badge in `graphics/LogGPT-Plus.source.svg`. On macOS, run:
+You will need Xcode from the Mac App Store. Clone the repository and open the included project:
 
 ```bash
-./scripts/generate-plus-icons.sh
+git clone https://github.com/unixwzrd/chatgpt-chatlog-export.git LogGPT
+cd LogGPT
+open LogGPT/LogGPT.xcodeproj
 ```
 
-The script uses the system `qlmanage` and `sips` tools. It creates a portable,
-self-contained `graphics/LogGPT-Plus.svg`, the `AppIconPlus` asset catalog, the
-Plus extension icon set, and the Plus containing-app icon. It does not modify
-the original LogGPT icon files.
+Select the `LogGPT` scheme and build it. The resulting Basic app embeds the Safari extension and exports conversation JSON.
 
 ### If You Build It Yourself
 

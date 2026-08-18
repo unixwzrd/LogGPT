@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026/08/18 v1.2.0
+
+- Added an optional one-time LogGPT Plus upgrade through Apple StoreKit.
+- Added portable ZIP archives containing conversation JSON, generated content, uploaded content, and an artifact manifest.
+- Added artifact download preferences, generated/uploaded content controls, per-download choices, and Reset to Defaults.
+- Added partial-success archives that preserve successful downloads and report unavailable artifacts instead of discarding the export.
+- Improved artifact discovery, filename handling, Basic/Plus status messaging, extension settings navigation, and icon updates.
+- Preserved the privacy-first design with no accounts, analytics, telemetry, or purchase server.
+
 ## 2025/06/22  v1.0.6
 
 - **FIXED**: Button persistence issue when page refreshes or DOM changes
@@ -12,9 +21,7 @@
 
 - Changed to new icons
 - Changed spacing on the ChatGPT UI Download button, was covering "Canvas" button.
-- Button icon now dynamically positions itself to the left of the standard
-  OpenAI Web UI interface elements like Canvas, Share, "Stacked Dots" for archive/delete, and
-  User Settings.
+- Button icon now dynamically positions itself to the left of the standard OpenAI Web UI interface elements like Canvas, Share, "Stacked Dots" for archive/delete, and User Settings.
 - Icon/button will change position based on the OpenAI Web UI elements.
 
 ## 2025/03/19  v1.0.4
@@ -49,8 +56,7 @@
 
 2024/10/12  v0.3.1
 
-- With the release of Canvas, the icons have been moved to the top to avoid overlapping.
-  Please check the position of the icons, which has been changed from the bottom to the top.
+- With the release of Canvas, the icons have been moved to the top to avoid overlapping. Please check the position of the icons, which has been changed from the bottom to the top.
 
 2024-05-07  v0.3.0
 
@@ -58,8 +64,7 @@
 
 2023-04-23  v0.2.1
 
-- fix: WebUI update. Fixed due to specification change.
-  add: icons.
+- fix: WebUI update. Fixed due to specification change. add: icons.
 
 2023-04-06  v0.2.0
 

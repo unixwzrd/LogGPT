@@ -419,6 +419,6 @@ bashexp*.txt
 /.playwright-cli/
 /output/playwright/
 
-# Private release and App Store operator notes
+# Private release and App Store operator notes and tools
 /local-docs/
 /local-artifacts/

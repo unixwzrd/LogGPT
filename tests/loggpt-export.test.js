@@ -45,6 +45,13 @@ const context = {
     if (String(url).includes("file-table")) return response("name\tvalue\na\t1\n", "text/tab-separated-values", 'attachment; filename="results.tsv"');
     if (String(url).includes("file-unknown")) return response(Uint8Array.from([1, 2, 3, 4]), "application/octet-stream");
     if (String(url).includes("file-upload")) return response(Uint8Array.from([0x89, 0x50, 0x4e, 0x47]), "image/png");
+    if (String(url).includes("interpreter/download") && String(url).includes("report.pdf")) {
+      assert(String(url).includes("message_id=message-sandbox"));
+      assert(String(url).includes("sandbox_path=%2Fmnt%2Fdata%2Freport.pdf"));
+      return response("%PDF-1.7\nartifact", "application/octet-stream", 'attachment; filename="report.pdf"');
+    }
+    if (String(url).includes("file-library-upload")) return response("%PDF-1.7\nupload", "application/pdf");
+    if (String(url).includes("file-preview")) return response(Uint8Array.from([0x89, 0x50, 0x4e, 0x47]), "image/png");
     throw new Error(`Unexpected fetch: ${url}`);
   },
 };
@@ -55,7 +62,15 @@ const api = context.__LOGGPT_TEST_API__;
 
 assert.equal(
   api.buildExportStem("thread", { title: "A / Test", create_time: 1700000000, update_time: 1700086400 }),
-  "2023-11-14--2023-11-15--a-test"
+  "2023-11-14-2023-11-15-a-test"
+);
+assert.equal(
+  api.buildExportStem("thread", {
+    title: "James Talarico Context",
+    create_time: Date.parse("2026-05-28T00:00:00Z") / 1000,
+    update_time: Date.parse("2026-08-12T00:00:00Z") / 1000,
+  }),
+  "2026-05-28-2026-08-12-james-talarico-context"
 );
 assert.equal(api.sanitizedSourceUrl("https://example.test/a.png?sig=secret"), "https://example.test/a.png");
 
@@ -86,6 +101,19 @@ const conversation = {
       id: "message-generated", author: { role: "tool" }, content: { content_type: "execution_output" },
       metadata: { ada_visualizations: [{ type: "chart", file_id: "file-chart", title: "Chart" }] },
     } },
+    sandboxArtifact: { message: {
+      id: "message-sandbox", author: { role: "assistant" },
+      content: { content_type: "text", parts: ["[Report](sandbox:/mnt/data/report.pdf)"] },
+      metadata: { content_references: [{ type: "file", source: "my_files", id: "file-library-upload", name: "source.pdf" }] },
+    } },
+    toolPreview: { message: {
+      id: "message-preview", author: { role: "tool", name: "container.open_image" }, content: { content_type: "execution_output" },
+      metadata: { attachments: [{ id: "file-preview", name: "/mnt/data/render/page-1.png", mime_type: "image/png" }] },
+    } },
+    trustedSearchResult: { message: {
+      id: "message-search", author: { role: "assistant" }, content: { content_type: "text" },
+      metadata: { search_result: { url: "https://images.openai.com/static/search-result.png", title: "Not an artifact" } },
+    } },
     uploadedReferencedByTool: { message: {
       id: "message-reference", author: { role: "tool" }, content: { content_type: "execution_output" },
       metadata: { file_id: "file-upload" },
@@ -95,7 +123,11 @@ const conversation = {
 const entries = api.scanConversationMedia(conversation);
 assert(entries.some(entry => entry.canonicalId === "file-upload" && entry.origin === "uploaded"));
 assert(entries.some(entry => entry.canonicalId === "file-chart" && entry.origin === "generated"));
+assert(entries.some(entry => entry.originalFilename === "report.pdf" && entry.origin === "generated" && entry.sourceUrl.includes("/interpreter/download?message_id=message-sandbox&sandbox_path=")));
+assert(entries.some(entry => entry.canonicalId === "file-library-upload" && entry.origin === "uploaded"));
+assert(!entries.some(entry => entry.canonicalId === "file-preview"));
 assert(!entries.some(entry => entry.sourceUrl === "https://example.test/not-an-artifact.pdf"));
+assert(!entries.some(entry => entry.sourceUrl === "https://images.openai.com/static/search-result.png"));
 
 function storedZipEntries(bytes) {
   const result = new Map();
@@ -126,6 +158,8 @@ api.buildArchiveZipBlob("archive", conversation, entries, "token", { includeGene
     assert([...files.keys()].some(name => name.endsWith("mystery.bin")));
     assert(fetchCalls.some(call => call.url.includes("/estuary/content?id=file-chart")));
     assert([...files.keys()].some(name => name.includes("archive/artifacts/uploaded/input.png")));
+    assert([...files.keys()].some(name => name.endsWith("archive/artifacts/generated/report.pdf")));
+    assert([...files.keys()].some(name => name.endsWith("archive/artifacts/uploaded/source.pdf")));
     assert(!files.get("archive/artifact-manifest.json").toString("utf8").includes("sig=secret"));
     const manifest = JSON.parse(files.get("archive/artifact-manifest.json").toString("utf8"));
     assert.equal(manifest.format_version, 2);

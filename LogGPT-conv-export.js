@@ -232,7 +232,7 @@
         const start = startTimestamp ? new Date(startTimestamp * 1000).toISOString().slice(0, 10) : "unknown-date";
         const end = endTimestamp ? new Date(endTimestamp * 1000).toISOString().slice(0, 10) : start;
         const title = sanitizeFilename(conversation?.title || `chatgpt-convo-${threadId}`).replace(/[-_]+/g, "-").toLowerCase();
-        return `${start}--${end}--${title || `chatgpt-convo-${threadId}`}`;
+        return [start, end, title || `chatgpt-convo-${threadId}`].filter(Boolean).join("-");
     }
 
     function triggerDownload(blob, downloadName) {
@@ -425,6 +425,23 @@
         }
     }
 
+    function sandboxArtifactLinks(value) {
+        if (typeof value !== "string" || !value.includes("sandbox:")) return [];
+        const links = [];
+        const pattern = /\[([^\]]*)\]\(sandbox:([^)]+)\)/g;
+        let match;
+        while ((match = pattern.exec(value)) !== null) {
+            let sandboxPath = match[2].trim();
+            try { sandboxPath = decodeURIComponent(sandboxPath); } catch (_error) {}
+            if (!sandboxPath.startsWith("/mnt/data/")) continue;
+            links.push({
+                sandboxPath,
+                filename: sandboxPath.split("/").pop() || match[1] || "artifact",
+            });
+        }
+        return links;
+    }
+
     function scanConversationMedia(conversation) {
         const mapping = conversation?.mapping || {};
         const byId = new Map();
@@ -474,12 +491,16 @@
                 continue;
             }
             const role = message?.author?.role || null;
+            const authorName = message?.author?.name || null;
             const contentType = message?.content?.content_type || null;
             const metadata = message?.metadata || {};
             const attachments = Array.isArray(metadata.attachments) ? metadata.attachments : [];
 
             for (const attachment of attachments) {
                 if (!attachment || typeof attachment !== "object") {
+                    continue;
+                }
+                if (role === "tool" && authorName === "container.open_image") {
                     continue;
                 }
                 getOrCreateEntry({
@@ -496,13 +517,60 @@
                     messageId: message.id || null,
                     role,
                     contentType,
-                    origin: "uploaded",
+                    origin: role === "user" ? "uploaded" : "generated",
                 });
+            }
+
+            for (const reference of metadata.content_references || []) {
+                if (reference?.type !== "file" || !reference.id) continue;
+                getOrCreateEntry({
+                    canonicalId: normalizeMediaIdentifier(reference.id),
+                    originalFilename: reference.name || null,
+                    turnId,
+                    messageId: message.id || null,
+                    role,
+                    contentType,
+                    origin: reference.source === "my_files" ? "uploaded" : "unclassified",
+                });
+            }
+
+            const textValues = [];
+            if (typeof message.content?.text === "string") textValues.push(message.content.text);
+            for (const part of message.content?.parts || []) {
+                if (typeof part === "string") textValues.push(part);
+                else if (typeof part?.text === "string") textValues.push(part.text);
+            }
+            for (const textValue of textValues) {
+                for (const link of sandboxArtifactLinks(textValue)) {
+                    const conversationId = conversation?.conversation_id;
+                    if (!conversationId) continue;
+                    getOrCreateEntry({
+                        sourceUrl: `/backend-api/conversation/${encodeURIComponent(conversationId)}/interpreter/download?message_id=${encodeURIComponent(message.id || "")}&sandbox_path=${encodeURIComponent(link.sandboxPath)}`,
+                        originalFilename: link.filename,
+                        turnId,
+                        messageId: message.id || null,
+                        role,
+                        contentType,
+                        origin: role === "user" ? "uploaded" : "generated",
+                    });
+                }
             }
 
             iterMediaCandidates(message, candidate => {
                 const rawSourceUrl = candidate.url || candidate.content_url || candidate.download_url || candidate.image_url || candidate.thumbnail_url || null;
                 const sourceUrl = usableMediaUrl(rawSourceUrl);
+                const hasArtifactPointer = Boolean(
+                    candidate.file_id
+                    || candidate.asset_pointer
+                    || candidate.audio_asset_pointer
+                    || candidate.image_asset_pointer
+                    || candidate.video_asset_pointer
+                    || candidate.canvas_asset_pointer
+                );
+                const sourceLooksLikeArtifact = sourceUrl && /\/backend-api\/(?:estuary\/content|files\/file[-_])/i.test(sourceUrl);
+                if (!hasArtifactPointer && !sourceLooksLikeArtifact) {
+                    return;
+                }
                 const canonicalId = normalizeMediaIdentifier(
                     candidate.file_id ||
                     candidate.asset_pointer ||

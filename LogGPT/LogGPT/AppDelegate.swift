@@ -78,10 +78,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func configureApplicationMenu(hasPlus: Bool) {
         guard let appMenu = NSApplication.shared.mainMenu?.items.first?.submenu else { return }
+        let applicationName = hasPlus ? "LogGPT Plus" : "LogGPT"
+        NSApplication.shared.mainMenu?.items.first?.title = applicationName
+        appMenu.title = applicationName
         if let about = appMenu.items.first {
             about.title = hasPlus ? "About LogGPT Plus" : "About LogGPT Basic"
             about.target = self
             about.action = #selector(showAboutPanel)
+        }
+        for item in appMenu.items {
+            if item.action == #selector(NSApplication.hide(_:)) {
+                item.title = "Hide \(applicationName)"
+            } else if item.action == #selector(NSApplication.terminate(_:)) {
+                item.title = "Quit \(applicationName)"
+            }
         }
         let identifier = NSUserInterfaceItemIdentifier("LogGPT.PlusMenuItem")
         let plusItem: NSMenuItem
