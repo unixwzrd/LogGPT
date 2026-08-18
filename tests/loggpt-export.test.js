@@ -60,6 +60,18 @@ vm.createContext(context);
 vm.runInContext(fs.readFileSync("LogGPT-conv-export.js", "utf8"), context);
 const api = context.__LOGGPT_TEST_API__;
 
+assert.equal(api.getThreadId(), "thread");
+assert.equal(api.isConversationPage(), true);
+context.location.pathname = "/g/g-custom/c/conversation-123";
+assert.equal(api.getThreadId(), "conversation-123");
+assert.equal(api.isConversationPage(), true);
+context.location.pathname = "/codex/cloud/settings/analytics";
+assert.equal(api.getThreadId(), null);
+assert.equal(api.isConversationPage(), false);
+context.location.pathname = "/";
+assert.equal(api.isConversationPage(), false);
+context.location.pathname = "/c/thread";
+
 assert.equal(
   api.buildExportStem("thread", { title: "A / Test", create_time: 1700000000, update_time: 1700086400 }),
   "2023-11-14-2023-11-15-a-test"

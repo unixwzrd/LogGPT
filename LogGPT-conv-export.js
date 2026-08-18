@@ -67,12 +67,16 @@
     }
 
     function isOnChatGPT() {
-        return location.hostname.endsWith("chatgpt.com");
+        return location.hostname === "chatgpt.com" || location.hostname.endsWith(".chatgpt.com");
     }
 
     function getThreadId() {
-        const match = location.pathname.match(/c\/([\w-]+)/);
+        const match = location.pathname.match(/(?:^|\/)c\/([A-Za-z0-9_-]+)(?:\/|$)/);
         return match ? match[1] : null;
+    }
+
+    function isConversationPage() {
+        return isOnChatGPT() && Boolean(getThreadId());
     }
 
     function getManifest() {
@@ -1226,14 +1230,20 @@
     }
 
     async function refreshDownloadButtonState() {
-        const button = document.getElementById("loggpt-download-btn");
-        if (!button) return;
-        const entitlement = await getPlusEntitlement();
-        if (!extensionState.available) {
+        if (!isConversationPage() || !extensionState.available) {
             removeExistingDialog();
-            button.remove();
+            document.getElementById("loggpt-download-btn")?.remove();
             return;
         }
+
+        let button = document.getElementById("loggpt-download-btn");
+        if (!button) {
+            injectDownloadButton();
+            button = document.getElementById("loggpt-download-btn");
+        }
+        if (!button) return;
+
+        const entitlement = await getPlusEntitlement();
         updateDownloadButtonState(button, entitlement.hasPlus);
     }
 
@@ -1268,7 +1278,7 @@
     }
 
     function injectDownloadButton() {
-        if (!extensionState.available || !isOnChatGPT()) {
+        if (!extensionState.available || !isConversationPage()) {
             return false;
         }
         if (document.getElementById("loggpt-download-btn")) {
@@ -1288,6 +1298,16 @@
         return true;
     }
 
+    function reconcileDownloadButton() {
+        const button = document.getElementById("loggpt-download-btn");
+        if (!extensionState.available || !isConversationPage()) {
+            removeExistingDialog();
+            button?.remove();
+            return false;
+        }
+        return button ? true : injectDownloadButton();
+    }
+
     if (globalThis.__LOGGPT_TEST_MODE__) {
         globalThis.__LOGGPT_TEST_API__ = {
             buildExportStem,
@@ -1296,6 +1316,8 @@
             sanitizedSourceUrl,
             hasPlusEntitlement,
             fetchMediaEntry,
+            getThreadId,
+            isConversationPage,
         };
         return;
     }
@@ -1314,12 +1336,10 @@
     window.setInterval(() => {
         if (!document.hidden) refreshDownloadButtonState().catch(() => {});
     }, 10000);
-    injectDownloadButton();
+    reconcileDownloadButton();
 
     const observer = new MutationObserver(() => {
-        if (extensionState.available && !document.getElementById("loggpt-download-btn")) {
-            injectDownloadButton();
-        }
+        reconcileDownloadButton();
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
