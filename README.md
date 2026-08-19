@@ -1,4 +1,4 @@
-# LogGPT
+# LogGPT and LogGPT Plus
 
 It appears the security policy changes with Apple and I have managed to get the app submitted to the App Store. There are also no time restrictions on having to reset the Allow Unsigned extensions anymore, though I could be wrong, in fact it seems to install and stay installed and function now without having to allow for unsigned extensions. I have not been able to try this out, but am adding a signed binary compile using my valid Apple Developer Certificate to the repo.
 
@@ -8,11 +8,12 @@ It appears the security policy changes with Apple and I have managed to get the 
 
 ## Table of Contents
 
-- [LogGPT](#loggpt)
+- [LogGPT and LogGPT Plus](#loggpt-and-loggpt-plus)
   - [Table of Contents](#table-of-contents)
   - [Project Update](#project-update)
   - [Export and preserve your ChatGPT conversation logs easily](#export-and-preserve-your-chatgpt-conversation-logs-easily)
   - [Features](#features)
+    - [LogGPT and the Plus upgrade](#loggpt-and-the-plus-upgrade)
   - [Safari Extension](#safari-extension)
     - [Why Use It?](#why-use-it)
     - [Using the Extension](#using-the-extension)
@@ -21,6 +22,7 @@ It appears the security policy changes with Apple and I have managed to get the 
     - [If You Build It Yourself](#if-you-build-it-yourself)
   - [Support](#support)
   - [Changelog](#changelog)
+    - [2026-03-18  v1.2.0](#2026-03-18--v120)
     - [2025-06-22  v1.0.6](#2025-06-22--v106)
   - [Credits](#credits)
   
@@ -30,10 +32,9 @@ This project is a utility designed to make exporting ChatGPT conversation histor
 
 **Recent UI Update:**
 
-- The export/save button is now visually integrated as the left-most button in the ChatGPT conversation header bar (not fixed-positioned).
-- The button size is now 48x32px, with a 32x32px icon for improved consistency and usability.
-- The button will always appear with the other action buttons and adapts to dynamic page changes.
-- **NEW in v1.0.6**: Fixed download icon persistence - the proper download icon now appears consistently across page refreshes and navigation.
+- Has an option to activate LogGPT Plus to capture more content, including generated content, uploaded content, and selected content.
+- The LogGPT and LogGPT Plus button is now visually integrated as the right-most button in the ChatGPT conversation header bar (not fixed-positioned).
+- The export/save button when using LogGPT Plus will ask which artifacts you wish to download - generated, uploaded or both.
 
 ## Export and preserve your ChatGPT conversation logs easily
 
@@ -41,6 +42,8 @@ This extension allows users to download complete conversation logs from OpenAI's
 
 ## Features
 
+- LogGPT will download chat history in JSON format.
+- LogGPT Plus will download chat history in JSON format, and optionally generated, uploaded or both in a ZIP archive.
 - Full conversation export to JSON format
 - Save/export button is now seamlessly integrated into the ChatGPT conversation header bar as the left-most action button
 - Button size is 48x32px with a 32x32px icon, matching the style of other header actions
@@ -97,7 +100,7 @@ A version may be added to the Apple App Store, with a small fee to cover Apple D
 ### Using the Extension
 
 1. Open a ChatGPT session in your browser.
-2. The export/save button ![download icon](./icons/download-icon.svg) will appear as the **left-most button in the conversation header bar** (next to the other action buttons, not floating or fixed in the viewport).
+2. The export/save button ![download icon](./LogGPT/LogGPT/Assets.xcassets/AppIcon.appiconset/Icon-128-download.png) will appear as the **left-most button in the conversation header bar** (next to the other action buttons, not floating or fixed in the viewport).
 3. Click the export/save button to download the current conversation as a JSON file to your `Downloads` folder.
 
 After purchasing `LogGPT Plus`, click the Safari toolbar extension icon to configure:
@@ -110,7 +113,7 @@ With both categories off, the injected button downloads JSON only. Otherwise it 
 
 - While the extension is active, the icon in the Menu Bar will be "on" and when inactive it will be greyed out.
 
-  ![Screenshot of Safari Extension](./graphics/Screenshot%202025-03-17%20at%2008.00.57.png)
+  ![Screenshot of Safari Extension](./LogGPT/LogGPT/Assets.xcassets/AppIcon.appiconset/Icon-128-download.png)
 
 ### Uninstalling the Extension
 
