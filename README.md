@@ -22,7 +22,8 @@ It appears the security policy changes with Apple and I have managed to get the 
     - [If You Build It Yourself](#if-you-build-it-yourself)
   - [Support](#support)
   - [Changelog](#changelog)
-    - [2026-03-18  v1.2.0](#2026-03-18--v120)
+    - [2026-09-13  v1.2.1](#2026-09-13--v121)
+    - [2026-08-18  v1.2.0](#2026-08-18--v120)
     - [2025-06-22  v1.0.6](#2025-06-22--v106)
   - [Credits](#credits)
   
@@ -33,8 +34,9 @@ This project is a utility designed to make exporting ChatGPT conversation histor
 **Recent UI Update:**
 
 - Has an option to activate LogGPT Plus to capture more content, including generated content, uploaded content, and selected content.
-- The LogGPT and LogGPT Plus button is now visually integrated as the right-most button in the ChatGPT conversation header bar (not fixed-positioned).
+- The LogGPT and LogGPT Plus button is now visually integrated as the left-most button in the ChatGPT conversation header action group (not fixed-positioned).
 - The export/save button when using LogGPT Plus will ask which artifacts you wish to download - generated, uploaded or both.
+- Export dialogs now show conversation preparation, artifact counts, collection progress, and ZIP creation progress. Long exports can be cancelled without producing a partial download.
 
 ## Export and preserve your ChatGPT conversation logs easily
 
@@ -77,6 +79,8 @@ Current status:
 - The Xcode project contains distinct `LogGPT` and `LogGPT Plus` app/extension targets backed by shared Swift and JavaScript sources.
 - The Basic and Plus products share extension sources; StoreKit entitlement or the standalone Plus bundle gates artifact capture.
 - Partial artifact failures still produce a usable ZIP and are recorded in the artifact manifest.
+- Basic and Plus exports provide immediate preparation feedback, while Plus displays artifact collection and ZIP creation progress even when saved preferences skip the selection dialog.
+- Plus export choices report total, generated, and uploaded artifact counts, and long exports can be cancelled safely.
 - Basic users see one concise upgrade explanation on their first JSON download. It is dismissed by default, can be restored from Reset to Defaults, and never interrupts Plus exports.
 - Entitlement-aware toolbar and page icons refresh without a ChatGPT page reload (on focus, hover, download, and a lightweight ten-second visible-page check).
 
@@ -110,6 +114,8 @@ After purchasing `LogGPT Plus`, click the Safari toolbar extension icon to confi
 - `Select All` / `Select None`
 
 With both categories off, the injected button downloads JSON only. Otherwise it downloads one ZIP containing the JSON, artifacts, hashes, provenance, failures, and user-skipped entries. Uploaded classification takes precedence when an item is referenced in both contexts.
+
+LogGPT reports conversation preparation immediately after the download button is selected. Plus displays the available artifact counts before export and then reports collection and ZIP creation progress. Saved choices can skip the selection dialog without hiding progress, and Cancel stops an unfinished export without creating a partial download.
 
 - While the extension is active, the icon in the Menu Bar will be "on" and when inactive it will be greyed out.
 
@@ -149,7 +155,14 @@ Visit [Distributed Thinking Systems LLC](https://unixwzrd.ai/) for information a
 
 ## Changelog
 
-### 2026-03-18  v1.2.0
+### 2026-09-13  v1.2.1
+
+- Added immediate conversation preparation feedback for Basic and Plus exports
+- Added generated, uploaded, and total artifact counts to Plus export choices
+- Added artifact collection and ZIP creation progress for all Plus archive downloads
+- Added cancellation without partial downloads and protection against duplicate export requests
+
+### 2026-08-18  v1.2.0
 
 - Added a target-ready `LogGPT Plus` export contract with premium manifests
 - Refactored the content script so the base product remains JSON-only while the Plus SKU can prompt for optional media export

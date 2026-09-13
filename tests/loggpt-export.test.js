@@ -140,6 +140,10 @@ assert(entries.some(entry => entry.canonicalId === "file-library-upload" && entr
 assert(!entries.some(entry => entry.canonicalId === "file-preview"));
 assert(!entries.some(entry => entry.sourceUrl === "https://example.test/not-an-artifact.pdf"));
 assert(!entries.some(entry => entry.sourceUrl === "https://images.openai.com/static/search-result.png"));
+const artifactCounts = api.getArtifactCounts(entries);
+assert.equal(artifactCounts.total, entries.length);
+assert.equal(artifactCounts.generated + artifactCounts.uploaded, artifactCounts.total);
+assert.equal(artifactCounts.uploaded, entries.filter(entry => entry.origin === "uploaded").length);
 
 function storedZipEntries(bytes) {
   const result = new Map();
@@ -157,7 +161,16 @@ function storedZipEntries(bytes) {
   return result;
 }
 
-api.buildArchiveZipBlob("archive", conversation, entries, "token", { includeGenerated: true, includeUploaded: true })
+const progressEvents = [];
+const exportController = new AbortController();
+api.buildArchiveZipBlob(
+  "archive",
+  conversation,
+  entries,
+  "token",
+  { includeGenerated: true, includeUploaded: true },
+  { signal: exportController.signal, onProgress: event => progressEvents.push(event) }
+)
   .then(async blob => {
     const bytes = Buffer.from(await blob.arrayBuffer());
     const files = storedZipEntries(bytes);
@@ -177,6 +190,31 @@ api.buildArchiveZipBlob("archive", conversation, entries, "token", { includeGene
     assert.equal(manifest.format_version, 2);
     assert(manifest.artifacts.some(item => item.saved_filename === "narration.mp3" && item.detected_mime_type === "audio/mpeg"));
     assert(!fetchCalls.some(call => call.url.startsWith("https://example.test/")));
+    assert(progressEvents.some(event => event.phase === "artifacts" && event.completed === entries.length && event.total === entries.length));
+    assert(progressEvents.some(event => event.phase === "packaging" && event.completed === event.total));
+    assert(fetchCalls.filter(call => call.url.includes("backend-api")).every(call => call.options.signal === exportController.signal));
+
+    const cancelledController = new AbortController();
+    const cancelledProgress = [];
+    await assert.rejects(
+      api.buildArchiveZipBlob(
+        "cancelled",
+        conversation,
+        entries,
+        "token",
+        { includeGenerated: true, includeUploaded: true },
+        {
+          signal: cancelledController.signal,
+          onProgress(event) {
+            cancelledProgress.push(event);
+            if (event.phase === "artifacts" && event.completed === 1) cancelledController.abort();
+          },
+        }
+      ),
+      error => error?.name === "AbortError"
+    );
+    assert(cancelledProgress.some(event => event.phase === "artifacts" && event.completed === 1));
+    assert(!cancelledProgress.some(event => event.phase === "packaging"));
     console.log("LogGPT exporter tests passed");
   })
   .catch(error => { console.error(error); process.exitCode = 1; });

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026/09/13 v1.2.1
+
+- Added immediate feedback while LogGPT collects conversation information.
+- Added total, generated, and uploaded artifact counts to the Plus export choices.
+- Added artifact collection and ZIP creation progress, including the current filename and unavailable artifact count.
+- Added cancellation for conversation retrieval, artifact collection, and ZIP creation without producing partial downloads.
+- Kept progress visible when saved Plus preferences skip the artifact selection dialog.
+- Prevented duplicate exports while a download is already being prepared.
+
 ## 2026/08/18 v1.2.0
 
 - Added an optional one-time LogGPT Plus upgrade through Apple StoreKit.

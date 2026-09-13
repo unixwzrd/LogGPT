@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "LogGPT",
     "author": "Distributed Thinking Systems, LLC",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Export ChatGPT conversations as JSON. Optional Plus upgrade archives generated and uploaded artifacts.",
 
     "icons": {
