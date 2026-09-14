@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026/09/14 v1.3.0
+
+- Added ChatGPT Work artifact discovery for generated image pointers and generated files linked from Work sandbox storage.
+
 ## 2026/09/13 v1.2.1
 
 - Added immediate feedback while LogGPT collects conversation information.

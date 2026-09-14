@@ -45,6 +45,21 @@ const context = {
     if (String(url).includes("file-table")) return response("name\tvalue\na\t1\n", "text/tab-separated-values", 'attachment; filename="results.tsv"');
     if (String(url).includes("file-unknown")) return response(Uint8Array.from([1, 2, 3, 4]), "application/octet-stream");
     if (String(url).includes("file-upload")) return response(Uint8Array.from([0x89, 0x50, 0x4e, 0x47]), "image/png");
+    if (String(url).includes("file-work-generated")) return response(Uint8Array.from([0x89, 0x50, 0x4e, 0x47, 1]), "image/png");
+    if (String(url).includes("file-work-upload")) return response(Uint8Array.from([0x89, 0x50, 0x4e, 0x47, 2]), "image/png");
+    if (String(url).includes("interpreter/download") && String(url).includes("loggpt-artifact-test-chart.png")) {
+      assert(String(url).includes("sandbox_path=%2Fworkspace%2Fscratch%2Ffixture%2Floggpt-artifact-test-chart.png"));
+      return response(Uint8Array.from([0x89, 0x50, 0x4e, 0x47, 3]), "image/png", 'attachment; filename="loggpt-artifact-test-chart.png"');
+    }
+    if (String(url).includes("interpreter/download") && String(url).includes("loggpt-artifact-test-data.csv")) {
+      return response("name,value\na,1\n", "text/csv", 'attachment; filename="loggpt-artifact-test-data.csv"');
+    }
+    if (String(url).includes("interpreter/download") && String(url).includes("loggpt-artifact-test-diagram.svg")) {
+      return response('<svg xmlns="http://www.w3.org/2000/svg"></svg>', "image/svg+xml", 'attachment; filename="loggpt-artifact-test-diagram.svg"');
+    }
+    if (String(url).includes("interpreter/download") && String(url).includes("loggpt-artifact-test-notes.md")) {
+      return response("# Artifact notes\n", "text/markdown", 'attachment; filename="loggpt-artifact-test-notes.md"');
+    }
     if (String(url).includes("interpreter/download") && String(url).includes("report.pdf")) {
       assert(String(url).includes("message_id=message-sandbox"));
       assert(String(url).includes("sandbox_path=%2Fmnt%2Fdata%2Freport.pdf"));
@@ -145,6 +160,55 @@ assert.equal(artifactCounts.total, entries.length);
 assert.equal(artifactCounts.generated + artifactCounts.uploaded, artifactCounts.total);
 assert.equal(artifactCounts.uploaded, entries.filter(entry => entry.origin === "uploaded").length);
 
+const workConversation = {
+  title: "ChatGPT Work archive",
+  conversation_id: "work-conversation",
+  mapping: {
+    generatedImage: { message: {
+      id: "message-work-image",
+      author: { role: "tool", name: "work-image-tool" },
+      content: { content_type: "multimodal_text", parts: [{
+        content_type: "image_asset_pointer",
+        asset_pointer: "sediment://file-work-generated",
+        size_bytes: 2115045,
+        width: 1254,
+        height: 1254,
+      }] },
+      metadata: { image_gen_title: "Friendly Robot Organizes a Digital Archive" },
+    } },
+    generatedFiles: { message: {
+      id: "message-work-files",
+      author: { role: "assistant" },
+      content: { content_type: "text", parts: [
+        "[Chart](sandbox:/workspace/scratch/fixture/loggpt-artifact-test-chart.png)\n"
+          + "[Data](sandbox:/workspace/scratch/fixture/loggpt-artifact-test-data.csv)\n"
+          + "[Diagram](sandbox:/workspace/scratch/fixture/loggpt-artifact-test-diagram.svg)\n"
+          + "[Notes](sandbox:/workspace/scratch/fixture/loggpt-artifact-test-notes.md)",
+      ] },
+      metadata: {},
+    } },
+    uploadedImages: { message: {
+      id: "message-work-uploaded",
+      author: { role: "user" },
+      content: { content_type: "multimodal_text", parts: [
+        { content_type: "image_asset_pointer", asset_pointer: "sediment://file-work-upload-1", width: 441, height: 207 },
+        { content_type: "image_asset_pointer", asset_pointer: "sediment://file-work-upload-2", width: 493, height: 409 },
+      ] },
+      metadata: { attachments: [
+        { id: "file-work-upload-1", library_file_id: "libfile-work-upload-1", name: "uploaded-one.png", mime_type: "image/png" },
+        { id: "file-work-upload-2", library_file_id: "libfile-work-upload-2", name: "uploaded-two.png", mime_type: "image/png" },
+      ] },
+    } },
+  },
+};
+const workEntries = api.scanConversationMedia(workConversation);
+const workCounts = api.getArtifactCounts(workEntries);
+assert.deepEqual({ ...workCounts }, { total: 7, generated: 5, uploaded: 2 });
+assert(workEntries.some(entry => entry.canonicalId === "file-work-generated" && entry.origin === "generated"));
+assert(workEntries.some(entry => entry.canonicalId === "file-work-generated" && entry.originalFilename === "Friendly Robot Organizes a Digital Archive"));
+assert(workEntries.some(entry => entry.sourceUrl?.includes("sandbox_path=%2Fworkspace%2Fscratch%2Ffixture%2Floggpt-artifact-test-chart.png")));
+assert.equal(workEntries.filter(entry => entry.canonicalId === "file-work-upload-1").length, 1);
+
 function storedZipEntries(bytes) {
   const result = new Map();
   let offset = 0;
@@ -215,6 +279,21 @@ api.buildArchiveZipBlob(
     );
     assert(cancelledProgress.some(event => event.phase === "artifacts" && event.completed === 1));
     assert(!cancelledProgress.some(event => event.phase === "packaging"));
+
+    const workBlob = await api.buildArchiveZipBlob(
+      "work-archive",
+      workConversation,
+      workEntries,
+      "token",
+      { includeGenerated: true, includeUploaded: true }
+    );
+    const workFiles = storedZipEntries(Buffer.from(await workBlob.arrayBuffer()));
+    const workManifest = JSON.parse(workFiles.get("work-archive/artifact-manifest.json").toString("utf8"));
+    assert.equal(workManifest.item_count, 7);
+    assert(workManifest.artifacts.every(item => item.download_status === "downloaded"));
+    assert([...workFiles.keys()].some(name => name.endsWith("Friendly_Robot_Organizes_a_Digital_Archive.png")));
+    assert([...workFiles.keys()].some(name => name.endsWith("loggpt-artifact-test-chart.png")));
+    assert([...workFiles.keys()].some(name => name.endsWith("uploaded-one.png")));
     console.log("LogGPT exporter tests passed");
   })
   .catch(error => { console.error(error); process.exitCode = 1; });

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LogGPT: Chat Log Export
-// @version      1.2.1
+// @version      1.3.0
 // @author       unixwzrd
 // @license      MIT
 // ==/UserScript==
@@ -16,6 +16,7 @@
         basicUpgradeNoticeDismissed: "loggpt.basicUpgradeNoticeDismissed",
     };
     const FILE_SERVICE_PREFIX = "file-service://";
+    const SEDIMENT_PREFIX = "sediment://";
     const ESTUARY_FALLBACK_PREFIX = "https://chatgpt.com/backend-api/files/";
     let activeExportController = null;
     const MIME_EXTENSIONS = Object.freeze({
@@ -327,6 +328,9 @@
         if (text.startsWith(FILE_SERVICE_PREFIX)) {
             return text.slice(FILE_SERVICE_PREFIX.length);
         }
+        if (text.startsWith(SEDIMENT_PREFIX)) {
+            return normalizeMediaIdentifier(text.slice(SEDIMENT_PREFIX.length));
+        }
         if (text.startsWith("http://") || text.startsWith("https://")) {
             try {
                 const parsed = new URL(text);
@@ -462,7 +466,9 @@
         while ((match = pattern.exec(value)) !== null) {
             let sandboxPath = match[2].trim();
             try { sandboxPath = decodeURIComponent(sandboxPath); } catch (_error) {}
-            if (!sandboxPath.startsWith("/mnt/data/")) continue;
+            const supportedPath = sandboxPath.startsWith("/mnt/data/")
+                || sandboxPath.startsWith("/workspace/scratch/");
+            if (!supportedPath || sandboxPath.split("/").includes("..")) continue;
             links.push({
                 sandboxPath,
                 filename: sandboxPath.split("/").pop() || match[1] || "artifact",
@@ -480,10 +486,12 @@
             const key = seed.canonicalId || seed.sourceUrl || `${seed.turnId || "unknown"}:${seed.messageId || "unknown"}:${seed.originalFilename || "asset"}`;
             const existing = byId.get(key) || byUrl.get(seed.sourceUrl || "");
             if (existing) {
-                const wasUploaded = existing.origin === "uploaded";
+                const previousOrigin = existing.origin;
                 Object.assign(existing, Object.fromEntries(Object.entries(seed).filter(([, value]) => value !== undefined && value !== null && value !== "")));
-                if (wasUploaded || seed.origin === "uploaded") {
+                if (previousOrigin === "uploaded" || seed.origin === "uploaded") {
                     existing.origin = "uploaded";
+                } else if (previousOrigin === "generated" || seed.origin === "generated") {
+                    existing.origin = "generated";
                 }
                 return existing;
             }
@@ -546,6 +554,34 @@
                     messageId: message.id || null,
                     role,
                     contentType,
+                    origin: role === "user" ? "uploaded" : "generated",
+                });
+            }
+
+            for (const part of message.content?.parts || []) {
+                if (!part || typeof part !== "object" || part.content_type !== "image_asset_pointer") {
+                    continue;
+                }
+                const canonicalId = normalizeMediaIdentifier(part.asset_pointer || part.image_url || part.url);
+                const sourceUrl = usableMediaUrl(part.image_url || part.url);
+                if (!canonicalId && !sourceUrl) {
+                    continue;
+                }
+                getOrCreateEntry({
+                    canonicalId,
+                    assetPointer: part.asset_pointer || null,
+                    sourceUrl,
+                    originalFilename: part.filename
+                        || part.name
+                        || (role === "user" ? null : metadata.image_gen_title || "generated-image"),
+                    mimeType: part.mime_type || part.mimeType || null,
+                    width: part.width || null,
+                    height: part.height || null,
+                    size: part.size_bytes || part.size || null,
+                    turnId,
+                    messageId: message.id || null,
+                    role,
+                    contentType: part.content_type,
                     origin: role === "user" ? "uploaded" : "generated",
                 });
             }

@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "LogGPT Plus",
   "author": "Distributed Thinking Systems LLC",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "Archive ChatGPT conversations with generated and uploaded artifacts.",
   "icons": {
     "16": "icons/Icon-16.png",

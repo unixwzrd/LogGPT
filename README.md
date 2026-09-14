@@ -22,6 +22,7 @@ It appears the security policy changes with Apple and I have managed to get the 
     - [If You Build It Yourself](#if-you-build-it-yourself)
   - [Support](#support)
   - [Changelog](#changelog)
+    - [2026-09-14  v1.3.0](#2026-09-14--v130)
     - [2026-09-13  v1.2.1](#2026-09-13--v121)
     - [2026-08-18  v1.2.0](#2026-08-18--v120)
     - [2025-06-22  v1.0.6](#2025-06-22--v106)
@@ -81,6 +82,7 @@ Current status:
 - Partial artifact failures still produce a usable ZIP and are recorded in the artifact manifest.
 - Basic and Plus exports provide immediate preparation feedback, while Plus displays artifact collection and ZIP creation progress even when saved preferences skip the selection dialog.
 - Plus export choices report total, generated, and uploaded artifact counts, and long exports can be cancelled safely.
+- ChatGPT Work generated images, workspace-linked generated files, and uploaded attachments are included when they are available through the conversation session.
 - Basic users see one concise upgrade explanation on their first JSON download. It is dismissed by default, can be restored from Reset to Defaults, and never interrupts Plus exports.
 - Entitlement-aware toolbar and page icons refresh without a ChatGPT page reload (on focus, hover, download, and a lightweight ten-second visible-page check).
 
@@ -154,6 +156,10 @@ If you find this extension helpful, consider supporting my work on [Patreon](htt
 Visit [Distributed Thinking Systems LLC](https://unixwzrd.ai/) for information about my other projects.
 
 ## Changelog
+
+### 2026-09-14  v1.3.0
+
+- Added artifact discovery for ChatGPT Work generated images, workspace-linked generated files, and uploaded attachments
 
 ### 2026-09-13  v1.2.1
 

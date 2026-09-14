@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "LogGPT Plus",
   "author": "Distributed Thinking Systems, LLC",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "LogGPT Plus: Export ChatGPT conversation JSON logs and optional media bundles.",
   "icons": {
     "16": "icons/Icon-16.png",
