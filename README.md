@@ -22,6 +22,7 @@ It appears the security policy changes with Apple and I have managed to get the 
     - [If You Build It Yourself](#if-you-build-it-yourself)
   - [Support](#support)
   - [Changelog](#changelog)
+    - [2026-10-01  v1.3.1](#2026-10-01--v131)
     - [2026-09-14  v1.3.0](#2026-09-14--v130)
     - [2026-09-13  v1.2.1](#2026-09-13--v121)
     - [2026-08-18  v1.2.0](#2026-08-18--v120)
@@ -156,6 +157,12 @@ If you find this extension helpful, consider supporting my work on [Patreon](htt
 Visit [Distributed Thinking Systems LLC](https://unixwzrd.ai/) for information about my other projects.
 
 ## Changelog
+
+### 2026-10-01  v1.3.1
+
+- Restored the LogGPT download button after ChatGPT changed its conversation title-bar structure
+- Kept the button immediately before Share across current and earlier ChatGPT header layouts
+- Improved button relocation when ChatGPT replaces the visible title bar during in-page navigation
 
 ### 2026-09-14  v1.3.0
 

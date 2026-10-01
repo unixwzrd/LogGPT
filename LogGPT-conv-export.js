@@ -1494,9 +1494,12 @@
         const button = document.createElement("button");
         button.id = "loggpt-download-btn";
         button.title = "Download conversation";
+        button.setAttribute("aria-label", "Download conversation");
+        button.type = "button";
         button.style.cssText = [
             "width:32px",
             "height:32px",
+            "flex:0 0 auto",
             "background:none",
             "border:none",
             "padding:0",
@@ -1504,7 +1507,7 @@
             "display:flex",
             "align-items:center",
             "justify-content:center",
-            "margin-right:8px",
+            "margin-right:-2px",
             "color:inherit",
         ].join(";");
 
@@ -1520,24 +1523,47 @@
         return button;
     }
 
-    function injectDownloadButton() {
+    function findDownloadButtonHost(root = document) {
+        const titlebarSurface = root.querySelector?.("[data-testid='app-shell-header-context-menu-surface'][aria-hidden='false']")
+            || root.querySelector?.("[data-testid='app-shell-header-context-menu-surface']");
+        if (titlebarSurface) {
+            const anchor = titlebarSurface.querySelector("button[aria-label='Share']")
+                || titlebarSurface.querySelector("[data-app-shell-header-obstacle='true'] button")
+                || titlebarSurface.querySelector("button");
+            if (anchor?.parentElement) {
+                return { container: anchor.parentElement, before: anchor };
+            }
+        }
+
+        const legacyActions = root.getElementById?.("conversation-header-actions")
+            || root.querySelector?.("[data-testid='conversation-header-actions']");
+        if (legacyActions) {
+            return { container: legacyActions, before: legacyActions.firstChild };
+        }
+
+        const fallbackHeader = root.querySelector?.("header")
+            || root.querySelector?.("[role='banner']");
+        return fallbackHeader
+            ? { container: fallbackHeader, before: fallbackHeader.firstChild }
+            : null;
+    }
+
+    function injectDownloadButton(root = document) {
         if (!extensionState.available || !isConversationPage()) {
             return false;
         }
-        if (document.getElementById("loggpt-download-btn")) {
-            return true;
-        }
-
-        const header = document.getElementById("conversation-header-actions")
-            || document.querySelector("[data-testid='conversation-header-actions']")
-            || document.querySelector("header")
-            || document.querySelector("[role='banner']");
-
-        if (!header) {
+        const host = findDownloadButtonHost(root);
+        if (!host) {
             return false;
         }
 
-        header.insertBefore(createDownloadButton(), header.firstChild);
+        const button = root.getElementById("loggpt-download-btn") || createDownloadButton();
+        if (button.parentElement !== host.container || button.nextSibling !== host.before) {
+            const before = host.before?.parentElement === host.container
+                ? host.before
+                : host.container.firstChild;
+            host.container.insertBefore(button, before);
+        }
         return true;
     }
 
@@ -1548,7 +1574,7 @@
             button?.remove();
             return false;
         }
-        return button ? true : injectDownloadButton();
+        return injectDownloadButton();
     }
 
     if (globalThis.__LOGGPT_TEST_MODE__) {
@@ -1562,6 +1588,8 @@
             fetchMediaEntry,
             getThreadId,
             isConversationPage,
+            findDownloadButtonHost,
+            injectDownloadButton,
         };
         return;
     }

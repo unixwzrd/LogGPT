@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026/10/01 v1.3.1
+
+- Restored the injected download button after ChatGPT changed its conversation title-bar structure.
+- Positioned the button directly before Share in the current ChatGPT action group while retaining compatibility with earlier layouts.
+- Improved button reconciliation when ChatGPT replaces the visible title bar during in-page navigation.
+
 ## 2026/09/14 v1.3.0
 
 - Added ChatGPT Work artifact discovery for generated image pointers and generated files linked from Work sandbox storage.

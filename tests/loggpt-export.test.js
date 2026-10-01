@@ -101,6 +101,49 @@ assert.equal(
 );
 assert.equal(api.sanitizedSourceUrl("https://example.test/a.png?sig=secret"), "https://example.test/a.png");
 
+const shareButton = { parentElement: null };
+const currentToolbar = {
+  firstChild: shareButton,
+  insertBefore(button, before) {
+    assert.equal(before, shareButton);
+    button.parentElement = this;
+    button.nextSibling = before;
+  },
+};
+shareButton.parentElement = currentToolbar;
+const currentTitlebar = {
+  querySelector(selector) {
+    return selector === "button[aria-label='Share']" ? shareButton : null;
+  },
+};
+const currentHeaderDocument = {
+  getElementById() { return null; },
+  querySelector(selector) {
+    return selector === "[data-testid='app-shell-header-context-menu-surface'][aria-hidden='false']" ? currentTitlebar : null;
+  },
+};
+assert.deepEqual(
+  { ...api.findDownloadButtonHost(currentHeaderDocument) },
+  { container: currentToolbar, before: shareButton }
+);
+
+const staleButton = { parentElement: {}, nextSibling: null };
+currentHeaderDocument.getElementById = id => id === "loggpt-download-btn" ? staleButton : null;
+assert.equal(api.injectDownloadButton(currentHeaderDocument), true);
+assert.equal(staleButton.parentElement, currentToolbar);
+assert.equal(staleButton.nextSibling, shareButton);
+
+const legacyFirstButton = {};
+const legacyToolbar = { firstChild: legacyFirstButton };
+const legacyHeaderDocument = {
+  getElementById(id) { return id === "conversation-header-actions" ? legacyToolbar : null; },
+  querySelector() { return null; },
+};
+assert.deepEqual(
+  { ...api.findDownloadButtonHost(legacyHeaderDocument) },
+  { container: legacyToolbar, before: legacyFirstButton }
+);
+
 const conversation = {
   title: "Archive",
   conversation_id: "conversation-1",

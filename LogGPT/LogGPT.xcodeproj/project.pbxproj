@@ -25,12 +25,6 @@
 		A566257B2CD9248300FC29A8 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566257A2CD9248300FC29A8 /* SafariWebExtensionHandler.swift */; };
 		A566259B2CD9248300FC29A8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A566258F2CD9248300FC29A8 /* LICENSE */; };
 		A56625A32CD9248300FC29A8 /* LogGPT-conv-export.js in Resources */ = {isa = PBXBuildFile; fileRef = A56625972CD9248300FC29A8 /* LogGPT-conv-export.js */; };
-		A56625A42CD9248300FC29A8 /* manifest-v3.json in Resources */ = {isa = PBXBuildFile; fileRef = A56625982CD9248300FC29A8 /* manifest-v3.json */; };
-		A56625A52CD9248300FC29A8 /* manifest-v2.json in Resources */ = {isa = PBXBuildFile; fileRef = A56625992CD9248300FC29A8 /* manifest-v2.json */; };
-		A60A00012E00100100ABCDEF /* manifest-v3-plus.json in Resources */ = {isa = PBXBuildFile; fileRef = A60A00022E00100100ABCDEF /* manifest-v3-plus.json */; };
-		A60A00032E00100100ABCDEF /* manifest-v2-plus.json in Resources */ = {isa = PBXBuildFile; fileRef = A60A00042E00100100ABCDEF /* manifest-v2-plus.json */; };
-		A60A00052E00100100ABCDEF /* options.html in Resources */ = {isa = PBXBuildFile; fileRef = A60A00062E00100100ABCDEF /* options.html */; };
-		A60A00072E00100100ABCDEF /* options.js in Resources */ = {isa = PBXBuildFile; fileRef = A60A00082E00100100ABCDEF /* options.js */; };
 		A61000012E00200100ABCDEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56625452CD9248200FC29A8 /* AppDelegate.swift */; };
 		A61000022E00200100ABCDEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56625512CD9248200FC29A8 /* ViewController.swift */; };
 		A61000032E00200100ABCDEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A56625532CD9248200FC29A8 /* Main.storyboard */; };
@@ -38,11 +32,11 @@
 		A61000052E00200100ABCDEF /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = A56625482CD9248200FC29A8 /* Main.html */; };
 		A61000062E00200100ABCDEF /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = A566254D2CD9248200FC29A8 /* Style.css */; };
 		A61000072E00200100ABCDEF /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = A566254F2CD9248200FC29A8 /* Script.js */; };
-		A61000082E00200100ABCDEF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A61000812E00300100ABCDEF /* Icon.png */; };
+		A61000082E00200100ABCDEF /* LogGPT Plus Resources/Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A61000812E00300100ABCDEF /* LogGPT Plus Resources/Icon.png */; };
 		A61000092E00200100ABCDEF /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566257A2CD9248300FC29A8 /* SafariWebExtensionHandler.swift */; };
 		A610000A2E00200100ABCDEF /* LogGPT-conv-export.js in Resources */ = {isa = PBXBuildFile; fileRef = A56625972CD9248300FC29A8 /* LogGPT-conv-export.js */; };
-		A610000B2E00200100ABCDEF /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = A61000202E00200100ABCDEF /* manifest.json */; };
-		A610000C2E00200100ABCDEF /* icons in Resources */ = {isa = PBXBuildFile; fileRef = A61000802E00300100ABCDEF /* icons */; };
+		A610000B2E00200100ABCDEF /* LogGPT Plus Extension/Resources/manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = A61000202E00200100ABCDEF /* LogGPT Plus Extension/Resources/manifest.json */; };
+		A610000C2E00200100ABCDEF /* LogGPT Plus Extension/Resources/icons in Resources */ = {isa = PBXBuildFile; fileRef = A61000802E00300100ABCDEF /* LogGPT Plus Extension/Resources/icons */; };
 		A610000D2E00200100ABCDEF /* icon.js in Resources */ = {isa = PBXBuildFile; fileRef = A55B3A812DE651420095EA51 /* icon.js */; };
 		A610000E2E00200100ABCDEF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A566258F2CD9248300FC29A8 /* LICENSE */; };
 		A610000F2E00200100ABCDEF /* options.html in Resources */ = {isa = PBXBuildFile; fileRef = A60A00062E00100100ABCDEF /* options.html */; };
@@ -151,13 +145,13 @@
 		A56625992CD9248300FC29A8 /* manifest-v2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "manifest-v2.json"; path = "../../manifest-v2.json"; sourceTree = "<group>"; };
 		A60A00022E00100100ABCDEF /* manifest-v3-plus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "manifest-v3-plus.json"; path = "../../manifest-v3-plus.json"; sourceTree = "<group>"; };
 		A60A00042E00100100ABCDEF /* manifest-v2-plus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "manifest-v2-plus.json"; path = "../../manifest-v2-plus.json"; sourceTree = "<group>"; };
-		A60A00062E00100100ABCDEF /* options.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "options.html"; path = "../../options.html"; sourceTree = "<group>"; };
-		A60A00082E00100100ABCDEF /* options.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "options.js"; path = "../../options.js"; sourceTree = "<group>"; };
-		A61000202E00200100ABCDEF /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "LogGPT Plus Extension/Resources/manifest.json"; sourceTree = SOURCE_ROOT; };
+		A60A00062E00100100ABCDEF /* options.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = options.html; path = ../../options.html; sourceTree = "<group>"; };
+		A60A00082E00100100ABCDEF /* options.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = options.js; path = ../../options.js; sourceTree = "<group>"; };
+		A61000202E00200100ABCDEF /* LogGPT Plus Extension/Resources/manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "LogGPT Plus Extension/Resources/manifest.json"; sourceTree = SOURCE_ROOT; };
 		A61000212E00200100ABCDEF /* LogGPT Plus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LogGPT Plus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61000222E00200100ABCDEF /* LogGPT Plus Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "LogGPT Plus Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A61000802E00300100ABCDEF /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "LogGPT Plus Extension/Resources/icons"; sourceTree = SOURCE_ROOT; };
-		A61000812E00300100ABCDEF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogGPT Plus Resources/Icon.png"; sourceTree = SOURCE_ROOT; };
+		A61000802E00300100ABCDEF /* LogGPT Plus Extension/Resources/icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "LogGPT Plus Extension/Resources/icons"; sourceTree = SOURCE_ROOT; };
+		A61000812E00300100ABCDEF /* LogGPT Plus Resources/Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogGPT Plus Resources/Icon.png"; sourceTree = SOURCE_ROOT; };
 		A62000102E00400100ABCDEF /* PlusEntitlement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusEntitlement.swift; sourceTree = "<group>"; };
 		A62000112E00400100ABCDEF /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
 		A62000122E00400100ABCDEF /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.js; path = ../../background.js; sourceTree = "<group>"; };
@@ -197,13 +191,15 @@
 		A61000312E00200100ABCDEF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
-			files = ();
+			files = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A61000322E00200100ABCDEF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
-			files = ();
+			files = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
@@ -310,7 +306,7 @@
 				A60A00062E00100100ABCDEF /* options.html */,
 				A60A00082E00100100ABCDEF /* options.js */,
 				A62000122E00400100ABCDEF /* background.js */,
-				A61000202E00200100ABCDEF /* manifest.json */,
+				A61000202E00200100ABCDEF /* LogGPT Plus Extension/Resources/manifest.json */,
 			);
 			name = Resources;
 			path = "LogGPT Extension";
@@ -319,6 +315,8 @@
 		A5D516FD2DC737DC0003EA1B /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
+				A61000812E00300100ABCDEF /* LogGPT Plus Resources/Icon.png */,
+				A61000802E00300100ABCDEF /* LogGPT Plus Extension/Resources/icons */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -415,10 +413,14 @@
 				A61000352E00200100ABCDEF /* Resources */,
 				A61000302E00200100ABCDEF /* Embed Foundation Extensions */,
 			);
-			buildRules = ();
-			dependencies = (A61000502E00200100ABCDEF /* PBXTargetDependency */,);
+			buildRules = (
+			);
+			dependencies = (
+				A61000502E00200100ABCDEF /* PBXTargetDependency */,
+			);
 			name = "LogGPT Plus";
-			packageProductDependencies = ();
+			packageProductDependencies = (
+			);
 			productName = "LogGPT Plus";
 			productReference = A61000212E00200100ABCDEF /* LogGPT Plus.app */;
 			productType = "com.apple.product-type.application";
@@ -431,10 +433,13 @@
 				A61000322E00200100ABCDEF /* Frameworks */,
 				A61000362E00200100ABCDEF /* Resources */,
 			);
-			buildRules = ();
-			dependencies = ();
+			buildRules = (
+			);
+			dependencies = (
+			);
 			name = "LogGPT Plus Extension";
-			packageProductDependencies = ();
+			packageProductDependencies = (
+			);
 			productName = "LogGPT Plus Extension";
 			productReference = A61000222E00200100ABCDEF /* LogGPT Plus Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -447,7 +452,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1610;
-				LastUpgradeCheck = 2660;
+				LastUpgradeCheck = 2700;
 				TargetAttributes = {
 					A56625412CD9248200FC29A8 = {
 						CreatedOnToolsVersion = 16.1;
@@ -463,8 +468,12 @@
 					A56625742CD9248300FC29A8 = {
 						CreatedOnToolsVersion = 16.1;
 					};
-					A61000412E00200100ABCDEF = { CreatedOnToolsVersion = 16.1; };
-					A61000422E00200100ABCDEF = { CreatedOnToolsVersion = 16.1; };
+					A61000412E00200100ABCDEF = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					A61000422E00200100ABCDEF = {
+						CreatedOnToolsVersion = 16.1;
+					};
 				};
 			};
 			buildConfigurationList = A566253D2CD9248200FC29A8 /* Build configuration list for PBXProject "LogGPT" */;
@@ -544,7 +553,7 @@
 				A61000052E00200100ABCDEF /* Main.html in Resources */,
 				A61000062E00200100ABCDEF /* Style.css in Resources */,
 				A61000072E00200100ABCDEF /* Script.js in Resources */,
-				A61000082E00200100ABCDEF /* Icon.png in Resources */,
+				A61000082E00200100ABCDEF /* LogGPT Plus Resources/Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,8 +562,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A610000A2E00200100ABCDEF /* LogGPT-conv-export.js in Resources */,
-				A610000B2E00200100ABCDEF /* manifest.json in Resources */,
-				A610000C2E00200100ABCDEF /* icons in Resources */,
+				A610000B2E00200100ABCDEF /* LogGPT Plus Extension/Resources/manifest.json in Resources */,
+				A610000C2E00200100ABCDEF /* LogGPT Plus Extension/Resources/icons in Resources */,
 				A610000D2E00200100ABCDEF /* icon.js in Resources */,
 				A610000E2E00200100ABCDEF /* LICENSE in Resources */,
 				A610000F2E00200100ABCDEF /* options.html in Resources */,
@@ -606,13 +615,21 @@
 		A61000332E00200100ABCDEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
-			files = (A61000012E00200100ABCDEF /* AppDelegate.swift in Sources */, A61000022E00200100ABCDEF /* ViewController.swift in Sources */, A62000042E00400100ABCDEF /* PlusEntitlement.swift in Sources */, A62000052E00400100ABCDEF /* StoreKitManager.swift in Sources */,);
+			files = (
+				A61000012E00200100ABCDEF /* AppDelegate.swift in Sources */,
+				A61000022E00200100ABCDEF /* ViewController.swift in Sources */,
+				A62000042E00400100ABCDEF /* PlusEntitlement.swift in Sources */,
+				A62000052E00400100ABCDEF /* StoreKitManager.swift in Sources */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A61000342E00200100ABCDEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
-			files = (A61000092E00200100ABCDEF /* SafariWebExtensionHandler.swift in Sources */, A62000062E00400100ABCDEF /* PlusEntitlement.swift in Sources */,);
+			files = (
+				A61000092E00200100ABCDEF /* SafariWebExtensionHandler.swift in Sources */,
+				A62000062E00400100ABCDEF /* PlusEntitlement.swift in Sources */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
@@ -695,7 +712,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -717,7 +734,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -766,7 +783,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -782,7 +799,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -802,7 +819,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -815,8 +832,8 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.3.0;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 1.3.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -838,7 +855,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -851,8 +868,8 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.3.0;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 1.3.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -878,7 +895,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_APP_SANDBOX = YES;
@@ -894,8 +911,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.3.0;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 1.3.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -922,7 +939,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_APP_SANDBOX = YES;
@@ -938,8 +955,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.3.0;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 1.3.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -964,7 +981,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "LogGPT-conv-exportTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -983,7 +1000,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "LogGPT-conv-exportTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1036,7 +1053,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1046,9 +1063,14 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.3.0;
-				OTHER_LDFLAGS = ("-framework", SafariServices, "-framework", WebKit,);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 1.3.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPTPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -1065,7 +1087,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1075,9 +1097,14 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.3.0;
-				OTHER_LDFLAGS = ("-framework", SafariServices, "-framework", WebKit,);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 1.3.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPTPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -1091,15 +1118,18 @@
 				CODE_SIGN_ENTITLEMENTS = "LogGPT Extension/LogGPT_Extension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "LogGPT Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "LogGPT Plus Extension";
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.3.0;
-				OTHER_LDFLAGS = ("-framework", SafariServices,);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 1.3.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPTPlus.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -1114,15 +1144,18 @@
 				CODE_SIGN_ENTITLEMENTS = "LogGPT Extension/LogGPT_Extension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 69H57JTW3S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "LogGPT Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "LogGPT Plus Extension";
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.3.0;
-				OTHER_LDFLAGS = ("-framework", SafariServices,);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 1.3.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.LogGPTPlus.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -1181,13 +1214,19 @@
 		};
 		A61000602E00200100ABCDEF /* Build configuration list for PBXNativeTarget "LogGPT Plus" */ = {
 			isa = XCConfigurationList;
-			buildConfigurations = (A61000702E00200100ABCDEF /* Debug */, A61000712E00200100ABCDEF /* Release */,);
+			buildConfigurations = (
+				A61000702E00200100ABCDEF /* Debug */,
+				A61000712E00200100ABCDEF /* Release */,
+			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		A61000612E00200100ABCDEF /* Build configuration list for PBXNativeTarget "LogGPT Plus Extension" */ = {
 			isa = XCConfigurationList;
-			buildConfigurations = (A61000722E00200100ABCDEF /* Debug */, A61000732E00200100ABCDEF /* Release */,);
+			buildConfigurations = (
+				A61000722E00200100ABCDEF /* Debug */,
+				A61000732E00200100ABCDEF /* Release */,
+			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
