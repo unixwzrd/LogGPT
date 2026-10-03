@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LogGPT: Chat Log Export
-// @version      1.3.0
+// @version      1.3.2
 // @author       unixwzrd
 // @license      MIT
 // ==/UserScript==
@@ -1524,16 +1524,27 @@
     }
 
     function findDownloadButtonHost(root = document) {
-        const titlebarSurface = root.querySelector?.("[data-testid='app-shell-header-context-menu-surface'][aria-hidden='false']")
-            || root.querySelector?.("[data-testid='app-shell-header-context-menu-surface']");
-        if (titlebarSurface) {
-            const anchor = titlebarSurface.querySelector("button[aria-label='Share']")
-                || titlebarSurface.querySelector("[data-app-shell-header-obstacle='true'] button")
-                || titlebarSurface.querySelector("button");
+        const selector = "[data-testid='app-shell-header-context-menu-surface']";
+        const surfaces = root.querySelectorAll
+            ? Array.from(root.querySelectorAll(selector))
+            : [root.querySelector?.(`${selector}[aria-hidden='false']`) || root.querySelector?.(selector)].filter(Boolean);
+        for (const titlebarSurface of surfaces) {
+            // ChatGPT can retain an old title bar inside a hidden conversation view.
+            if (titlebarSurface.closest?.("[hidden], [aria-hidden='true']")
+                || (titlebarSurface.getClientRects && !titlebarSurface.getClientRects().length)) {
+                continue;
+            }
+            const candidates = [
+                titlebarSurface.querySelector("button[aria-label='Share']"),
+                titlebarSurface.querySelector("[data-app-shell-header-obstacle='true'] button:not(#loggpt-download-btn)"),
+                titlebarSurface.querySelector("button:not(#loggpt-download-btn)"),
+            ];
+            const anchor = candidates.find(candidate => candidate && candidate.id !== "loggpt-download-btn");
             if (anchor?.parentElement) {
                 return { container: anchor.parentElement, before: anchor };
             }
         }
+        if (surfaces.length) return null;
 
         const legacyActions = root.getElementById?.("conversation-header-actions")
             || root.querySelector?.("[data-testid='conversation-header-actions']");
@@ -1558,6 +1569,9 @@
         }
 
         const button = root.getElementById("loggpt-download-btn") || createDownloadButton();
+        if (host.before === button) {
+            return true;
+        }
         if (button.parentElement !== host.container || button.nextSibling !== host.before) {
             const before = host.before?.parentElement === host.container
                 ? host.before
@@ -1577,6 +1591,25 @@
         return injectDownloadButton();
     }
 
+    let reconcileFrame = null;
+
+    function scheduleReconcileDownloadButton() {
+        if (reconcileFrame !== null) {
+            return false;
+        }
+
+        const run = () => {
+            reconcileFrame = null;
+            reconcileDownloadButton();
+        };
+        if (typeof window.requestAnimationFrame === "function") {
+            reconcileFrame = window.requestAnimationFrame(run);
+        } else {
+            reconcileFrame = window.setTimeout(run, 16);
+        }
+        return true;
+    }
+
     if (globalThis.__LOGGPT_TEST_MODE__) {
         globalThis.__LOGGPT_TEST_API__ = {
             buildExportStem,
@@ -1590,6 +1623,7 @@
             isConversationPage,
             findDownloadButtonHost,
             injectDownloadButton,
+            scheduleReconcileDownloadButton,
         };
         return;
     }
@@ -1608,11 +1642,23 @@
     window.setInterval(() => {
         if (!document.hidden) refreshDownloadButtonState().catch(() => {});
     }, 10000);
+    // SPA history changes and CSS-only view switches need not produce DOM mutations.
+    // One bounded check also repairs a button removed after the observer's last pass.
+    window.setInterval(() => {
+        if (!document.hidden) scheduleReconcileDownloadButton();
+    }, 500);
+    window.addEventListener("popstate", scheduleReconcileDownloadButton);
+    window.addEventListener("pageshow", scheduleReconcileDownloadButton);
     reconcileDownloadButton();
 
     const observer = new MutationObserver(() => {
-        reconcileDownloadButton();
+        scheduleReconcileDownloadButton();
     });
 
-    observer.observe(document.body, { childList: true, subtree: true });
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ["aria-hidden"],
+    });
 })();

@@ -22,6 +22,7 @@ It appears the security policy changes with Apple and I have managed to get the 
     - [If You Build It Yourself](#if-you-build-it-yourself)
   - [Support](#support)
   - [Changelog](#changelog)
+    - [2026-10-03  v1.3.2](#2026-10-03--v132)
     - [2026-10-01  v1.3.1](#2026-10-01--v131)
     - [2026-09-14  v1.3.0](#2026-09-14--v130)
     - [2026-09-13  v1.2.1](#2026-09-13--v121)
@@ -157,6 +158,12 @@ If you find this extension helpful, consider supporting my work on [Patreon](htt
 Visit [Distributed Thinking Systems LLC](https://unixwzrd.ai/) for information about my other projects.
 
 ## Changelog
+
+### 2026-10-03  v1.3.2
+
+- Fixed a button-reconciliation race condition that could freeze Safari when switching ChatGPT conversations
+- Restored download button injection during conversation navigation without requiring a page reload
+- Ignored hidden conversation headers and prevented repeated self-insertion of the download button
 
 ### 2026-10-01  v1.3.1
 

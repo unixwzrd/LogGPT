@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026/10/03 v1.3.2
+
+- Fixed a button-reconciliation race condition that could freeze Safari and Web Inspector when switching ChatGPT conversations.
+- Restored download button injection during conversation navigation without requiring a page reload.
+- Ignored hidden conversation headers and prevented the download button from selecting itself as its insertion anchor.
+- Coalesced page mutation handling to one reconciliation per animation frame and added a bounded navigation check for view changes without DOM mutations.
+- Added regression coverage for transitional and retained conversation headers and coalesced reconciliation.
+
 ## 2026/10/01 v1.3.1
 
 - Restored the injected download button after ChatGPT changed its conversation title-bar structure.

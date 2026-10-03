@@ -7,6 +7,7 @@ const { webcrypto } = require("crypto");
 const { TextDecoder } = require("util");
 
 const fetchCalls = [];
+const scheduledFrames = [];
 const context = {
   __LOGGPT_TEST_MODE__: true,
   console,
@@ -16,8 +17,17 @@ const context = {
   URL,
   crypto: webcrypto,
   location: { hostname: "chatgpt.com", pathname: "/c/thread" },
-  window: { localStorage: { getItem() { return null; }, setItem() {} } },
-  document: {},
+  window: {
+    localStorage: { getItem() { return null; }, setItem() {} },
+    requestAnimationFrame(callback) {
+      scheduledFrames.push(callback);
+      return scheduledFrames.length;
+    },
+  },
+  document: {
+    getElementById() { return null; },
+    querySelector() { return null; },
+  },
   fetch: async (url, options = {}) => {
     fetchCalls.push({ url: String(url), options });
     const response = (body, type, disposition = null) => ({
@@ -132,6 +142,67 @@ currentHeaderDocument.getElementById = id => id === "loggpt-download-btn" ? stal
 assert.equal(api.injectDownloadButton(currentHeaderDocument), true);
 assert.equal(staleButton.parentElement, currentToolbar);
 assert.equal(staleButton.nextSibling, shareButton);
+
+const onlyLogGPTButton = { id: "loggpt-download-btn", parentElement: currentToolbar };
+const transitioningTitlebar = {
+  querySelector(selector) {
+    return selector === "button[aria-label='Share']" ? null : onlyLogGPTButton;
+  },
+};
+const transitioningDocument = {
+  getElementById(id) { return id === "loggpt-download-btn" ? onlyLogGPTButton : null; },
+  querySelector(selector) {
+    return selector === "[data-testid='app-shell-header-context-menu-surface'][aria-hidden='false']" ? transitioningTitlebar : null;
+  },
+};
+assert.equal(api.findDownloadButtonHost(transitioningDocument), null);
+assert.equal(api.injectDownloadButton(transitioningDocument), false);
+
+// Share can be absent while the new conversation's More action is already mounted.
+const moreButton = { id: "conversation-more", parentElement: currentToolbar };
+transitioningTitlebar.querySelector = selector =>
+  selector === "button[aria-label='Share']" ? null : moreButton;
+assert.deepEqual(
+  { ...api.findDownloadButtonHost(transitioningDocument) },
+  { container: currentToolbar, before: moreButton }
+);
+currentToolbar.insertBefore = function (button, before) {
+  assert.equal(before, moreButton);
+  button.parentElement = this;
+  button.nextSibling = before;
+};
+context.location.pathname = "/c/next-conversation";
+assert.equal(api.injectDownloadButton(transitioningDocument), true);
+assert.equal(onlyLogGPTButton.nextSibling, moreButton);
+context.location.pathname = "/c/thread";
+
+// A retained old conversation header must not capture the new conversation's button.
+const retainedTitlebar = {
+  querySelector() { return shareButton; },
+  getClientRects() { return []; },
+};
+transitioningTitlebar.getClientRects = () => [{}];
+const retainedHeaderDocument = {
+  getElementById: transitioningDocument.getElementById,
+  querySelectorAll() { return [retainedTitlebar, transitioningTitlebar]; },
+};
+assert.deepEqual(
+  { ...api.findDownloadButtonHost(retainedHeaderDocument) },
+  { container: currentToolbar, before: moreButton }
+);
+onlyLogGPTButton.parentElement = {};
+onlyLogGPTButton.nextSibling = null;
+assert.equal(api.injectDownloadButton(retainedHeaderDocument), true);
+assert.equal(onlyLogGPTButton.parentElement, currentToolbar);
+assert.equal(onlyLogGPTButton.nextSibling, moreButton);
+
+assert.equal(api.scheduleReconcileDownloadButton(), true);
+assert.equal(api.scheduleReconcileDownloadButton(), false);
+assert.equal(scheduledFrames.length, 1);
+scheduledFrames.shift()();
+assert.equal(api.scheduleReconcileDownloadButton(), true);
+assert.equal(scheduledFrames.length, 1);
+scheduledFrames.shift()();
 
 const legacyFirstButton = {};
 const legacyToolbar = { firstChild: legacyFirstButton };
