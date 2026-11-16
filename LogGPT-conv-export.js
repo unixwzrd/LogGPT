@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LogGPT: Chat Log Export
-// @version      1.3.2
+// @version      1.3.3
 // @author       unixwzrd
 // @license      MIT
 // ==/UserScript==
@@ -1192,6 +1192,26 @@
         };
     }
 
+    function styleDialogCheckboxes(panel) {
+        // The dialog shares ChatGPT's document; page resets must not hide our controls.
+        for (const checkbox of panel.querySelectorAll("input[type='checkbox']")) {
+            checkbox.style.setProperty("all", "initial", "important");
+            for (const [property, value] of Object.entries({
+                appearance: "auto",
+                display: "inline-block",
+                width: "16px",
+                height: "16px",
+                flex: "0 0 16px",
+                margin: "3px 0 0",
+                cursor: "pointer",
+                "color-scheme": "light",
+                "accent-color": "#1677ff",
+            })) {
+                checkbox.style.setProperty(property, value, "important");
+            }
+        }
+    }
+
     async function promptForDownloadOptions(preferences, artifactCounts = { total: 0, generated: 0, uploaded: 0 }) {
         removeExistingDialog();
         return new Promise(resolve => {
@@ -1249,6 +1269,7 @@
             backdrop.appendChild(panel);
             document.body.appendChild(backdrop);
 
+            styleDialogCheckboxes(panel);
             const includeMediaCheckbox = panel.querySelector("#loggpt-include-media");
             const includeGeneratedCheckbox = panel.querySelector("#loggpt-include-generated");
             const includeUploadedCheckbox = panel.querySelector("#loggpt-include-uploaded");
@@ -1361,6 +1382,7 @@
             backdrop.appendChild(panel);
             document.body.appendChild(backdrop);
 
+            styleDialogCheckboxes(panel);
             const finish = async openUpgrade => {
                 const dismissed = panel.querySelector("#loggpt-dismiss-basic-notice").checked;
                 await setBasicUpgradeNoticeDismissed(dismissed);
@@ -1624,6 +1646,8 @@
             findDownloadButtonHost,
             injectDownloadButton,
             scheduleReconcileDownloadButton,
+            promptForDownloadOptions,
+            showBasicUpgradeNotice,
         };
         return;
     }

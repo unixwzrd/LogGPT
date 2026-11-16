@@ -22,6 +22,7 @@ It appears the security policy changes with Apple and I have managed to get the 
     - [If You Build It Yourself](#if-you-build-it-yourself)
   - [Support](#support)
   - [Changelog](#changelog)
+    - [2026-11-16  v1.3.3](#2026-11-16--v133)
     - [2026-10-03  v1.3.2](#2026-10-03--v132)
     - [2026-10-01  v1.3.1](#2026-10-01--v131)
     - [2026-09-14  v1.3.0](#2026-09-14--v130)
@@ -158,6 +159,10 @@ If you find this extension helpful, consider supporting my work on [Patreon](htt
 Visit [Distributed Thinking Systems LLC](https://unixwzrd.ai/) for information about my other projects.
 
 ## Changelog
+
+### 2026-11-16  v1.3.3
+
+- Restored visible checkboxes in the Plus export dialog and Basic upgrade notice when ChatGPT page styles hide native controls
 
 ### 2026-10-03  v1.3.2
 

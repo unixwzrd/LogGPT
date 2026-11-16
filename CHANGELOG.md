@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026/11/16 v1.3.3
+
+- Protect checkboxes in the Plus export dialog and Basic upgrade notice from host-page CSS resets so native controls remain visible and usable.
+
 ## 2026/10/03 v1.3.2
 
 - Fixed a button-reconciliation race condition that could freeze Safari and Web Inspector when switching ChatGPT conversations.
