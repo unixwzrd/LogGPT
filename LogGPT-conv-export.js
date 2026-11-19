@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LogGPT: Chat Log Export
-// @version      1.3.3
+// @version      1.3.5
 // @author       unixwzrd
 // @license      MIT
 // ==/UserScript==
@@ -38,6 +38,7 @@
         "application/x-7z-compressed": ".7z",
         "application/x-rar-compressed": ".rar",
         "application/zip": ".zip",
+        "application/vnd.loggpt.archive": ".lgpt",
         "audio/aac": ".aac",
         "audio/flac": ".flac",
         "audio/m4a": ".m4a",
@@ -96,8 +97,7 @@
     }
 
     function getThreadId() {
-        const match = location.pathname.match(/(?:^|\/)c\/([A-Za-z0-9_-]+)(?:\/|$)/);
-        return match ? match[1] : null;
+        return globalThis.LogGPTSources.resolve(location)?.id || null;
     }
 
     function isConversationPage() {
@@ -261,7 +261,9 @@
         const start = startTimestamp ? new Date(startTimestamp * 1000).toISOString().slice(0, 10) : "unknown-date";
         const end = endTimestamp ? new Date(endTimestamp * 1000).toISOString().slice(0, 10) : start;
         const title = sanitizeFilename(conversation?.title || `chatgpt-convo-${threadId}`).replace(/[-_]+/g, "-").toLowerCase();
-        return [start, end, title || `chatgpt-convo-${threadId}`].filter(Boolean).join("-");
+        const origin = globalThis.LogGPTSources.origin(conversation);
+        const stem = [start, end, title || `chatgpt-convo-${threadId}`].filter(Boolean).join("-");
+        return origin ? `${stem}-${origin}` : stem;
     }
 
     function triggerDownload(blob, downloadName) {
@@ -292,20 +294,23 @@
         return payload.accessToken;
     }
 
-    async function getConversation(threadId, signal) {
+    async function getConversation(source, signal, onProgress) {
         const token = await getAccessToken(signal);
-        const response = await fetch(`https://chatgpt.com/backend-api/conversation/${threadId}`, {
-            credentials: "include",
+        const conversation = await globalThis.LogGPTSources.load(source, {
             signal,
-            headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
+            onProgress,
+            async requestJSON(path) {
+                throwIfAborted(signal);
+                const response = await fetch(`https://chatgpt.com${path}`, {
+                    credentials: "include",
+                    signal,
+                    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+                });
+                if (!response.ok) throw new Error(`Failed to fetch conversation data: HTTP ${response.status}`);
+                return response.json();
             },
         });
-        if (!response.ok) {
-            throw new Error(`Failed to fetch conversation: ${response.status}`);
-        }
-        return { token, conversation: await response.json() };
+        return { token, conversation };
     }
 
     function normalizeMediaIdentifier(value) {
@@ -342,7 +347,7 @@
                 return null;
             }
         }
-        if (text.startsWith("file-") || text.startsWith("file_")) {
+        if (text.startsWith("file-") || text.startsWith("file_") || text.startsWith("CalpicoFile_")) {
             return text;
         }
         return null;
@@ -720,7 +725,7 @@
         if (entry.sourceUrl && isTrustedArtifactUrl(entry.sourceUrl)) {
             urls.push(entry.sourceUrl);
         }
-        if (entry.canonicalId) {
+        if (entry.canonicalId && !entry.canonicalId.startsWith("CalpicoFile_")) {
             urls.push(`${ESTUARY_FALLBACK_PREFIX}${entry.canonicalId}/download`);
         }
 
@@ -1083,7 +1088,8 @@
             },
             ...downloaded,
         ];
-        return buildZipBlob(zipFiles, { signal, onProgress });
+        const archive = await buildZipBlob(zipFiles, { signal, onProgress });
+        return new Blob([archive], { type: "application/vnd.loggpt.archive" });
     }
 
     function setButtonBusy(button, busy) {
@@ -1163,7 +1169,9 @@
             update(status) {
                 if (status.phase === "collecting") {
                     title.textContent = "Collecting chat history information…";
-                    detail.textContent = "Please wait while LogGPT prepares your download.";
+                    detail.textContent = status.messageCount === undefined
+                        ? "Please wait while LogGPT prepares your download."
+                        : `${status.messageCount} messages collected across ${status.pages} history pages.`;
                     bar.style.width = "8%";
                     summary.textContent = "";
                     return;
@@ -1184,7 +1192,7 @@
                     return;
                 }
                 if (status.phase === "packaging") {
-                    title.textContent = "Creating ZIP archive…";
+                    title.textContent = "Creating LogGPT Plus archive…";
                     detail.textContent = `Adding file ${completed} of ${total}.`;
                     summary.textContent = status.filename || "";
                 }
@@ -1240,11 +1248,11 @@
 
             panel.innerHTML = `
                 <div style="font-size:18px;font-weight:700;margin-bottom:8px;">LogGPT Plus Export</div>
-                <div style="font-size:14px;line-height:1.5;margin-bottom:6px;">Download JSON by itself, or create a portable ZIP containing the JSON and selected artifacts.</div>
+                <div style="font-size:14px;line-height:1.5;margin-bottom:6px;">Download JSON by itself, or create a ZIP-based LogGPT Plus file (.lgpt) containing the JSON and selected artifacts.</div>
                 <div style="font-size:13px;color:#555;margin-bottom:16px;">${artifactCounts.total} total artifacts: ${artifactCounts.generated} generated, ${artifactCounts.uploaded} uploaded.</div>
                 <label style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;">
                     <input type="checkbox" id="loggpt-include-media" />
-                    <span><strong>Download artifacts</strong><br><small>Creates a ZIP instead of a standalone JSON file.</small></span>
+                    <span><strong>Download artifacts</strong><br><small>Creates a .lgpt archive instead of a standalone JSON file.</small></span>
                 </label>
                 <div id="loggpt-artifact-types" style="margin:0 0 14px 28px;">
                     <label style="display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;">
@@ -1366,7 +1374,7 @@
             panel.innerHTML = `
                 <div style="font-size:19px;font-weight:700;margin-bottom:8px;">Keep the complete conversation with LogGPT Plus</div>
                 <div style="line-height:1.5;margin-bottom:12px;">
-                    Your JSON download will continue normally. A one-time in-app purchase${price} can also archive generated images, charts, and uploaded files in a portable ZIP.
+                    Your JSON download will continue normally. A one-time in-app purchase${price} can also archive generated images, charts, and uploaded files in a portable LogGPT Plus file (.lgpt).
                 </div>
                 <div style="line-height:1.45;margin-bottom:14px;color:#444;">
                     To upgrade, open the LogGPT toolbar icon and choose <strong>Get LogGPT Plus</strong>, or use <strong>Safari Settings → Extensions → LogGPT → Settings</strong>.
@@ -1396,7 +1404,8 @@
 
     async function handleDownloadClick(event) {
         const button = event.currentTarget;
-        const threadId = getThreadId();
+        const source = globalThis.LogGPTSources.resolve(location);
+        const threadId = source?.id;
         if (!threadId) {
             window.alert("No conversation detected.");
             return;
@@ -1416,7 +1425,7 @@
             throwIfAborted(controller.signal);
             config.enableMediaExport = entitlement.hasPlus;
             updateDownloadButtonState(button, config.enableMediaExport);
-            const { token, conversation } = await getConversation(threadId, controller.signal);
+            const { token, conversation } = await getConversation(source, controller.signal, status => progressDialog?.update(status));
             const stem = buildExportStem(threadId, conversation);
 
             if (!config.enableMediaExport) {
@@ -1430,7 +1439,7 @@
                 return;
             }
 
-            const mediaEntries = scanConversationMedia(conversation);
+            const mediaEntries = scanConversationMedia(globalThis.LogGPTSources.mediaConversation(conversation));
             const artifactCounts = getArtifactCounts(mediaEntries);
             const decision = await resolveDownloadOptions(config, artifactCounts, () => {
                 progressDialog?.close();
@@ -1460,7 +1469,7 @@
             );
             throwIfAborted(controller.signal);
             progressDialog.setCancelable(false);
-            triggerDownload(zipBlob, `${stem}.zip`);
+            triggerDownload(zipBlob, `${stem}.lgpt`);
             clog("Downloaded conversation archive", stem, { mediaEntries: mediaEntries.length });
         } catch (error) {
             if (isAbortError(error) || controller.signal.aborted) {
@@ -1476,6 +1485,26 @@
             }
             setButtonBusy(button, false);
         }
+    }
+
+    function handleToolbarDownload(message, _sender, sendResponse) {
+        if (message?.type !== "loggpt.downloadCurrentConversation") return undefined;
+        let response;
+        if (!extensionState.available) {
+            response = { started: false, error: "Reload this page to reconnect LogGPT, then try again." };
+        } else if (!isConversationPage()) {
+            response = { started: false, error: "Open a ChatGPT conversation or Dot first." };
+        } else if (activeExportController) {
+            response = { started: false, error: "An export is already running. Check the progress dialog in the page." };
+        } else {
+            // No header button is required. Both entry points share options,
+            // entitlement checks, progress, cancellation and file creation.
+            handleDownloadClick({ currentTarget: document.getElementById("loggpt-download-btn") })
+                .catch(error => { clog("Unable to start export", error); window.alert("Unable to start the export. Reload this page and try again."); });
+            response = { started: true };
+        }
+        sendResponse(response);
+        return false;
     }
 
     function updateDownloadButtonState(button, hasPlus) {
@@ -1531,6 +1560,7 @@
             "justify-content:center",
             "margin-right:-2px",
             "color:inherit",
+            "pointer-events:auto",
         ].join(";");
 
         const img = document.createElement("img");
@@ -1546,6 +1576,7 @@
     }
 
     function findDownloadButtonHost(root = document) {
+        const isDot = globalThis.LogGPTSources.resolve(location)?.kind === "dots";
         const selector = "[data-testid='app-shell-header-context-menu-surface']";
         const surfaces = root.querySelectorAll
             ? Array.from(root.querySelectorAll(selector))
@@ -1554,6 +1585,16 @@
             // ChatGPT can retain an old title bar inside a hidden conversation view.
             if (titlebarSurface.closest?.("[hidden], [aria-hidden='true']")
                 || (titlebarSurface.getClientRects && !titlebarSurface.getClientRects().length)) {
+                continue;
+            }
+            if (isDot) {
+                // Own a direct slot in the header action strip rather than a
+                // child of the site's replaceable, label-dependent menu.
+                const actionStrip = titlebarSurface.querySelector("[data-app-shell-header-obstacle='true']");
+                if (actionStrip) return { container: actionStrip, before: actionStrip.firstChild };
+                const actions = titlebarSurface.querySelector("button[aria-label='Your dot actions']")
+                    || titlebarSurface.querySelector("button[aria-label='Chat actions']");
+                if (actions?.parentElement) return { container: actions.parentElement, before: actions };
                 continue;
             }
             const candidates = [
@@ -1566,7 +1607,7 @@
                 return { container: anchor.parentElement, before: anchor };
             }
         }
-        if (surfaces.length) return null;
+        if (surfaces.length || isDot) return null;
 
         const legacyActions = root.getElementById?.("conversation-header-actions")
             || root.querySelector?.("[data-testid='conversation-header-actions']");
@@ -1648,6 +1689,7 @@
             scheduleReconcileDownloadButton,
             promptForDownloadOptions,
             showBasicUpgradeNotice,
+            handleToolbarDownload,
         };
         return;
     }
@@ -1658,6 +1700,7 @@
     }
 
     window.ai_unixwzrd_LogGPT_instance = true;
+    getRuntime()?.onMessage?.addListener(handleToolbarDownload);
 
     window.addEventListener("focus", () => refreshDownloadButtonState().catch(() => {}));
     document.addEventListener("visibilitychange", () => {

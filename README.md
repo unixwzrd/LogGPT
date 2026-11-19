@@ -22,6 +22,8 @@ It appears the security policy changes with Apple and I have managed to get the 
     - [If You Build It Yourself](#if-you-build-it-yourself)
   - [Support](#support)
   - [Changelog](#changelog)
+    - [2026-11-18  v1.3.5](#2026-11-18--v135)
+    - [2026-11-17  v1.3.4](#2026-11-17--v134)
     - [2026-11-16  v1.3.3](#2026-11-16--v133)
     - [2026-10-03  v1.3.2](#2026-10-03--v132)
     - [2026-10-01  v1.3.1](#2026-10-01--v131)
@@ -48,8 +50,11 @@ This extension allows users to download complete conversation logs from OpenAI's
 
 ## Features
 
+- Dots support: export the main conversation timeline as JSON, or include directly attached files in a Plus ZIP. The download button appears before the Dot's conversation actions menu. Linked task histories and nested reply histories are not included.
+- Export filenames use `-chat`, `-work`, or `-dot` when the captured JSON contains a recognized origin marker. Unknown origins retain the existing naming; conversation titles and model names are not used to guess the source.
+- Source-specific capture adapters preserve ordinary ChatGPT/Work payloads and native Dots messages without forcing different protocols into one parser. See [the Dots export contract](docs/dots-export-v1.md).
 - LogGPT will download chat history in JSON format.
-- LogGPT Plus will download chat history in JSON format, and optionally generated, uploaded or both in a ZIP archive.
+- LogGPT Plus will download chat history in JSON format, and optionally generated, uploaded or both in a ZIP-based `.lgpt` archive.
 - Full conversation export to JSON format
 - Save/export button is now seamlessly integrated into the ChatGPT conversation header bar as the left-most action button
 - Button size is 48x32px with a 32x32px icon, matching the style of other header actions
@@ -64,7 +69,7 @@ This extension allows users to download complete conversation logs from OpenAI's
 The App Store product remains one app:
 
 - `LogGPT` downloads conversation JSON without an upgrade.
-- The permanent `LogGPT Plus` non-consumable unlocks a single JSON-plus-artifacts archive as `<stem>.zip`.
+- The permanent `LogGPT Plus` non-consumable unlocks a single JSON-plus-artifacts archive as `<stem>.lgpt`. It remains a standard ZIP container; Extract Chat registers its Finder description as **LogGPT Plus file for Extract Chat**. Standalone JSON remains `.json`, and Extract Chat continues accepting previous `.zip` exports.
 
 The upgrade uses Apple StoreKit entirely on-device. LogGPT has no user accounts, analytics, telemetry, or purchase server. The repo retains the standalone `LogGPT Plus` target as an optional future SKU, but it is not required for the current upgrade model.
 
@@ -112,13 +117,15 @@ A version may be added to the Apple App Store, with a small fee to cover Apple D
 2. The export/save button ![download icon](./LogGPT/LogGPT/Assets.xcassets/AppIcon.appiconset/Icon-128-download.png) will appear as the **left-most button in the conversation header bar** (next to the other action buttons, not floating or fixed in the viewport).
 3. Click the export/save button to download the current conversation as a JSON file to your `Downloads` folder.
 
+If the page button is missing, open LogGPT's browser toolbar popup and choose **Download current conversation**. This uses the same Basic/Plus settings and export flow, with progress, options and cancellation shown in the conversation page. It works without a page-header button, but the extension must still be enabled and allowed on chatgpt.com; reload the page after updating or re-enabling it. The Dot button uses the marked header action strip and is restored after header replacement rather than depending on the menu's wording.
+
 After purchasing `LogGPT Plus`, click the Safari toolbar extension icon to configure:
 
 - `Generated Content`
 - `Uploaded Content`
 - `Select All` / `Select None`
 
-With both categories off, the injected button downloads JSON only. Otherwise it downloads one ZIP containing the JSON, artifacts, hashes, provenance, failures, and user-skipped entries. Uploaded classification takes precedence when an item is referenced in both contexts.
+With both categories off, the injected button downloads JSON only. Otherwise it downloads one ZIP-based `.lgpt` file containing the JSON, artifacts, hashes, provenance, failures, and user-skipped entries. Uploaded classification takes precedence when an item is referenced in both contexts. Double-clicking a `.lgpt` file opens Extract Chat's configuration queue when that app is installed; `.json` also offers Extract Chat under Open With without changing the user's existing JSON default.
 
 LogGPT reports conversation preparation immediately after the download button is selected. Plus displays the available artifact counts before export and then reports collection and ZIP creation progress. Saved choices can skip the selection dialog without hiding progress, and Cancel stops an unfinished export without creating a partial download.
 
@@ -159,6 +166,22 @@ If you find this extension helpful, consider supporting my work on [Patreon](htt
 Visit [Distributed Thinking Systems LLC](https://unixwzrd.ai/) for information about my other projects.
 
 ## Changelog
+
+### 2026-11-18  v1.3.5
+
+- Added Download current conversation to the Safari toolbar popup as a fallback when the in-page button is missing
+- Restored the Dots download button after header changes and improved its placement and recovery
+- Changed Plus artifact bundles to ZIP-based `.lgpt` files for Extract Chat; JSON-only downloads are unchanged
+- Refined the toolbar popup layout so the Plus settings and bottom controls fit without scrolling
+- Updated app and extension submission versions to 1.3.5, build 16
+
+### 2026-11-17  v1.3.4
+
+- Added Dots main-timeline JSON export and optional Plus ZIPs containing directly attached files, with the download control before the conversation actions menu
+- Added paginated Dots history collection with progress, cancellation, and sender attribution while preserving native message records
+- Added source postfixes to export names: `-chat`, `-work`, or `-dot` for recognized origins, always appended after the complete conversation title
+- Added manifest validation across Basic and Plus extension variants
+- Updated app and extension submission versions to 1.3.4, build 15
 
 ### 2026-11-16  v1.3.3
 

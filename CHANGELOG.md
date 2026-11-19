@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026/11/18 v1.3.5
+
+- Download artifact bundles as ZIP-based `.lgpt` files with MIME type `application/vnd.loggpt.archive`, ready for Extract Chat's registered Finder document type, LogGPT Plus file for Extract Chat. Standalone JSON downloads remain `.json`; the contained JSON, artifact bytes, manifest and archive layout are unchanged.
+- Give the Dots download button a direct slot in the marked header action strip rather than nesting it inside a label-dependent menu. Retain bounded repair after header replacement and the earlier menu-label fallback.
+- Add Download current conversation to the toolbar popup for Basic and Plus. Route it to the active tab's existing content script, sharing export options, entitlement checks, progress and cancellation without requiring an injected page button. Report busy, unsupported and stale-page states instead of silently doing nothing; no extra permissions or script reinjection are requested.
+- Restore the Dots download button after the title-bar menu changed from `Chat actions` to `Your dot actions`. Support both labels within the visible conversation header, without matching sidebar menus or hidden retained headers.
+- Add regression coverage for the updated Dots menu label and retain the existing Dots capture, ChatGPT/Work export, options and entitlement checks. A replacement real Dots archive is still required for Extract Chat acceptance.
+- Refine the toolbar popup width and spacing so the Plus settings and reset explanation fit within the browser's popup height limit without shrinking text or hiding controls.
+- Advance app and extension versions to 1.3.5, build 16, for App Store submission.
+
+## 2026/11/17 v1.3.4
+
+- Postfix JSON and ZIP export names with `-dot`, `-work`, or `-chat` based on recognized native source markers, including matching JSON and artifact directory names inside ZIPs. Missing or unknown ChatGPT origin markers retain the existing filename rather than guessing from the title or model name.
+- Always append the detected origin after the complete title, even if the title already ends in the same word (for example, `-work-work`).
+- Add Dots main-timeline JSON exports and optional Plus artifact ZIPs, with the download control immediately before the Dot's conversation actions menu.
+- Capture paginated room history with progress, cancellation, sender attribution from room membership, and guards against incomplete or repeating pagination.
+- Preserve native Dots records in a versioned `loggpt.dots` envelope. Linked task histories and nested reply histories are explicitly excluded.
+- Separate source-specific capture from the shared export UI and ZIP pipeline; retain the existing ChatGPT and ChatGPT Work JSON payloads.
+- Validate all extension manifest variants and their script dependencies to catch invalid JSON and loading-order errors before packaging.
+- Advance the app and extension versions to 1.3.4, build 15, for App Store submission.
+
 ## 2026/11/16 v1.3.3
 
 - Protect checkboxes in the Plus export dialog and Basic upgrade notice from host-page CSS resets so native controls remain visible and usable.

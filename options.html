@@ -8,29 +8,31 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       margin: 0;
-      padding: 20px;
+      padding: 16px;
       color: #111;
       background: #f5f5f5;
       min-width: 360px;
     }
     .panel {
-      width: 380px;
-      max-width: calc(100vw - 40px);
+      box-sizing: border-box;
+      width: 420px;
+      max-width: calc(100vw - 32px);
       margin: 0 auto;
       background: white;
-      padding: 20px;
+      padding: 16px;
       border-radius: 16px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
     h1 {
-      margin-top: 0;
+      margin: 0 0 12px;
       font-size: 22px;
     }
+    p { margin: 8px 0; line-height: 1.35; }
     label {
       display: flex;
       gap: 12px;
       align-items: flex-start;
-      margin: 14px 0;
+      margin: 8px 0;
       line-height: 1.4;
     }
     .muted {
@@ -38,7 +40,7 @@
       font-size: 14px;
     }
     .saved {
-      margin-top: 14px;
+      margin-top: 8px;
       color: #0a7a34;
       min-height: 20px;
       font-size: 14px;
@@ -66,6 +68,11 @@
     button {
       padding: 7px 12px;
     }
+    #download-current-conversation {
+      width: 100%;
+      cursor: pointer;
+    }
+    #download-status { margin: 8px 0; }
     [hidden] {
       display: none !important;
     }
@@ -74,12 +81,15 @@
 <body>
   <div class="panel">
     <h1 id="product-heading">LogGPT</h1>
+    <button class="upgrade-button" type="button" id="download-current-conversation">Download current conversation</button>
+    <p class="muted">Export the ChatGPT conversation or Dot in the current tab, even if its in-page download button is missing.</p>
+    <p class="muted" id="download-status" role="status" aria-live="polite"></p>
     <div id="locked" class="locked" hidden>
       <strong>Keep the whole conversation with LogGPT Plus</strong>
       <ul class="benefits">
         <li>Generated images, charts, and files</li>
         <li>Files you uploaded to the conversation</li>
-        <li>JSON and an artifact manifest in one portable ZIP</li>
+        <li>JSON and an artifact manifest in one portable LogGPT Plus file (.lgpt)</li>
       </ul>
       <p class="muted">One-time in-app purchase. Basic JSON downloads always remain available.</p>
       <button class="upgrade-button" type="button" id="open-loggpt">Get LogGPT Plus…</button>
@@ -87,7 +97,7 @@
     </div>
     <div id="plus-settings" hidden>
       <p><strong>Plus is unlocked</strong></p>
-      <p class="muted">Choose which artifacts LogGPT Plus includes in the conversation ZIP. Uploaded content takes precedence when an artifact is referenced by both categories.</p>
+      <p class="muted">Choose which artifacts LogGPT Plus includes in the ZIP-based .lgpt archive. Uploaded content takes precedence when an artifact is referenced by both categories.</p>
       <label>
         <input type="checkbox" id="download-artifacts">
         <span><strong>Download Artifacts</strong><br><span class="muted">When off, downloads contain JSON only.</span></span>

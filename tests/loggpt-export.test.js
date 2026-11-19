@@ -82,6 +82,7 @@ const context = {
 };
 context.globalThis = context;
 vm.createContext(context);
+vm.runInContext(fs.readFileSync("conversation-sources.js", "utf8"), context);
 vm.runInContext(fs.readFileSync("LogGPT-conv-export.js", "utf8"), context);
 const api = context.__LOGGPT_TEST_API__;
 
@@ -95,6 +96,11 @@ assert.equal(api.getThreadId(), null);
 assert.equal(api.isConversationPage(), false);
 context.location.pathname = "/";
 assert.equal(api.isConversationPage(), false);
+let toolbarReply;
+assert.equal(api.handleToolbarDownload({ type: "unrelated" }, {}, () => { throw new Error("Do not answer unrelated messages"); }), undefined);
+assert.equal(api.handleToolbarDownload({ type: "loggpt.downloadCurrentConversation" }, {}, response => { toolbarReply = response; }), false);
+assert.equal(toolbarReply.started, false);
+assert.match(toolbarReply.error, /Open a ChatGPT conversation or Dot/);
 context.location.pathname = "/c/thread";
 
 assert.equal(
@@ -110,6 +116,34 @@ assert.equal(
   "2026-05-28-2026-08-12-james-talarico-context"
 );
 assert.equal(api.sanitizedSourceUrl("https://example.test/a.png?sig=secret"), "https://example.test/a.png");
+
+assert.equal(
+  api.buildExportStem("room-1", { format: "loggpt.dots", title: "Mia Fourier", create_time: 1700000000, update_time: 1700086400 }),
+  "2023-11-14-2023-11-15-mia-fourier-dot"
+);
+// Naming follows the captured payload, not whichever tab route is currently visible.
+assert.equal(
+  api.buildExportStem("thread", { title: "Work fixture", source: { kind: "work" }, create_time: 1700000000, update_time: 1700086400 }),
+  "2023-11-14-2023-11-15-work-fixture"
+);
+for (const [nativeOrigin, suffix] of [["tpp", "-work"], [null, "-chat"], ["future-origin", ""], [undefined, ""]]) {
+  assert.equal(
+    api.buildExportStem("thread", { title: "Neutral fixture", mapping: {}, conversation_origin: nativeOrigin, create_time: 1700000000, update_time: 1700086400 }),
+    `2023-11-14-2023-11-15-neutral-fixture${suffix}`
+  );
+}
+assert.equal(
+  api.buildExportStem("thread", { title: "Artifact test for ChatGPT Work", mapping: {}, conversation_origin: "tpp", create_time: 1700000000, update_time: 1700086400 }),
+  "2023-11-14-2023-11-15-artifact-test-for-chatgpt-work-work"
+);
+assert.equal(
+  api.buildExportStem("room-1", { format: "loggpt.dots", title: "Mia Fourier Dot", create_time: 1700000000, update_time: 1700086400 }),
+  "2023-11-14-2023-11-15-mia-fourier-dot-dot"
+);
+assert.equal(
+  api.buildExportStem("thread", { title: "Test Chat", mapping: {}, conversation_origin: null, create_time: 1700000000, update_time: 1700086400 }),
+  "2023-11-14-2023-11-15-test-chat-chat"
+);
 
 const shareButton = { parentElement: null };
 const currentToolbar = {
@@ -174,6 +208,50 @@ currentToolbar.insertBefore = function (button, before) {
 context.location.pathname = "/c/next-conversation";
 assert.equal(api.injectDownloadButton(transitioningDocument), true);
 assert.equal(onlyLogGPTButton.nextSibling, moreButton);
+context.location.pathname = "/c/thread";
+
+// Dots uses its Chat actions menu, never a retained Share control.
+context.location.pathname = "/dots/11111111-1111-4111-8111-111111111111";
+const dotActions = { parentElement: currentToolbar };
+const dotDocument = {
+  querySelectorAll() { return [{ querySelector(selector) {
+    if (selector === "button[aria-label='Chat actions']") return dotActions;
+    return selector === "button[aria-label='Share']" ? shareButton : null;
+  } }]; },
+};
+assert.deepEqual({ ...api.findDownloadButtonHost(dotDocument) }, { container: currentToolbar, before: dotActions });
+// The live Dots header now calls its menu "Your dot actions". Sidebar rows
+// still use "Chat actions", so discovery must remain scoped to the titlebar.
+const currentDotActions = { parentElement: currentToolbar };
+const updatedDotTitlebar = {
+  querySelector(selector) {
+    if (selector === "button[aria-label='Your dot actions']") return currentDotActions;
+    return selector === "button[aria-label='Share']" ? shareButton : null;
+  },
+  getClientRects() { return [{}]; },
+};
+const updatedDotDocument = {
+  querySelectorAll() { return [updatedDotTitlebar]; },
+  querySelector() { throw new Error("Do not search sidebar Chat actions outside the titlebar"); },
+};
+assert.deepEqual({ ...api.findDownloadButtonHost(updatedDotDocument) }, { container: currentToolbar, before: currentDotActions });
+const stripFirstChild = {};
+const dotActionStrip = { firstChild: stripFirstChild };
+const renamedDotTitlebar = {
+  querySelector(selector) {
+    return selector === "[data-app-shell-header-obstacle='true']" ? dotActionStrip : null;
+  },
+};
+const renamedDotDocument = { querySelectorAll() { return [renamedDotTitlebar]; } };
+assert.deepEqual({ ...api.findDownloadButtonHost(renamedDotDocument) }, { container: dotActionStrip, before: stripFirstChild }, "The marked Dot action strip does not depend on menu labels");
+const ownedDotButton = { parentElement: dotActionStrip };
+dotActionStrip.firstChild = ownedDotButton;
+renamedDotDocument.getElementById = () => ownedDotButton;
+assert.equal(api.injectDownloadButton(renamedDotDocument), true, "An already anchored button must not be reinserted on every observer pass");
+const hiddenDotTitlebar = { ...updatedDotTitlebar, getClientRects() { return []; } };
+assert.equal(api.findDownloadButtonHost({ querySelectorAll() { return [hiddenDotTitlebar]; } }), null);
+assert.deepEqual({ ...api.findDownloadButtonHost({ querySelectorAll() { return [hiddenDotTitlebar, updatedDotTitlebar]; } }) }, { container: currentToolbar, before: currentDotActions });
+assert.equal(api.findDownloadButtonHost({ querySelectorAll() { return []; } }), null);
 context.location.pathname = "/c/thread";
 
 // A retained old conversation header must not capture the new conversation's button.
@@ -350,7 +428,9 @@ api.buildArchiveZipBlob(
   { signal: exportController.signal, onProgress: event => progressEvents.push(event) }
 )
   .then(async blob => {
+    assert.equal(blob.type, "application/vnd.loggpt.archive");
     const bytes = Buffer.from(await blob.arrayBuffer());
+    assert.equal(bytes.readUInt32LE(0), 0x04034b50, "LGPT remains a standard ZIP container");
     const files = storedZipEntries(bytes);
     assert(files.has("archive.json"));
     assert(files.has("archive/artifact-manifest.json"));

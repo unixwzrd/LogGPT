@@ -23,6 +23,12 @@
     return null;
   }
 
+  function getTabs() {
+    if (typeof browser !== "undefined" && browser.tabs) return browser.tabs;
+    if (typeof chrome !== "undefined" && chrome.tabs) return chrome.tabs;
+    return null;
+  }
+
   async function requestEntitlement() {
     const runtime = getRuntime();
     if (!runtime?.sendMessage) return { hasPlus: false, displayPrice: null };
@@ -82,6 +88,36 @@
     const downloadArtifactsCheckbox = document.getElementById("download-artifacts");
     const askEveryTimeCheckbox = document.getElementById("ask-every-time");
     const savedMessage = document.getElementById("saved-message");
+    const downloadButton = document.getElementById("download-current-conversation");
+    const downloadStatus = document.getElementById("download-status");
+
+    downloadButton.addEventListener("click", async () => {
+      if (downloadButton.disabled) return;
+      downloadButton.disabled = true;
+      downloadStatus.textContent = "Opening export in the current tab…";
+      try {
+        const tabs = getTabs();
+        if (!tabs?.query || !tabs?.sendMessage) {
+          downloadStatus.textContent = "This browser cannot contact the current tab. Use the in-page download button.";
+          return;
+        }
+        const [tab] = await tabs.query({ active: true, currentWindow: true });
+        if (tab?.id == null) {
+          downloadStatus.textContent = "Open a ChatGPT conversation or Dot first.";
+          return;
+        }
+        const response = await tabs.sendMessage(tab.id, { type: "loggpt.downloadCurrentConversation" }, { frameId: 0 });
+        if (response?.started) {
+          window.close();
+        } else {
+          downloadStatus.textContent = response?.error || "Reload the conversation page to reconnect LogGPT, then try again.";
+        }
+      } catch (error) {
+        downloadStatus.textContent = "Open a ChatGPT conversation or Dot, allow LogGPT on chatgpt.com, and reload the page after updating the extension.";
+      } finally {
+        downloadButton.disabled = false;
+      }
+    });
 
     function updateArtifactControls() {
       generatedCheckbox.disabled = !downloadArtifactsCheckbox.checked;
